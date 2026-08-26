@@ -1,0 +1,4497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Globalization Infographic</title>
+
+<style>
+  /* this part controls how the whole presentation looks on screen */
+  :root{
+    --navy:#14213d;
+    --blue:#3b82f6;
+    --sky:#dff3ff;
+    --cream:#fff9ef;
+    --yellow:#ffd166;
+    --orange:#ff8c42;
+    --pink:#ffb3c6;
+    --green:#a7e8bd;
+    --mint:#dff8e7;
+    --purple:#9b7ede;
+    --red:#ff6b6b;
+    --ink:#18212f;
+    --muted:#667085;
+    --white:#ffffff;
+  }
+
+  *{box-sizing:border-box}
+
+  html,body{
+    margin:0;
+    width:100%;
+    height:100%;
+    background:#101522;
+    font-family:Arial, Helvetica, sans-serif;
+    color:var(--ink);
+    overflow:hidden;
+  }
+
+  
+  /* this keeps all eleven slides inside one presentation */
+  .deck{
+    width:100vw;
+    height:100vh;
+    position:relative;
+    overflow:hidden;
+  }
+
+  /* this controls the basic look and spacing of every slide */
+  .slide{
+    position:absolute;
+    inset:0;
+    padding:4.6vw 5.5vw 5.3vw;
+    opacity:0;
+    transform:translateX(55px);
+    pointer-events:none;
+    transition:.42s ease;
+    overflow:hidden;
+  }
+
+  /* this shows the slide the audience is currently viewing */
+  .slide.active{
+    opacity:1;
+    transform:translateX(0);
+    pointer-events:auto;
+  }
+
+  .slide.before{
+    transform:translateX(-55px);
+  }
+
+  /* this shows the small slide number in the corner */
+  .page{
+    position:absolute;
+    right:3vw;
+    top:2.3vw;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.14em;
+    opacity:.5;
+  }
+
+  .eyebrow{
+    font-size:12px;
+    text-transform:lowercase;
+    letter-spacing:.18em;
+    font-weight:800;
+    margin-bottom:14px;
+  }
+
+  h1,h2,h3,p{margin:0}
+
+  h1{
+    font-size:clamp(55px,7.7vw,122px);
+    line-height:.88;
+    letter-spacing:-.065em;
+  }
+
+  h2{
+    font-size:clamp(38px,5vw,77px);
+    line-height:.95;
+    letter-spacing:-.045em;
+  }
+
+  h3{
+    font-size:clamp(17px,1.65vw,27px);
+    line-height:1.1;
+  }
+
+  p{
+    font-size:clamp(14px,1.25vw,20px);
+    line-height:1.42;
+  }
+
+  .tiny{
+    font-size:clamp(10px,.85vw,13px);
+    line-height:1.4;
+  }
+
+  .source{
+    position:absolute;
+    left:5.5vw;
+    bottom:2vw;
+    right:12vw;
+    font-size:10px;
+    line-height:1.35;
+    color:rgba(24,33,47,.62);
+  }
+
+  .dark-source{color:rgba(255,255,255,.65)}
+
+  .tag{
+    display:inline-flex;
+    align-items:center;
+    border-radius:999px;
+    padding:8px 13px;
+    font-size:11px;
+    font-weight:800;
+    border:1.5px solid currentColor;
+  }
+
+  
+  /* this designs the opening slide with the title, globe, and group names */
+  .s1{
+    background:var(--cream);
+  }
+
+  .s1 .left{
+    width:67%;
+    position:relative;
+    z-index:4;
+  }
+
+  .s1 .accent{
+    color:var(--blue);
+  }
+
+  .s1 .intro{
+    width:49%;
+    margin-top:28px;
+    color:#4d5666;
+  }
+
+  .globe{
+    position:absolute;
+    right:-4vw;
+    top:8vh;
+    width:38vw;
+    height:38vw;
+    max-height:70vh;
+    max-width:70vh;
+    border-radius:50%;
+    background:var(--blue);
+    border:3px solid var(--navy);
+    overflow:hidden;
+    z-index:1;
+  }
+
+  .globe:before,
+  .globe:after{
+    content:"";
+    position:absolute;
+    border:2px solid rgba(255,255,255,.85);
+    border-radius:50%;
+  }
+
+  .globe:before{
+    width:42%;
+    height:100%;
+    left:29%;
+    top:0;
+  }
+
+  .globe:after{
+    width:100%;
+    height:42%;
+    left:0;
+    top:29%;
+  }
+
+  .globe .line1,
+  .globe .line2{
+    position:absolute;
+    background:rgba(255,255,255,.85);
+  }
+
+  .globe .line1{
+    width:100%;
+    height:2px;
+    top:50%;
+  }
+
+  .globe .line2{
+    height:100%;
+    width:2px;
+    left:50%;
+  }
+
+  .group-box{
+    position:absolute;
+    left:5.5vw;
+    right:5.5vw;
+    bottom:5.5vw;
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    z-index:5;
+    max-width:73vw;
+  }
+
+  .member{
+    background:white;
+    border:1.5px solid #d7d8dd;
+    padding:7px 10px;
+    border-radius:999px;
+    font-size:9px;
+    font-weight:800;
+    box-shadow:0 4px 12px rgba(20,33,61,.05);
+  }
+
+  
+  /* this designs the slide that explains what globalization means */
+  .s2{
+    background:#dff3ff;
+  }
+
+  .definition{
+    margin-top:3vh;
+    width:73%;
+    font-size:clamp(24px,3vw,48px);
+    line-height:1.14;
+    font-weight:800;
+    letter-spacing:-.035em;
+  }
+
+  .definition strong{
+    color:var(--blue);
+  }
+
+  .flows{
+    margin-top:6vh;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:14px;
+  }
+
+  .flow{
+    background:white;
+    border:2px solid var(--navy);
+    border-radius:24px;
+    padding:20px 16px;
+    min-height:27vh;
+    box-shadow:7px 7px 0 var(--navy);
+  }
+
+  .flow:nth-child(1){background:#fff}
+  .flow:nth-child(2){background:#fff1a8}
+  .flow:nth-child(3){background:#f8c8d7}
+  .flow:nth-child(4){background:#c9f0d6}
+  .flow:nth-child(5){background:#ddd2ff}
+
+  .flow .icon{
+    font-size:32px;
+    margin-bottom:20px;
+  }
+
+  .flow p{
+    margin-top:10px;
+    font-size:13px;
+  }
+
+  
+  /* this designs the slide about the main things that make globalization happen */
+  .s3{
+    background:#15213d;
+    color:white;
+  }
+
+  .driver-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:17px;
+    margin-top:4vh;
+  }
+
+  .driver{
+    border-radius:25px;
+    min-height:29vh;
+    padding:25px;
+    color:var(--ink);
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:18px;
+    align-items:start;
+  }
+
+  .driver:nth-child(1){background:#ffd166}
+  .driver:nth-child(2){background:#91d7ff}
+  .driver:nth-child(3){background:#b9efc8}
+  .driver:nth-child(4){background:#ffb3c6}
+
+  .driver-num{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    background:#15213d;
+    color:white;
+    display:grid;
+    place-items:center;
+    font-size:18px;
+    font-weight:900;
+  }
+
+  .driver p{
+    margin-top:12px;
+    font-size:14px;
+  }
+
+  
+  /* this designs the slide that shows the different sides of globalization */
+  .s4{
+    background:#fff8ea;
+  }
+
+  .dimension-grid{
+    display:grid;
+    grid-template-columns:1.05fr 1fr 1fr 1.05fr;
+    gap:13px;
+    margin-top:5vh;
+    align-items:stretch;
+  }
+
+  .dimension{
+    min-height:51vh;
+    border:2px solid var(--navy);
+    border-radius:30px;
+    padding:24px;
+    position:relative;
+    overflow:hidden;
+  }
+
+  .dimension:nth-child(1){background:#9fd8ff}
+  .dimension:nth-child(2){background:#ffd166}
+  .dimension:nth-child(3){background:#ffb3c6}
+  .dimension:nth-child(4){background:#afe6c0}
+
+  .dimension .big-icon{
+    font-size:48px;
+    margin-bottom:25px;
+  }
+
+  .dimension p{
+    margin-top:14px;
+    font-size:14px;
+  }
+
+  .dimension .mini{
+    position:absolute;
+    bottom:18px;
+    left:20px;
+    right:20px;
+    border-top:1.5px solid rgba(20,33,61,.35);
+    padding-top:12px;
+    font-size:11px;
+    font-weight:700;
+  }
+
+  
+  /* this designs the product example that shows how different countries can be connected */
+  .s5{
+    background:#f1eaff;
+  }
+
+  .journey{
+    position:relative;
+    margin-top:5vh;
+    height:55vh;
+  }
+
+  .phone{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-47%);
+    width:15vw;
+    height:29vw;
+    max-height:49vh;
+    min-width:130px;
+    min-height:250px;
+    background:#15213d;
+    border-radius:28px;
+    border:6px solid #101827;
+    box-shadow:0 18px 30px rgba(20,33,61,.2);
+    display:grid;
+    place-items:center;
+    color:white;
+    font-weight:800;
+  }
+
+  .phone:before{
+    content:"Global Product";
+    width:80%;
+    height:78%;
+    background:linear-gradient(145deg,#3b82f6,#9b7ede);
+    border-radius:18px;
+    display:grid;
+    place-items:center;
+    text-align:center;
+    padding:12px;
+  }
+
+  .journey-card{
+    position:absolute;
+    width:22vw;
+    min-width:190px;
+    padding:17px 18px;
+    border:2px solid #15213d;
+    border-radius:20px;
+    background:white;
+  }
+
+  .jc1{left:2%;top:5%;background:#ffd166}
+  .jc2{right:1%;top:5%;background:#9fd8ff}
+  .jc3{left:0;bottom:3%;background:#afe6c0}
+  .jc4{right:0;bottom:3%;background:#ffb3c6}
+
+  .journey-card h3{font-size:17px}
+  .journey-card p{font-size:12px;margin-top:7px}
+
+  .arrow{
+    position:absolute;
+    font-size:42px;
+    font-weight:900;
+    color:#7c3aed;
+  }
+
+  .a1{left:27%;top:23%;transform:rotate(18deg)}
+  .a2{right:27%;top:23%;transform:rotate(160deg)}
+  .a3{left:28%;bottom:18%;transform:rotate(-18deg)}
+  .a4{right:28%;bottom:18%;transform:rotate(198deg)}
+
+  
+  /* this designs the slide that shows the possible benefits of globalization */
+  .s6{
+    background:#e3f8e9;
+  }
+
+  .benefits{
+    margin-top:4vh;
+    display:grid;
+    grid-template-columns:1.25fr .9fr .9fr;
+    grid-template-rows:1fr 1fr;
+    gap:14px;
+    height:57vh;
+  }
+
+  .benefit{
+    padding:23px;
+    border-radius:25px;
+    border:2px solid var(--navy);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+
+  .benefit:nth-child(1){
+    grid-row:1/3;
+    background:#15213d;
+    color:white;
+  }
+
+  .benefit:nth-child(2){background:#ffd166}
+  .benefit:nth-child(3){background:#9fd8ff}
+  .benefit:nth-child(4){background:#ffb3c6}
+  .benefit:nth-child(5){background:#fff}
+
+  .benefit .symbol{
+    font-size:38px;
+    margin-bottom:15px;
+  }
+
+  .benefit p{
+    margin-top:10px;
+    font-size:13px;
+  }
+
+  
+  /* this designs the slide that shows the possible problems and challenges */
+  .s7{
+    background:#fff0ef;
+  }
+
+  .challenge-wrap{
+    display:grid;
+    grid-template-columns:.9fr 1.2fr;
+    gap:5vw;
+    margin-top:5vh;
+    align-items:center;
+  }
+
+  .warning-circle{
+    width:31vw;
+    height:31vw;
+    max-width:480px;
+    max-height:480px;
+    border-radius:50%;
+    background:#ff6b6b;
+    border:3px solid #15213d;
+    display:grid;
+    place-items:center;
+    font-size:clamp(70px,10vw,150px);
+    font-weight:900;
+    box-shadow:13px 13px 0 #15213d;
+  }
+
+  .challenge-list{
+    display:grid;
+    gap:10px;
+  }
+
+  .challenge{
+    background:white;
+    border:1.5px solid #d5c5c5;
+    border-radius:17px;
+    padding:14px 17px;
+    display:grid;
+    grid-template-columns:31px 1fr;
+    gap:12px;
+    align-items:start;
+  }
+
+  .challenge b{
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    background:#15213d;
+    color:white;
+    display:grid;
+    place-items:center;
+    font-size:11px;
+  }
+
+  .challenge p{
+    font-size:12px;
+    margin-top:3px;
+    color:#57606d;
+  }
+
+  
+  /* this designs the slide that connects globalization to everyday filipino life */
+  .s8{
+    background:#dff3ff;
+  }
+
+  .daily-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:13px;
+    margin-top:4vh;
+  }
+
+  .daily{
+    min-height:23vh;
+    padding:20px;
+    background:white;
+    border-radius:24px;
+    border:2px solid var(--navy);
+    position:relative;
+    overflow:hidden;
+  }
+
+  .daily:nth-child(1){background:#ffd166}
+  .daily:nth-child(2){background:#ffb3c6}
+  .daily:nth-child(3){background:#b7e4c7}
+  .daily:nth-child(4){background:#fff}
+  .daily:nth-child(5){background:#d8cbff}
+  .daily:nth-child(6){background:#9fd8ff}
+
+  .daily .symbol{font-size:34px;margin-bottom:15px}
+  .daily p{font-size:12px;margin-top:8px}
+
+  
+  /* this designs the final slide with the group definition, members, and sources */
+  .s9{
+    background:#15213d;
+    color:white;
+  }
+
+  .final-grid{
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:4vw;
+    margin-top:3vh;
+    align-items:start;
+  }
+
+  .our-definition{
+    font-size:clamp(27px,3.35vw,52px);
+    line-height:1.12;
+    font-weight:800;
+    letter-spacing:-.035em;
+  }
+
+  .our-definition span{color:#ffd166}
+
+  .takeaway{
+    margin-top:25px;
+    color:#d9e3f3;
+    width:90%;
+  }
+
+  /* this makes the group member section look like a designed team card instead of a plain list */
+  .member-panel{
+    background:white;
+    color:var(--ink);
+    border-radius:26px;
+    padding:22px;
+  }
+
+  .member-panel h3{
+    margin-bottom:13px;
+  }
+
+  .member-row{
+    padding:9px 0;
+    border-bottom:1px solid #e4e6eb;
+  }
+
+  .member-row:last-child{border-bottom:0}
+  .member-row strong{display:block;font-size:11px}
+  .member-row span{font-size:9px;color:#707784}
+
+  .references{
+    position:absolute;
+    left:5.5vw;
+    bottom:4.8vw;
+    width:60%;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:17px;
+    padding:12px 15px;
+  }
+
+  .references strong{
+    display:block;
+    font-size:10px;
+    letter-spacing:.12em;
+    margin-bottom:6px;
+  }
+
+  .references p{
+    font-size:9px;
+    line-height:1.4;
+    color:#d6dfef;
+  }
+
+  
+  .controls{
+    position:fixed;
+    left:50%;
+    bottom:17px;
+    transform:translateX(-50%);
+    z-index:100;
+    display:flex;
+    gap:8px;
+    align-items:center;
+    background:rgba(12,16,28,.8);
+    backdrop-filter:blur(12px);
+    padding:7px;
+    border-radius:999px;
+  }
+
+  .controls button{
+    border:0;
+    height:38px;
+    border-radius:999px;
+    background:white;
+    color:#111;
+    padding:0 14px;
+    font-weight:800;
+    font-size:11px;
+    cursor:pointer;
+  }
+
+  .controls button:hover{
+    background:#e9edf5;
+  }
+
+  .counter{
+    color:white;
+    min-width:50px;
+    text-align:center;
+    font-size:11px;
+    font-weight:700;
+  }
+
+  @media(max-width:850px){
+    /* this controls the basic look and spacing of every slide */
+  .slide{padding:7vw 6vw 10vw}
+    h1{font-size:12vw}
+    h2{font-size:8vw}
+    .flows{grid-template-columns:1fr 1fr}
+    .flow{min-height:auto}
+    .driver-grid{grid-template-columns:1fr}
+    .dimension-grid{grid-template-columns:1fr 1fr}
+    .dimension{min-height:30vh}
+    .benefits{grid-template-columns:1fr 1fr;height:auto}
+    .benefit:nth-child(1){grid-row:auto}
+    .daily-grid{grid-template-columns:1fr 1fr}
+    .final-grid{grid-template-columns:1fr}
+    /* this makes the group member section look like a designed team card instead of a plain list */
+  .member-panel{display:none}
+  }
+
+  
+  /* this creates the small progress bar at the top so the audience can see how far the presentation is */
+  .progress-track{
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:4px;
+    background:rgba(255,255,255,.12);
+    z-index:120;
+  }
+
+  .progress-fill{
+    height:100%;
+    width:11.111%;
+    background:linear-gradient(90deg,#ffd166,#ff8c42,#9b7ede,#3b82f6);
+    transition:width .35s ease;
+  }
+
+  /* this creates the small slide buttons on the right for jumping to another slide */
+  .dot-nav{
+    position:fixed;
+    right:19px;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:110;
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+    padding:10px 8px;
+    border-radius:999px;
+    background:rgba(12,16,28,.46);
+    backdrop-filter:blur(8px);
+  }
+
+  .dot-nav button{
+    width:8px;
+    height:8px;
+    padding:0;
+    border:0;
+    border-radius:50%;
+    background:rgba(255,255,255,.4);
+    cursor:pointer;
+    transition:.2s ease;
+  }
+
+  .dot-nav button:hover{
+    transform:scale(1.45);
+    background:#fff;
+  }
+
+  .dot-nav button.active{
+    height:22px;
+    border-radius:999px;
+    background:#ffd166;
+  }
+
+  /* this gives the infographic cards small movement when the user points at them */
+  .flow,.driver,.dimension,.benefit,.challenge,.daily,.journey-card{
+    transition:transform .2s ease, box-shadow .2s ease, opacity .2s ease, filter .2s ease;
+  }
+
+  .flow:hover,.driver:hover,.dimension:hover,.benefit:hover,.challenge:hover,.daily:hover{
+    transform:translateY(-5px);
+    box-shadow:0 13px 24px rgba(20,33,61,.13);
+  }
+
+  .interactive-group.has-focus > *{
+    opacity:.32;
+    filter:saturate(.65);
+  }
+
+  .interactive-group.has-focus > *.focus-card{
+    opacity:1;
+    filter:none;
+    transform:translateY(-7px) scale(1.02);
+    box-shadow:0 15px 28px rgba(20,33,61,.16);
+  }
+
+  .micro-hint{
+    position:absolute;
+    right:5.5vw;
+    bottom:2vw;
+    font-size:10px;
+    font-weight:700;
+    color:rgba(24,33,47,.48);
+    letter-spacing:.04em;
+  }
+
+  .micro-hint.dark{
+    color:rgba(255,255,255,.55);
+  }
+
+  .journey-card.active-step{
+    transform:translateY(-8px) scale(1.04);
+    box-shadow:0 16px 30px rgba(20,33,61,.18);
+    outline:4px solid rgba(124,58,237,.22);
+  }
+
+  .journey-card.dim-step{
+    opacity:.35;
+  }
+
+  .phone{
+    cursor:pointer;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+
+  .phone:hover{
+    transform:translate(-50%,-47%) scale(1.04);
+    box-shadow:0 22px 38px rgba(20,33,61,.28);
+  }
+
+  .phone:after{
+    content:"Click to trace";
+    position:absolute;
+    bottom:-37px;
+    left:50%;
+    transform:translateX(-50%);
+    white-space:nowrap;
+    font-size:10px;
+    font-weight:800;
+    color:#5f50a9;
+    background:white;
+    border:1px solid #d7cdf5;
+    border-radius:999px;
+    padding:6px 9px;
+  }
+
+  
+  /* this makes the group member section look like a designed team card instead of a plain list */
+  .member-panel{
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(145deg,#ffffff,#f5f3ff);
+    border:1px solid rgba(255,255,255,.75);
+    box-shadow:0 20px 45px rgba(0,0,0,.18);
+  }
+
+  .member-panel:before{
+    content:"6";
+    position:absolute;
+    right:-7px;
+    top:-27px;
+    font-size:112px;
+    font-weight:900;
+    color:rgba(124,58,237,.08);
+    letter-spacing:-.08em;
+  }
+
+  .team-label{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:14px;
+    position:relative;
+    z-index:2;
+  }
+
+  .team-count{
+    padding:6px 9px;
+    border-radius:999px;
+    background:#15213d;
+    color:#fff;
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:.07em;
+  }
+
+  .team-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+    position:relative;
+    z-index:2;
+  }
+
+  /* this styles each group member as a separate card that can be highlighted */
+  .member-card{
+    border:1px solid #e5e2ee;
+    border-radius:16px;
+    padding:10px;
+    background:white;
+    display:grid;
+    grid-template-columns:34px 1fr;
+    gap:9px;
+    align-items:center;
+    cursor:pointer;
+    transition:.22s ease;
+    min-height:59px;
+  }
+
+  .member-card:hover,
+  .member-card.selected-member{
+    transform:translateY(-3px) rotate(-.4deg);
+    box-shadow:0 10px 20px rgba(20,33,61,.12);
+    border-color:#b9a8ed;
+  }
+
+  .member-card:nth-child(even):hover,
+  .member-card:nth-child(even).selected-member{
+    transform:translateY(-3px) rotate(.4deg);
+  }
+
+  .avatar{
+    width:34px;
+    height:34px;
+    border-radius:12px;
+    display:grid;
+    place-items:center;
+    color:#15213d;
+    font-weight:900;
+    font-size:10px;
+    border:1.5px solid #15213d;
+  }
+
+  .member-card:nth-child(1) .avatar{background:#ffd166}
+  .member-card:nth-child(2) .avatar{background:#9fd8ff}
+  .member-card:nth-child(3) .avatar{background:#ffb3c6}
+  .member-card:nth-child(4) .avatar{background:#afe6c0}
+  .member-card:nth-child(5) .avatar{background:#ddd2ff}
+  .member-card:nth-child(6) .avatar{background:#ffe6b7}
+
+  .member-info strong{
+    display:block;
+    font-size:9px;
+    line-height:1.15;
+  }
+
+  .member-info span{
+    display:block;
+    font-size:8px;
+    color:#7a7f89;
+    margin-top:3px;
+  }
+
+  .team-note{
+    margin-top:12px;
+    border-radius:13px;
+    padding:9px 11px;
+    background:#15213d;
+    color:white;
+    font-size:8px;
+    line-height:1.35;
+    position:relative;
+    z-index:2;
+  }
+
+  .first-slide-hint{
+    position:absolute;
+    right:5.5vw;
+    bottom:5.7vw;
+    z-index:7;
+    font-size:9px;
+    font-weight:700;
+    color:#6d7380;
+    display:flex;
+    gap:7px;
+    align-items:center;
+  }
+
+  .key{
+    border:1px solid #b8bbc3;
+    border-bottom-width:2px;
+    border-radius:5px;
+    background:white;
+    padding:3px 6px;
+    color:#34373c;
+  }
+
+  @media(max-width:850px){
+    /* this creates the small slide buttons on the right for jumping to another slide */
+  .dot-nav{display:none}
+    .first-slide-hint{display:none}
+  }
+
+
+  /* this makes the last content slide feel like a strong final summary */
+  .final-takeaway-wrap{
+    margin-top:4vh;
+    max-width:1120px;
+  }
+
+  .final-badge{
+    display:inline-block;
+    margin-bottom:20px;
+    padding:8px 12px;
+    background:#ffd166;
+    color:#15213d;
+    border-radius:999px;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:.08em;
+  }
+
+  .final-choice-row{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-top:32px;
+  }
+
+  .final-choice{
+    text-align:left;
+    border:1px solid rgba(255,255,255,.2);
+    background:rgba(255,255,255,.08);
+    color:white;
+    border-radius:20px;
+    padding:17px;
+    cursor:pointer;
+    transition:.22s ease;
+  }
+
+  .final-choice:hover{
+    transform:translateY(-5px);
+    background:rgba(255,255,255,.14);
+  }
+
+  .choice-icon{
+    display:grid;
+    place-items:center;
+    width:32px;
+    height:32px;
+    margin-bottom:12px;
+    border-radius:10px;
+    background:#ffd166;
+    color:#15213d;
+    font-weight:900;
+  }
+
+  .final-choice strong{
+    display:block;
+    font-size:13px;
+    margin-bottom:5px;
+  }
+
+  .final-choice small{
+    display:block;
+    font-size:9px;
+    line-height:1.4;
+    color:#d8dfec;
+  }
+
+  .tap-note{
+    margin-top:13px;
+    font-size:9px;
+    color:#aebbd0;
+  }
+
+  /* this designs the extra credits slide like an interactive information hub */
+  .s10{
+    background:linear-gradient(135deg,#f7f4ff,#eaf7ff);
+    color:#18212f;
+  }
+
+  .hub-tabs{
+    display:flex;
+    gap:8px;
+    margin-top:22px;
+  }
+
+  .hub-tab{
+    border:1.5px solid #15213d;
+    background:white;
+    color:#15213d;
+    border-radius:999px;
+    padding:9px 15px;
+    font-weight:800;
+    font-size:10px;
+    cursor:pointer;
+    transition:.2s ease;
+  }
+
+  .hub-tab:hover{
+    transform:translateY(-2px);
+    box-shadow:0 7px 14px rgba(20,33,61,.1);
+  }
+
+  .hub-tab.active{
+    background:#15213d;
+    color:white;
+  }
+
+  .hub-content{
+    margin-top:18px;
+    height:57vh;
+  }
+
+  .hub-panel{
+    display:none;
+    height:100%;
+    animation:hubIn .25s ease;
+  }
+
+  .hub-panel.active{
+    display:block;
+  }
+
+  @keyframes hubIn{
+    from{opacity:0;transform:translateY(8px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+
+  .team-intro{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+  }
+
+  .team-intro p{
+    margin-top:6px;
+    font-size:11px;
+    color:#667085;
+  }
+
+  .mini-label{
+    display:inline-block;
+    margin-bottom:6px;
+    padding:5px 8px;
+    border-radius:999px;
+    background:#ffd166;
+    font-size:8px;
+    font-weight:900;
+  }
+
+  .team-orbit{
+    width:78px;
+    height:78px;
+    border-radius:50%;
+    border:2px dashed #7c3aed;
+    display:grid;
+    place-items:center;
+    position:relative;
+    animation:floaty 3.5s ease-in-out infinite;
+  }
+
+  .team-orbit span:first-child{
+    font-size:24px;
+    font-weight:900;
+    color:#7c3aed;
+  }
+
+  .team-orbit span:last-child{
+    position:absolute;
+    right:-8px;
+    bottom:5px;
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    background:#ffd166;
+    display:grid;
+    place-items:center;
+    font-weight:900;
+    font-size:10px;
+  }
+
+  @keyframes floaty{
+    0%,100%{transform:translateY(0) rotate(0deg)}
+    50%{transform:translateY(-5px) rotate(3deg)}
+  }
+
+  .creative-team-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:11px;
+  }
+
+  .credit-card{
+    border:1px solid #d9dde7;
+    background:white;
+    border-radius:18px;
+    padding:13px;
+    display:grid;
+    grid-template-columns:43px 1fr;
+    align-items:center;
+    gap:10px;
+    text-align:left;
+    cursor:pointer;
+    transition:.22s ease;
+    box-shadow:0 5px 15px rgba(20,33,61,.05);
+  }
+
+  .credit-card:hover,
+  .credit-card.active{
+    transform:translateY(-5px) rotate(-.4deg);
+    border-color:#9b7ede;
+    box-shadow:0 13px 24px rgba(20,33,61,.12);
+  }
+
+  .credit-card:nth-child(even):hover,
+  .credit-card:nth-child(even).active{
+    transform:translateY(-5px) rotate(.4deg);
+  }
+
+  .credit-avatar{
+    width:43px;
+    height:43px;
+    border-radius:14px;
+    display:grid;
+    place-items:center;
+    font-weight:900;
+    font-size:11px;
+    border:1.5px solid #15213d;
+  }
+
+  .credit-avatar.a1{background:#ffd166}
+  .credit-avatar.a2{background:#9fd8ff}
+  .credit-avatar.a3{background:#ffb3c6}
+  .credit-avatar.a4{background:#afe6c0}
+  .credit-avatar.a5{background:#ddd2ff}
+  .credit-avatar.a6{background:#ffe1a8}
+
+  .credit-card strong{
+    display:block;
+    font-size:10px;
+    line-height:1.15;
+  }
+
+  .credit-card span{
+    display:block;
+    margin-top:3px;
+    font-size:8px;
+    color:#757c87;
+  }
+
+  .member-spotlight{
+    margin-top:12px;
+    background:#15213d;
+    color:white;
+    border-radius:14px;
+    padding:10px 12px;
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-size:9px;
+  }
+
+  .spotlight-dot{
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:#ffd166;
+    box-shadow:0 0 0 5px rgba(255,209,102,.12);
+  }
+
+  .source-stack{
+    display:grid;
+    gap:10px;
+  }
+
+  .source-card{
+    width:100%;
+    border:1px solid #d8dde8;
+    background:white;
+    border-radius:18px;
+    padding:15px;
+    display:grid;
+    grid-template-columns:43px 1fr 28px;
+    gap:12px;
+    align-items:center;
+    text-align:left;
+    cursor:pointer;
+    transition:.2s ease;
+  }
+
+  .source-card:hover,
+  .source-card.active{
+    transform:translateX(5px);
+    border-color:#7c3aed;
+    box-shadow:0 9px 20px rgba(20,33,61,.08);
+  }
+
+  .source-num{
+    width:43px;
+    height:43px;
+    border-radius:13px;
+    background:#15213d;
+    color:white;
+    display:grid;
+    place-items:center;
+    font-weight:900;
+    font-size:10px;
+  }
+
+  .source-card strong{
+    display:block;
+    font-size:11px;
+    margin-bottom:4px;
+  }
+
+  .source-card p{
+    font-size:9px;
+    color:#697180;
+  }
+
+  .source-open{
+    width:28px;
+    height:28px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    background:#f2efff;
+    color:#7c3aed;
+    font-weight:900;
+  }
+
+  .source-detail{
+    margin-top:12px;
+    padding:12px 14px;
+    border-radius:14px;
+    background:#15213d;
+    color:white;
+    font-size:9px;
+    line-height:1.45;
+  }
+
+  .resource-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+
+  .resource-card{
+    min-height:18vh;
+    border:1.5px solid #15213d;
+    border-radius:20px;
+    background:white;
+    padding:17px;
+    text-align:left;
+    cursor:pointer;
+    transition:.22s ease;
+  }
+
+  .resource-card:nth-child(1){background:#ffd166}
+  .resource-card:nth-child(2){background:#9fd8ff}
+  .resource-card:nth-child(3){background:#afe6c0}
+  .resource-card:nth-child(4){background:#ffb3c6}
+
+  .resource-card:hover,
+  .resource-card.active{
+    transform:translateY(-5px) scale(1.01);
+    box-shadow:0 12px 24px rgba(20,33,61,.12);
+  }
+
+  .resource-icon{
+    display:block;
+    font-size:28px;
+    margin-bottom:12px;
+  }
+
+  .resource-card strong{
+    display:block;
+    font-size:11px;
+    margin-bottom:5px;
+  }
+
+  .resource-card p{
+    font-size:9px;
+    line-height:1.4;
+  }
+
+  .resource-tip{
+    margin-top:12px;
+    border-radius:14px;
+    padding:11px 13px;
+    background:#15213d;
+    color:white;
+    font-size:9px;
+    line-height:1.45;
+  }
+
+  /* this adds a tiny click effect so buttons feel responsive */
+  button{
+    -webkit-tap-highlight-color:transparent;
+  }
+
+  button:active{
+    transform:scale(.98);
+  }
+
+  @media(max-width:850px){
+    .creative-team-grid{grid-template-columns:1fr 1fr}
+    .resource-grid{grid-template-columns:1fr}
+    .hub-content{height:auto}
+  }
+
+
+  /* this makes the phone look like something the audience can actually open */
+  .phone-button{
+    border:0;
+    padding:0;
+    cursor:pointer;
+    overflow:visible;
+  }
+
+  .phone-screen{
+    width:88%;
+    height:89%;
+    border-radius:20px;
+    background:linear-gradient(160deg,#7367f0,#3b82f6 50%,#65d6c1);
+    padding:16px 10px 11px;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .phone-speaker{
+    position:absolute;
+    top:8px;
+    left:50%;
+    transform:translateX(-50%);
+    width:36%;
+    height:6px;
+    border-radius:99px;
+    background:#050910;
+    z-index:4;
+  }
+
+  .phone-time{
+    font-size:8px;
+    text-align:left;
+    opacity:.85;
+  }
+
+  .phone-title{
+    margin-top:18px;
+    font-weight:900;
+    font-size:13px;
+    text-align:center;
+  }
+
+  .phone-app-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+    margin-top:18px;
+  }
+
+  .phone-app-grid span{
+    min-height:49px;
+    border-radius:13px;
+    background:rgba(255,255,255,.18);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    font-size:19px;
+    border:1px solid rgba(255,255,255,.23);
+  }
+
+  .phone-app-grid small{
+    margin-top:3px;
+    font-size:6px;
+    font-weight:800;
+  }
+
+  .phone-open-label{
+    margin-top:auto;
+    border-radius:999px;
+    background:white;
+    color:#473c9f;
+    padding:6px 8px;
+    font-size:7px;
+    font-weight:900;
+    text-align:center;
+  }
+
+  /* this dark layer appears behind the phone details when the phone is opened */
+  .phone-popup,
+  .warning-popup{
+    position:absolute;
+    inset:-10vh -10vw;
+    z-index:40;
+    background:rgba(10,15,28,.68);
+    backdrop-filter:blur(9px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:7vh 10vw;
+  }
+
+  .phone-popup.open,
+  .warning-popup.open{
+    display:flex;
+    animation:popupFade .22s ease;
+  }
+
+  @keyframes popupFade{
+    from{opacity:0}
+    to{opacity:1}
+  }
+
+  .popup-window,
+  .warning-window{
+    width:min(850px,82vw);
+    max-height:76vh;
+    overflow:auto;
+    border-radius:28px;
+    background:#fff;
+    color:#18212f;
+    padding:28px;
+    position:relative;
+    box-shadow:0 30px 80px rgba(0,0,0,.28);
+  }
+
+  .popup-close{
+    position:absolute;
+    top:14px;
+    right:14px;
+    width:34px;
+    height:34px;
+    border:0;
+    border-radius:50%;
+    background:#15213d;
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+  }
+
+  .popup-kicker{
+    color:#7c3aed;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    margin-bottom:7px;
+  }
+
+  .phone-tabs{
+    display:flex;
+    gap:7px;
+    margin:20px 0 16px;
+    flex-wrap:wrap;
+  }
+
+  .phone-tab{
+    border:1.5px solid #cfd4df;
+    background:white;
+    border-radius:999px;
+    padding:8px 12px;
+    font-size:9px;
+    font-weight:900;
+    cursor:pointer;
+  }
+
+  .phone-tab.active{
+    background:#15213d;
+    color:white;
+    border-color:#15213d;
+  }
+
+  .phone-detail{
+    display:none;
+    grid-template-columns:58px 1fr;
+    gap:17px;
+    align-items:start;
+    padding:18px;
+    border-radius:19px;
+    background:#f5f7fb;
+  }
+
+  .phone-detail.active{
+    display:grid;
+    animation:detailIn .2s ease;
+  }
+
+  @keyframes detailIn{
+    from{opacity:0;transform:translateY(5px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+
+  .detail-icon{
+    width:58px;
+    height:58px;
+    border-radius:17px;
+    background:#ffd166;
+    display:grid;
+    place-items:center;
+    font-size:25px;
+  }
+
+  .phone-detail strong{
+    font-size:16px;
+  }
+
+  .phone-detail p{
+    margin-top:8px;
+    font-size:12px;
+  }
+
+  .detail-tags{
+    display:flex;
+    gap:6px;
+    margin-top:12px;
+    flex-wrap:wrap;
+  }
+
+  .detail-tags span{
+    border-radius:999px;
+    background:white;
+    border:1px solid #d9dde7;
+    padding:5px 8px;
+    font-size:8px;
+    font-weight:800;
+  }
+
+  /* this makes the big warning sign feel clickable */
+  .warning-button{
+    border:3px solid #15213d;
+    cursor:pointer;
+    position:relative;
+  }
+
+  .warning-label{
+    position:absolute;
+    bottom:18%;
+    left:50%;
+    transform:translateX(-50%);
+    white-space:nowrap;
+    background:#15213d;
+    color:white;
+    border-radius:999px;
+    padding:7px 11px;
+    font-size:8px;
+    letter-spacing:.08em;
+  }
+
+  .warning-button:hover{
+    transform:translateY(-5px) rotate(-2deg);
+    box-shadow:18px 18px 0 #15213d;
+  }
+
+  .warning-options{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-top:18px;
+  }
+
+  .warning-option{
+    border:1px solid #dde0e7;
+    background:#f8f9fc;
+    border-radius:14px;
+    padding:10px;
+    text-align:left;
+    cursor:pointer;
+    font-size:9px;
+    font-weight:900;
+  }
+
+  .warning-option span{
+    margin-left:5px;
+  }
+
+  .warning-option.active{
+    background:#ff6b6b;
+    color:white;
+    border-color:#ff6b6b;
+  }
+
+  .warning-detail{
+    margin-top:12px;
+    border-radius:16px;
+    background:#15213d;
+    color:white;
+    padding:15px;
+  }
+
+  .warning-detail strong{
+    font-size:13px;
+  }
+
+  .warning-detail p{
+    margin-top:6px;
+    font-size:10px;
+    color:#d8dfec;
+  }
+
+  /* this creates a separate creative group member slide */
+  .s10{
+    background:linear-gradient(145deg,#fff8e9,#eee9ff 55%,#e0f3ff);
+  }
+
+  .team-stage{
+    margin-top:3vh;
+    height:46vh;
+    position:relative;
+    max-width:1120px;
+  }
+
+  .team-center{
+    position:absolute;
+    left:50%;
+    top:48%;
+    transform:translate(-50%,-50%);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:5px;
+  }
+
+  .team-center-ring{
+    width:95px;
+    height:95px;
+    border-radius:50%;
+    background:#15213d;
+    color:white;
+    display:grid;
+    place-items:center;
+    font-size:27px;
+    font-weight:900;
+    box-shadow:0 0 0 12px rgba(124,58,237,.1);
+  }
+
+  .team-center strong{font-size:12px}
+  .team-center span{font-size:8px;color:#6f7682}
+
+  .orbit-member{
+    position:absolute;
+    width:220px;
+    min-height:68px;
+    border:1.5px solid #15213d;
+    background:white;
+    border-radius:20px;
+    padding:11px;
+    display:grid;
+    grid-template-columns:42px 1fr;
+    gap:10px;
+    align-items:center;
+    text-align:left;
+    cursor:pointer;
+    box-shadow:0 8px 18px rgba(20,33,61,.08);
+    transition:.22s ease;
+  }
+
+  .orbit-member > span{
+    width:42px;
+    height:42px;
+    border-radius:13px;
+    display:grid;
+    place-items:center;
+    font-size:10px;
+    font-weight:900;
+    border:1px solid #15213d;
+  }
+
+  .orbit-member strong{
+    font-size:9px;
+  }
+
+  .orbit-member:hover,
+  .orbit-member.active{
+    transform:translateY(-5px) scale(1.02);
+    box-shadow:0 15px 28px rgba(20,33,61,.13);
+    border-color:#7c3aed;
+  }
+
+  .om1{left:2%;top:2%}.om1 span{background:#ffd166}
+  .om2{right:2%;top:2%}.om2 span{background:#9fd8ff}
+  .om3{left:5%;top:37%}.om3 span{background:#ffb3c6}
+  .om4{right:5%;top:37%}.om4 span{background:#afe6c0}
+  .om5{left:15%;bottom:1%}.om5 span{background:#ddd2ff}
+  .om6{right:15%;bottom:1%}.om6 span{background:#ffe0a3}
+
+  .team-spotlight-box{
+    margin-top:4px;
+    max-width:850px;
+    min-height:82px;
+    border-radius:20px;
+    background:#15213d;
+    color:white;
+    padding:14px 17px;
+    display:grid;
+    grid-template-columns:52px 1fr;
+    gap:12px;
+    align-items:center;
+  }
+
+  .spot-avatar{
+    width:52px;
+    height:52px;
+    border-radius:15px;
+    background:#ffd166;
+    color:#15213d;
+    display:grid;
+    place-items:center;
+    font-weight:900;
+  }
+
+  .team-spotlight-box h3{font-size:14px}
+  .team-spotlight-box p{font-size:9px;color:#cfd9ea;margin-top:4px}
+
+  /* this creates a separate final slide for sources and useful review links */
+  .s11{
+    background:#e7f4ff;
+  }
+
+  .reference-layout{
+    display:grid;
+    grid-template-columns:.7fr 1.3fr;
+    gap:18px;
+    margin-top:3vh;
+    height:52vh;
+  }
+
+  .reference-menu{
+    display:grid;
+    gap:8px;
+  }
+
+  .reference-tab{
+    border:1.5px solid #15213d;
+    background:white;
+    border-radius:18px;
+    padding:11px;
+    display:grid;
+    grid-template-columns:38px 1fr;
+    gap:10px;
+    align-items:center;
+    text-align:left;
+    cursor:pointer;
+    transition:.2s ease;
+  }
+
+  .reference-tab > span{
+    width:38px;
+    height:38px;
+    border-radius:12px;
+    background:#15213d;
+    color:white;
+    display:grid;
+    place-items:center;
+    font-size:9px;
+    font-weight:900;
+  }
+
+  .reference-tab strong{display:block;font-size:10px}
+  .reference-tab small{font-size:8px;color:#737b89}
+
+  .reference-tab:hover,
+  .reference-tab.active{
+    transform:translateX(4px);
+    background:#15213d;
+    color:white;
+  }
+
+  .reference-tab.active small,
+  .reference-tab:hover small{color:#c7d1e2}
+
+  .reference-view{
+    border:1.5px solid #15213d;
+    background:white;
+    border-radius:25px;
+    padding:24px;
+    overflow:auto;
+    position:relative;
+  }
+
+  .reference-content{
+    display:none;
+  }
+
+  .reference-content.active{
+    display:block;
+    animation:detailIn .22s ease;
+  }
+
+  .reference-icon{
+    width:54px;
+    height:54px;
+    border-radius:17px;
+    background:#ffd166;
+    display:grid;
+    place-items:center;
+    font-size:14px;
+    font-weight:900;
+    margin-bottom:13px;
+  }
+
+  .reference-content h3{
+    font-size:20px;
+    max-width:650px;
+  }
+
+  .reference-content p{
+    margin-top:12px;
+    font-size:12px;
+    max-width:690px;
+    color:#4e5868;
+  }
+
+  .used-on{
+    display:inline-block;
+    margin-top:16px;
+    background:#eef1f7;
+    border-radius:999px;
+    padding:7px 10px;
+    font-size:8px;
+    font-weight:900;
+  }
+
+  .quick-resource-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+    margin-top:16px;
+  }
+
+  .quick-resource-grid button{
+    border:1px solid #d9dde6;
+    background:#f7f8fb;
+    border-radius:14px;
+    padding:12px;
+    text-align:left;
+    cursor:pointer;
+    font-size:10px;
+    font-weight:900;
+  }
+
+  .quick-resource-grid button:hover{
+    background:#ffd166;
+    border-color:#15213d;
+    transform:translateY(-2px);
+  }
+
+  .quick-resource-grid span{
+    display:block;
+    margin-top:3px;
+    font-size:7px;
+    color:#747b87;
+  }
+
+  .reference-footer{
+    margin-top:10px;
+    font-size:9px;
+    color:#647084;
+  }
+
+  @media(max-width:850px){
+    .orbit-member{width:180px}
+    .reference-layout{grid-template-columns:1fr;height:auto}
+    .reference-menu{grid-template-columns:1fr 1fr}
+  }
+
+
+  /* this makes sure hidden popups never block the next and previous buttons */
+  .phone-popup,
+  .warning-popup{
+    pointer-events:none;
+  }
+
+  .phone-popup.open,
+  .warning-popup.open{
+    pointer-events:auto;
+  }
+
+  /* this keeps the presentation controls above normal slide content */
+  .controls{
+    z-index:200;
+  }
+
+
+  /* this lets the current slide scroll when its content is taller than the screen */
+  .slide{
+    overflow-y:auto;
+    overflow-x:hidden;
+    padding-bottom:110px;
+    scrollbar-width:thin;
+    scrollbar-color:rgba(21,33,61,.38) transparent;
+    overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  /* this makes the scrollbar small and clean in browsers that support it */
+  .slide::-webkit-scrollbar{
+    width:8px;
+  }
+
+  .slide::-webkit-scrollbar-track{
+    background:transparent;
+  }
+
+  .slide::-webkit-scrollbar-thumb{
+    background:rgba(21,33,61,.28);
+    border-radius:999px;
+  }
+
+  .slide::-webkit-scrollbar-thumb:hover{
+    background:rgba(21,33,61,.45);
+  }
+
+  /* dark slides use a lighter scrollbar so it is still visible */
+  .s3::-webkit-scrollbar-thumb,
+  .s9::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,.28);
+  }
+
+  /* this keeps the bottom controls visible even while the slide is being scrolled */
+  .controls{
+    position:fixed;
+    bottom:17px;
+  }
+
+  /* this gives long sections extra space above the fixed controls */
+  .s5,
+  .s7,
+  .s10,
+  .s11{
+    padding-bottom:135px;
+  }
+
+  /* this helps the large phone and warning popups fit on smaller screens */
+  .popup-window,
+  .warning-window{
+    max-height:82vh;
+    overflow-y:auto;
+  }
+
+  /* this lets the final sources area scroll inside itself if needed */
+  .reference-view{
+    overflow-y:auto;
+  }
+
+  /* this makes smaller screens more comfortable to scroll through */
+  @media(max-height:720px){
+    .slide{
+      padding-top:34px;
+      padding-bottom:120px;
+    }
+
+    .hub-content,
+    .team-stage,
+    .reference-layout{
+      height:auto;
+      min-height:520px;
+    }
+
+    .journey{
+      min-height:540px;
+      height:auto;
+    }
+
+    .challenge-wrap{
+      min-height:520px;
+    }
+  }
+
+
+  /* this makes the presentation use the phone screen properly */
+  @media(max-width:700px){
+    html,body{
+      width:100%;
+      height:100%;
+      min-height:100%;
+      overflow:hidden;
+    }
+
+    .deck{
+      width:100vw;
+      height:var(--phone-height, 100dvh);
+    }
+
+    .slide{
+      inset:0;
+      width:100%;
+      height:var(--phone-height, 100dvh);
+      padding:64px 18px 120px;
+      overflow-y:auto;
+      overflow-x:hidden;
+    }
+
+    .page{
+      position:static;
+      display:inline-block;
+      margin-bottom:10px;
+      font-size:10px;
+    }
+
+    .eyebrow{
+      font-size:9px;
+      letter-spacing:.12em;
+      margin-bottom:10px;
+    }
+
+    h1{
+      font-size:clamp(48px,15vw,72px);
+      line-height:.92;
+    }
+
+    h2{
+      font-size:clamp(34px,10vw,52px);
+      line-height:.98;
+    }
+
+    h3{
+      font-size:18px;
+    }
+
+    p{
+      font-size:14px;
+      line-height:1.5;
+    }
+
+    .source{
+      position:static;
+      margin-top:24px;
+      font-size:9px;
+      line-height:1.45;
+    }
+
+    .micro-hint,
+    .first-slide-hint{
+      display:none;
+    }
+
+    /* this keeps the progress bar visible without taking much space */
+    .progress-track{
+      height:3px;
+    }
+
+    /* this hides the side dots because they take too much phone space */
+    .dot-nav{
+      display:none;
+    }
+
+    /* this makes the bottom controls easier to tap with one hand */
+    .controls{
+      left:10px;
+      right:10px;
+      bottom:10px;
+      transform:none;
+      justify-content:center;
+      gap:6px;
+      padding:7px;
+      border-radius:18px;
+    }
+
+    .controls button{
+      min-height:44px;
+      min-width:44px;
+      padding:0 12px;
+      font-size:10px;
+    }
+
+    .controls #fullscreen{
+      flex:1;
+      max-width:130px;
+    }
+
+    .counter{
+      min-width:46px;
+      font-size:10px;
+    }
+
+    /* this makes the cover slide fit naturally on a phone */
+    .s1 .left{
+      width:100%;
+    }
+
+    .s1 .intro{
+      width:100%;
+      margin-top:18px;
+    }
+
+    .globe{
+      position:relative;
+      right:auto;
+      top:auto;
+      width:68vw;
+      height:68vw;
+      max-width:310px;
+      max-height:310px;
+      margin:28px auto 0;
+    }
+
+    .group-box{
+      position:static;
+      margin-top:24px;
+      max-width:none;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:7px;
+    }
+
+    .member{
+      font-size:8px;
+      text-align:center;
+      padding:8px 7px;
+      white-space:normal;
+    }
+
+    /* this makes the definition cards easy to scroll and read */
+    .definition{
+      width:100%;
+      font-size:25px;
+      line-height:1.2;
+      margin-top:18px;
+    }
+
+    .flows{
+      grid-template-columns:1fr;
+      gap:12px;
+      margin-top:26px;
+    }
+
+    .flow{
+      min-height:0;
+      padding:18px;
+      box-shadow:5px 5px 0 var(--navy);
+    }
+
+    .flow .icon{
+      margin-bottom:10px;
+    }
+
+    .flow p{
+      font-size:13px;
+    }
+
+    /* this stacks the four globalization drivers on phones */
+    .driver-grid{
+      grid-template-columns:1fr;
+      gap:12px;
+      margin-top:24px;
+    }
+
+    .driver{
+      min-height:0;
+      padding:17px;
+      grid-template-columns:48px 1fr;
+    }
+
+    .driver-num{
+      width:46px;
+      height:46px;
+      font-size:15px;
+    }
+
+    .driver p{
+      font-size:13px;
+    }
+
+    /* this turns the four dimensions into one card per row */
+    .dimension-grid{
+      grid-template-columns:1fr;
+      gap:12px;
+      margin-top:24px;
+    }
+
+    .dimension{
+      min-height:240px;
+      padding:20px;
+    }
+
+    .dimension .big-icon{
+      margin-bottom:12px;
+    }
+
+    .dimension .mini{
+      position:static;
+      margin-top:18px;
+    }
+
+    /* this changes the phone example from a scattered desktop layout into a clear phone layout */
+    .journey{
+      height:auto;
+      min-height:0;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      margin-top:24px;
+    }
+
+    .phone{
+      position:relative;
+      left:auto;
+      top:auto;
+      transform:none;
+      order:1;
+      width:190px;
+      height:365px;
+      min-width:190px;
+      min-height:365px;
+      margin:0 auto 18px;
+    }
+
+    .phone:hover{
+      transform:scale(1.02);
+    }
+
+    .journey-card{
+      position:static;
+      width:100%;
+      min-width:0;
+      order:2;
+      padding:16px;
+    }
+
+    .jc1,.jc2,.jc3,.jc4{
+      left:auto;
+      right:auto;
+      top:auto;
+      bottom:auto;
+    }
+
+    .arrow{
+      display:none;
+    }
+
+    .phone-popup,
+    .warning-popup{
+      position:fixed;
+      inset:0;
+      padding:14px;
+      z-index:500;
+      align-items:flex-end;
+    }
+
+    .popup-window,
+    .warning-window{
+      width:100%;
+      max-width:none;
+      max-height:88dvh;
+      border-radius:24px 24px 0 0;
+      padding:22px 16px 26px;
+    }
+
+    .phone-tabs{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+    }
+
+    .phone-tab{
+      min-height:42px;
+    }
+
+    .phone-detail{
+      grid-template-columns:46px 1fr;
+      padding:14px;
+    }
+
+    .detail-icon{
+      width:46px;
+      height:46px;
+      font-size:20px;
+    }
+
+    /* this stacks the benefit cards so none of them become too narrow */
+    .benefits{
+      display:grid;
+      grid-template-columns:1fr;
+      grid-template-rows:none;
+      height:auto;
+      gap:12px;
+      margin-top:24px;
+    }
+
+    .benefit,
+    .benefit:nth-child(1){
+      grid-row:auto;
+      min-height:180px;
+      padding:18px;
+    }
+
+    /* this makes the warning sign and challenge list comfortable on mobile */
+    .challenge-wrap{
+      grid-template-columns:1fr;
+      gap:26px;
+      margin-top:24px;
+      min-height:0;
+    }
+
+    .warning-circle{
+      width:220px;
+      height:220px;
+      margin:0 auto;
+      font-size:90px;
+    }
+
+    .challenge{
+      grid-template-columns:30px 1fr;
+      padding:14px;
+    }
+
+    .warning-options{
+      grid-template-columns:1fr;
+    }
+
+    /* this makes everyday examples one per row for readability */
+    .daily-grid{
+      grid-template-columns:1fr;
+      gap:12px;
+      margin-top:24px;
+    }
+
+    .daily{
+      min-height:0;
+      padding:18px;
+    }
+
+    /* this stacks the three final takeaway buttons */
+    .final-choice-row{
+      grid-template-columns:1fr;
+      gap:10px;
+    }
+
+    .final-choice{
+      min-height:110px;
+    }
+
+    .our-definition{
+      font-size:27px;
+      line-height:1.17;
+    }
+
+    .takeaway{
+      width:100%;
+    }
+
+    /* this turns the group member orbit into a normal phone-friendly grid */
+    .team-stage{
+      height:auto;
+      min-height:0;
+      margin-top:24px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+
+    .team-center{
+      position:static;
+      transform:none;
+      grid-column:1 / -1;
+      margin-bottom:6px;
+    }
+
+    .team-center-ring{
+      width:78px;
+      height:78px;
+    }
+
+    .orbit-member{
+      position:static;
+      width:100%;
+      min-height:110px;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:8px;
+      padding:12px;
+    }
+
+    .orbit-member > span{
+      width:40px;
+      height:40px;
+    }
+
+    .orbit-member strong{
+      font-size:9px;
+      line-height:1.25;
+    }
+
+    .om1,.om2,.om3,.om4,.om5,.om6{
+      left:auto;
+      right:auto;
+      top:auto;
+      bottom:auto;
+    }
+
+    .team-spotlight-box{
+      margin-top:14px;
+      grid-template-columns:48px 1fr;
+      padding:13px;
+    }
+
+    /* this stacks the source menu above the source details */
+    .reference-layout{
+      grid-template-columns:1fr;
+      gap:12px;
+      height:auto;
+      margin-top:22px;
+    }
+
+    .reference-menu{
+      grid-template-columns:1fr 1fr;
+      gap:8px;
+    }
+
+    .reference-tab{
+      grid-template-columns:34px 1fr;
+      min-height:68px;
+      padding:9px;
+    }
+
+    .reference-tab > span{
+      width:34px;
+      height:34px;
+    }
+
+    .reference-view{
+      min-height:360px;
+      padding:18px;
+    }
+
+    .reference-content h3{
+      font-size:18px;
+    }
+
+    .reference-content p{
+      font-size:12px;
+    }
+
+    .quick-resource-grid{
+      grid-template-columns:1fr;
+    }
+
+    /* this gives touch screens bigger buttons and cleaner feedback */
+    button{
+      touch-action:manipulation;
+    }
+
+    .flow,
+    .driver,
+    .dimension,
+    .benefit,
+    .challenge,
+    .daily,
+    .final-choice,
+    .orbit-member,
+    .reference-tab,
+    .quick-resource-grid button{
+      -webkit-tap-highlight-color:transparent;
+    }
+
+    /* this prevents hover-only movement from making phone taps feel jumpy */
+    .flow:hover,
+    .driver:hover,
+    .dimension:hover,
+    .benefit:hover,
+    .challenge:hover,
+    .daily:hover{
+      transform:none;
+    }
+  }
+
+  /* this gives very small phones an even tighter layout */
+  @media(max-width:390px){
+    .slide{
+      padding-left:14px;
+      padding-right:14px;
+    }
+
+    h1{
+      font-size:47px;
+    }
+
+    h2{
+      font-size:34px;
+    }
+
+    .group-box{
+      grid-template-columns:1fr;
+    }
+
+    .team-stage{
+      grid-template-columns:1fr;
+    }
+
+    .reference-menu{
+      grid-template-columns:1fr;
+    }
+
+    .controls{
+      left:6px;
+      right:6px;
+      gap:4px;
+      padding:6px;
+    }
+
+    .controls button{
+      padding:0 9px;
+    }
+
+    .controls #fullscreen{
+      max-width:104px;
+    }
+  }
+
+
+  /* this removes the old decoration so the phone screen and its apps can be pressed properly */
+  .phone-button::before,
+  .phone-button::after{
+    content:none !important;
+    display:none !important;
+  }
+
+  /* this makes the whole phone clearly clickable without changing its layout */
+  .phone-button{
+    user-select:none;
+    outline:none;
+  }
+
+  .phone-button:focus-visible{
+    box-shadow:0 0 0 5px rgba(124,58,237,.28), 0 18px 30px rgba(20,33,61,.2);
+  }
+
+  /* these are the four little apps shown inside the phone */
+  .phone-app-grid button{
+    border:1px solid rgba(255,255,255,.23);
+    min-height:49px;
+    border-radius:13px;
+    background:rgba(255,255,255,.18);
+    color:white;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    font-size:19px;
+    cursor:pointer;
+    transition:.18s ease;
+  }
+
+  .phone-app-grid button:hover,
+  .phone-app-grid button:focus-visible{
+    background:rgba(255,255,255,.32);
+    transform:translateY(-2px);
+    outline:none;
+  }
+
+  .phone-app-grid button small{
+    margin-top:3px;
+    font-size:6px;
+    font-weight:800;
+    color:white;
+  }
+
+  /* these popups are attached to the whole page when opened so scrolling cannot cut them off */
+  .phone-popup,
+  .warning-popup{
+    position:fixed !important;
+    inset:0 !important;
+    width:100vw;
+    height:100dvh;
+    padding:24px;
+    z-index:1000 !important;
+  }
+
+  /* this adds invisible side areas that can also move between slides on desktop */
+  .edge-nav{
+    position:fixed;
+    top:15%;
+    bottom:15%;
+    width:42px;
+    z-index:90;
+    border:0;
+    background:transparent;
+    cursor:pointer;
+  }
+
+  .edge-nav.left{left:0}
+  .edge-nav.right{right:0}
+
+  .edge-nav::after{
+    content:attr(data-arrow);
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:28px;
+    height:50px;
+    display:grid;
+    place-items:center;
+    border-radius:999px;
+    color:white;
+    background:rgba(15,20,35,.24);
+    opacity:0;
+    transition:.2s ease;
+    font-size:18px;
+  }
+
+  .edge-nav.left::after{left:6px}
+  .edge-nav.right::after{right:6px}
+
+  .edge-nav:hover::after{
+    opacity:1;
+  }
+
+  /* this small message reminds desktop users that the keyboard works */
+  .keyboard-help{
+    position:fixed;
+    left:18px;
+    bottom:20px;
+    z-index:85;
+    color:rgba(255,255,255,.82);
+    background:rgba(15,20,35,.55);
+    backdrop-filter:blur(8px);
+    border-radius:999px;
+    padding:7px 10px;
+    font-size:9px;
+    font-weight:800;
+    pointer-events:none;
+  }
+
+  @media(max-width:700px){
+    .edge-nav,
+    .keyboard-help{
+      display:none;
+    }
+
+    .phone-popup,
+    .warning-popup{
+      padding:0;
+      align-items:flex-end;
+    }
+  }
+
+
+  /* this makes the new phone explorer behave like separate app screens */
+  .phone-explorer-window{
+    max-width:880px;
+  }
+
+  .phone-explorer-top{
+    display:flex;
+    align-items:flex-start;
+    gap:13px;
+    padding-right:44px;
+  }
+
+  .phone-back{
+    border:1px solid #d9dde7;
+    background:#f5f6f9;
+    border-radius:999px;
+    padding:8px 11px;
+    font-size:9px;
+    font-weight:900;
+    cursor:pointer;
+  }
+
+  .phone-back:disabled{
+    opacity:.35;
+    cursor:default;
+  }
+
+  .explorer-intro{
+    margin-top:16px;
+    max-width:680px;
+    font-size:12px;
+    color:#5c6573;
+  }
+
+  .explorer-apps{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:18px;
+  }
+
+  .explorer-apps button{
+    min-height:125px;
+    border:1.5px solid #15213d;
+    border-radius:19px;
+    background:white;
+    text-align:left;
+    padding:16px;
+    cursor:pointer;
+    transition:.2s ease;
+  }
+
+  .explorer-apps button:nth-child(1){background:#fff2b8}
+  .explorer-apps button:nth-child(2){background:#cfeaff}
+  .explorer-apps button:nth-child(3){background:#d7f4df}
+  .explorer-apps button:nth-child(4){background:#f5d5ff}
+
+  .explorer-apps button:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 22px rgba(20,33,61,.1);
+  }
+
+  .explorer-app-icon{
+    display:block;
+    font-size:29px;
+    margin-bottom:12px;
+  }
+
+  .explorer-apps strong{
+    display:block;
+    font-size:12px;
+    margin-bottom:5px;
+  }
+
+  .explorer-apps small{
+    display:block;
+    font-size:9px;
+    line-height:1.4;
+    color:#626b78;
+  }
+
+  .explorer-view[hidden]{
+    display:none !important;
+  }
+
+  .explorer-view{
+    margin-top:18px;
+    animation:detailIn .2s ease;
+  }
+
+  .app-screen-header{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    margin-bottom:16px;
+  }
+
+  .app-screen-icon{
+    width:52px;
+    height:52px;
+    border-radius:16px;
+    background:#ffd166;
+    display:grid;
+    place-items:center;
+    font-size:24px;
+  }
+
+  .app-screen-header strong{
+    display:block;
+    font-size:17px;
+  }
+
+  .app-screen-header small{
+    display:block;
+    margin-top:3px;
+    font-size:9px;
+    color:#69717e;
+  }
+
+  .passport-list{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+  }
+
+  .passport-list > div{
+    border:1px solid #dde1e9;
+    background:#f8f9fc;
+    border-radius:15px;
+    padding:12px;
+  }
+
+  .passport-list span{
+    display:block;
+    font-size:8px;
+    font-weight:900;
+    color:#7c3aed;
+  }
+
+  .passport-list b{
+    display:block;
+    margin-top:4px;
+    font-size:11px;
+  }
+
+  .passport-list small{
+    display:block;
+    margin-top:4px;
+    font-size:8px;
+    line-height:1.4;
+    color:#6b7280;
+  }
+
+  .tracking-line{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:8px;
+  }
+
+  .track-step{
+    position:relative;
+    border-radius:15px;
+    padding:12px;
+    background:#f1f3f7;
+    border:1px solid #dfe3ea;
+    min-height:125px;
+  }
+
+  .track-step b{
+    width:27px;
+    height:27px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    background:#cad0da;
+    font-size:8px;
+  }
+
+  .track-step.done b{background:#a7e8bd}
+  .track-step.current{background:#fff2b8;border-color:#15213d}
+  .track-step.current b{background:#ffd166}
+
+  .track-step span{
+    display:block;
+    margin-top:10px;
+    font-size:10px;
+    font-weight:900;
+  }
+
+  .track-step small{
+    display:block;
+    margin-top:5px;
+    font-size:8px;
+    line-height:1.35;
+    color:#6d7480;
+  }
+
+  .cloud-map{
+    min-height:310px;
+    border-radius:22px;
+    background:linear-gradient(145deg,#e8f6ff,#f2ecff);
+    border:1px solid #d9deea;
+    position:relative;
+  }
+
+  .cloud-center{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:105px;
+    height:105px;
+    border-radius:50%;
+    background:#15213d;
+    color:white;
+    display:grid;
+    place-items:center;
+    text-align:center;
+    font-size:11px;
+    font-weight:900;
+    box-shadow:0 0 0 12px rgba(124,58,237,.09);
+  }
+
+  .cloud-node{
+    position:absolute;
+    padding:8px 10px;
+    background:white;
+    border:1px solid #cfd5e0;
+    border-radius:999px;
+    font-size:8px;
+    font-weight:900;
+    box-shadow:0 6px 13px rgba(20,33,61,.06);
+  }
+
+  .cloud-node::after{
+    content:"";
+    position:absolute;
+    width:35px;
+    height:1px;
+    background:#8d96a4;
+    top:50%;
+  }
+
+  .cloud-node.n1{left:5%;top:12%}.cloud-node.n1::after{right:-34px;transform:rotate(24deg)}
+  .cloud-node.n2{right:5%;top:12%}.cloud-node.n2::after{left:-34px;transform:rotate(-24deg)}
+  .cloud-node.n3{left:4%;top:48%}.cloud-node.n3::after{right:-34px}
+  .cloud-node.n4{right:4%;top:48%}.cloud-node.n4::after{left:-34px}
+  .cloud-node.n5{left:13%;bottom:10%}.cloud-node.n5::after{right:-31px;transform:rotate(-25deg)}
+  .cloud-node.n6{right:13%;bottom:10%}.cloud-node.n6::after{left:-31px;transform:rotate(25deg)}
+
+  .price-puzzle{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+  }
+
+  .price-puzzle button{
+    min-height:72px;
+    border:1px solid #d6dbe5;
+    background:#f7f8fb;
+    border-radius:14px;
+    cursor:pointer;
+    font-size:10px;
+    font-weight:900;
+  }
+
+  .price-puzzle button:hover,
+  .price-puzzle button.active{
+    background:#ffd166;
+    border-color:#15213d;
+    transform:translateY(-2px);
+  }
+
+  .price-result{
+    margin-top:12px;
+    border-radius:15px;
+    background:#15213d;
+    color:white;
+    padding:14px;
+    font-size:10px;
+    line-height:1.45;
+  }
+
+  .app-insight{
+    margin-top:14px;
+    border-radius:13px;
+    background:#eef1f7;
+    padding:11px 13px;
+    font-size:9px;
+    line-height:1.4;
+  }
+
+  /* this makes the exclamation interaction a scenario simulator instead of repeating the challenge cards */
+  .scenario-intro{
+    margin-top:8px;
+    color:#626c79;
+    font-size:11px;
+  }
+
+  .scenario-buttons{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    margin-top:17px;
+  }
+
+  .scenario-button{
+    border:1px solid #d8dde6;
+    background:#f7f8fb;
+    border-radius:15px;
+    padding:11px;
+    cursor:pointer;
+    text-align:left;
+  }
+
+  .scenario-button span{
+    display:block;
+    font-size:24px;
+    margin-bottom:8px;
+  }
+
+  .scenario-button strong{
+    font-size:9px;
+  }
+
+  .scenario-button:hover,
+  .scenario-button.active{
+    background:#ffddd9;
+    border-color:#ff6b6b;
+    transform:translateY(-3px);
+  }
+
+  .scenario-result{
+    margin-top:14px;
+    border-radius:18px;
+    background:#15213d;
+    color:white;
+    padding:17px;
+  }
+
+  .scenario-title{
+    display:flex;
+    align-items:center;
+    gap:11px;
+  }
+
+  .scenario-title > span{
+    width:43px;
+    height:43px;
+    border-radius:13px;
+    background:#ff6b6b;
+    display:grid;
+    place-items:center;
+    font-size:21px;
+  }
+
+  .scenario-title strong{
+    display:block;
+    font-size:13px;
+  }
+
+  .scenario-title small{
+    display:block;
+    margin-top:3px;
+    font-size:8px;
+    color:#c9d3e3;
+  }
+
+  .reaction-chain{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+    margin-top:14px;
+  }
+
+  .reaction-chain > div{
+    min-height:110px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.13);
+    border-radius:13px;
+    padding:11px;
+  }
+
+  .reaction-chain b{
+    width:24px;
+    height:24px;
+    border-radius:50%;
+    background:#ffd166;
+    color:#15213d;
+    display:grid;
+    place-items:center;
+    font-size:8px;
+  }
+
+  .reaction-chain span{
+    display:block;
+    margin-top:9px;
+    font-size:9px;
+    font-weight:900;
+  }
+
+  .reaction-chain small{
+    display:block;
+    margin-top:4px;
+    font-size:8px;
+    line-height:1.35;
+    color:#c8d2e2;
+  }
+
+  .who-feels-it{
+    display:flex;
+    gap:6px;
+    align-items:center;
+    flex-wrap:wrap;
+    margin-top:12px;
+    font-size:8px;
+  }
+
+  .who-feels-it > span{
+    color:#bfc9da;
+    margin-right:2px;
+  }
+
+  .who-feels-it b{
+    background:white;
+    color:#15213d;
+    border-radius:999px;
+    padding:5px 8px;
+  }
+
+  /* this makes the official sources look like real links instead of plain text */
+  .official-link{
+    display:inline-flex;
+    margin-top:14px;
+    border-radius:999px;
+    background:#15213d;
+    color:white;
+    padding:8px 11px;
+    font-size:8px;
+    font-weight:900;
+    text-decoration:none;
+  }
+
+  .official-link:hover{
+    background:#7c3aed;
+    transform:translateY(-2px);
+  }
+
+  .inline-source-link{
+    color:inherit;
+    font-weight:900;
+    text-decoration:underline;
+    text-underline-offset:2px;
+  }
+
+  .resource-external{
+    border:1px solid #d9dde6;
+    background:#f7f8fb;
+    border-radius:14px;
+    padding:12px;
+    text-align:left;
+    text-decoration:none;
+    color:#18212f;
+    font-size:10px;
+    font-weight:900;
+  }
+
+  .resource-external:hover{
+    background:#d8cbff;
+    border-color:#15213d;
+    transform:translateY(-2px);
+  }
+
+  .resource-external span{
+    display:block;
+    margin-top:3px;
+    font-size:7px;
+    color:#747b87;
+  }
+
+  @media(max-width:700px){
+    .explorer-apps,
+    .passport-list,
+    .price-puzzle,
+    .scenario-buttons,
+    .reaction-chain{
+      grid-template-columns:1fr;
+    }
+
+    .tracking-line{
+      grid-template-columns:1fr;
+    }
+
+    .track-step{
+      min-height:0;
+    }
+
+    .cloud-map{
+      min-height:430px;
+    }
+
+    .cloud-node.n1{left:6%;top:7%}
+    .cloud-node.n2{right:6%;top:21%}
+    .cloud-node.n3{left:6%;top:38%}
+    .cloud-node.n4{right:6%;top:55%}
+    .cloud-node.n5{left:6%;bottom:18%}
+    .cloud-node.n6{right:6%;bottom:4%}
+
+    .cloud-node::after{
+      display:none;
+    }
+
+    .phone-explorer-top{
+      align-items:center;
+    }
+  }
+
+</style>
+</head>
+
+<body>
+
+<!-- this bar shows how much of the presentation has already been viewed -->
+
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+<div class="dot-nav" id="dotNav" aria-label="Slide navigation"></div>
+
+<!-- this is the main presentation area that contains all eleven slides -->
+<div class="deck">
+
+  
+  <!-- this is the cover slide and introduces the topic and group -->
+  <section class="slide s1 active">
+    <div class="page">01 / 11</div>
+    <div class="left">
+      <div class="eyebrow">Group Two • The Contemporary World</div>
+      <h1>Globalization:<br><span class="accent">One World,</span><br>Many Connections.</h1>
+      <p class="intro">An infographic about how countries, people, businesses, cultures, and ideas become more connected across borders.</p>
+    </div>
+
+    <div class="globe">
+      <div class="line1"></div>
+      <div class="line2"></div>
+    </div>
+
+    <div class="first-slide-hint"><span class="key">←</span><span class="key">→</span> Use arrow keys to navigate</div>
+
+    <div class="group-box">
+      <span class="member">Christian Karl Bagtas</span>
+      <span class="member">John Cornelio Esteves</span>
+      <span class="member">John Philip Fernando</span>
+      <span class="member">Lance Sunga</span>
+      <span class="member">Nice Lobrido</span>
+      <span class="member">Showny Jane Sadiasa</span>
+    </div>
+  </section>
+
+  
+  <!-- this slide gives a simple definition of globalization -->
+  <section class="slide s2">
+    <div class="page">02 / 11</div>
+    <div class="eyebrow">What Is Globalization?</div>
+    <h2>The World Becomes More Connected.</h2>
+
+    <div class="definition">
+      Globalization is the growing connection of countries through the movement of <strong>goods, services, people, money, technology, and ideas.</strong>
+    </div>
+
+    <div class="flows interactive-group" data-focus-group>
+      <div class="flow">
+        <div class="icon">▣</div>
+        <h3>Goods</h3>
+        <p>Products can be made in one country and bought in another.</p>
+      </div>
+
+      <div class="flow">
+        <div class="icon">↔</div>
+        <h3>Services</h3>
+        <p>Work and services can be offered to customers across borders.</p>
+      </div>
+
+      <div class="flow">
+        <div class="icon">◎</div>
+        <h3>People</h3>
+        <p>People travel, migrate, study, and work in different countries.</p>
+      </div>
+
+      <div class="flow">
+        <div class="icon">₱</div>
+        <h3>Money</h3>
+        <p>Businesses invest and financial activities move between countries.</p>
+      </div>
+
+      <div class="flow">
+        <div class="icon">✦</div>
+        <h3>Ideas</h3>
+        <p>Information, culture, Knowledge, and technology spread quickly.</p>
+      </div>
+    </div>
+
+    <div class="micro-hint">Click a card to spotlight it</div>
+    <div class="source">Source [1]: International Monetary Fund glossary — globalization describes the freer flow of ideas, people, goods, services, and capital that integrates economies and societies.</div>
+  </section>
+
+  
+  <!-- this slide explains what helps globalization grow -->
+  <section class="slide s3">
+    <div class="page">03 / 11</div>
+    <div class="eyebrow">What Makes It Happen?</div>
+    <h2>Four Forces Make the World Feel Smaller.</h2>
+
+    <div class="driver-grid interactive-group" data-focus-group>
+      <div class="driver">
+        <div class="driver-num">01</div>
+        <div>
+          <h3>Internet + Communication</h3>
+          <p>Messages, news, work, videos, and information can reach another country almost instantly.</p>
+        </div>
+      </div>
+
+      <div class="driver">
+        <div class="driver-num">02</div>
+        <div>
+          <h3>Faster Transportation</h3>
+          <p>Planes, ships, roads, and logistics make it easier to move people and products around the world.</p>
+        </div>
+      </div>
+
+      <div class="driver">
+        <div class="driver-num">03</div>
+        <div>
+          <h3>International Trade</h3>
+          <p>Countries buy and sell products and services from each other instead of relying only on local markets.</p>
+        </div>
+      </div>
+
+      <div class="driver">
+        <div class="driver-num">04</div>
+        <div>
+          <h3>Technology + Business</h3>
+          <p>Digital systems and international companies connect workers, customers, suppliers, and markets.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="micro-hint dark">Click a card to spotlight it</div>
+    <div class="source dark-source"><a class="inline-source-link" href="https://www.imf.org/external/np/exr/ib/2008/053008.htm" target="_blank" rel="noopener noreferrer">Source [1][2] ↗</a>: The IMF identifies technological progress, communication, trade, and cross-border flows as major parts of globalization.</div>
+  </section>
+
+  
+  <!-- this slide shows that globalization affects more than business -->
+  <section class="slide s4">
+    <div class="page">04 / 11</div>
+    <div class="eyebrow">The Different Sides of Globalization</div>
+    <h2>It Is Not Only About Money.</h2>
+
+    <div class="dimension-grid interactive-group" data-focus-group>
+      <div class="dimension">
+        <div class="big-icon">↗</div>
+        <h3>Economic</h3>
+        <p>Trade, Jobs, companies, investments, products, and services connect different economies.</p>
+        <div class="mini">Example: Imported products and international companies</div>
+      </div>
+
+      <div class="dimension">
+        <div class="big-icon">♫</div>
+        <h3>Cultural</h3>
+        <p>Music, movies, food, fashion, language, and traditions can spread between societies.</p>
+        <div class="mini">Example: Global music, films, food, and trends</div>
+      </div>
+
+      <div class="dimension">
+        <div class="big-icon">⌁</div>
+        <h3>Technological</h3>
+        <p>Digital tools allow people to communicate, study, work, and exchange information globally.</p>
+        <div class="mini">Example: Social media and online meetings</div>
+      </div>
+
+      <div class="dimension">
+        <div class="big-icon">◎</div>
+        <h3>Social + Political</h3>
+        <p>Countries and people cooperate on issues that cannot always be solved by one country alone.</p>
+        <div class="mini">Example: Migration and international Cooperation</div>
+      </div>
+    </div>
+
+    <div class="source"><a class="inline-source-link" href="https://www.imf.org/external/np/exr/ib/2008/053008.htm" target="_blank" rel="noopener noreferrer">Source [2] ↗</a>: The IMF notes that globalization has economic as well as broader cultural, political, and environmental dimensions.</div>
+  </section>
+
+  
+  <!-- this slide uses a product example to show global connections -->
+  <section class="slide s5">
+    <div class="page">05 / 11</div>
+    <div class="eyebrow">How Does It Work?</div>
+    <h2>One Product Can Connect Many Places.</h2>
+
+    <div class="journey">
+      <div class="journey-card jc1">
+        <h3>Ideas + Design</h3>
+        <p>A product can be planned or designed by teams in different countries.</p>
+      </div>
+
+      <div class="journey-card jc2">
+        <h3>Materials + Parts</h3>
+        <p>Raw materials and components may come from several places around the world.</p>
+      </div>
+
+      <div class="journey-card jc3">
+        <h3>Production + Shipping</h3>
+        <p>Factories produce the item, while global transport moves it to different markets.</p>
+      </div>
+
+      <div class="journey-card jc4">
+        <h3>Software + Customers</h3>
+        <p>Digital services, apps, support, and customers can also be spread across countries.</p>
+      </div>
+
+      <div class="arrow a1">→</div>
+      <div class="arrow a2">→</div>
+      <div class="arrow a3">→</div>
+      <div class="arrow a4">→</div>
+
+      <!-- this phone can be opened so the audience can explore how one product connects different countries -->
+      <div class="phone phone-button" id="globalPhone" role="button" tabindex="0" aria-label="Open the global phone example">
+        <div class="phone-speaker"></div>
+        <div class="phone-screen">
+          <div class="phone-time">9:41</div>
+          <div class="phone-title">Global Phone</div>
+          <div class="phone-app-grid">
+            <button type="button" data-open-explorer="passport">⌖<small>Passport</small></button>
+            <button type="button" data-open-explorer="tracker">➜<small>Tracker</small></button>
+            <button type="button" data-open-explorer="cloud">☁<small>Cloud</small></button>
+            <button type="button" data-open-explorer="price">₱<small>Price</small></button>
+          </div>
+          <div class="phone-open-label">Tap the phone or an app</div>
+        </div>
+      </div>
+
+      <!-- this pop-up turns the phone into a small explorer instead of repeating the slide -->
+      <div class="phone-popup" id="phonePopup" aria-hidden="true">
+        <div class="popup-window phone-explorer-window">
+          <button class="popup-close" id="phoneClose" aria-label="Close phone explorer">×</button>
+
+          <div class="phone-explorer-top">
+            <button class="phone-back" id="phoneBack" type="button">← Home</button>
+            <div>
+              <div class="popup-kicker">Global Product Explorer</div>
+              <h3 id="phoneExplorerTitle">Choose an App</h3>
+            </div>
+          </div>
+
+          <!-- this is the phone home screen where the audience chooses what to explore -->
+          <div class="phone-home-view" id="phoneHomeView">
+            <p class="explorer-intro">
+              Instead of repeating the slide, each app shows a different hidden part of how one phone can depend on a global network.
+            </p>
+
+            <div class="explorer-apps">
+              <button type="button" data-explorer-app="passport">
+                <span class="explorer-app-icon">⌖</span>
+                <strong>Component Passport</strong>
+                <small>See how one device can contain parts from many places.</small>
+              </button>
+
+              <button type="button" data-explorer-app="tracker">
+                <span class="explorer-app-icon">➜</span>
+                <strong>Shipment Tracker</strong>
+                <small>Follow what happens after a phone leaves the factory.</small>
+              </button>
+
+              <button type="button" data-explorer-app="cloud">
+                <span class="explorer-app-icon">☁</span>
+                <strong>Cloud Network</strong>
+                <small>See why the phone still depends on the world after you buy it.</small>
+              </button>
+
+              <button type="button" data-explorer-app="price">
+                <span class="explorer-app-icon">₱</span>
+                <strong>Price Puzzle</strong>
+                <small>See why a phone price can change even when the phone looks the same.</small>
+              </button>
+            </div>
+          </div>
+
+          <!-- only one app screen is shown at a time -->
+          <div class="explorer-view" id="explorer-passport" hidden>
+            <div class="app-screen-header">
+              <span class="app-screen-icon">⌖</span>
+              <div>
+                <strong>Component Passport</strong>
+                <small>A phone is not really “from” only one place.</small>
+              </div>
+            </div>
+
+            <div class="passport-list">
+              <div><span>Chip</span><b>Specialized supplier</b><small>Designed and produced through highly specialized global manufacturing.</small></div>
+              <div><span>Battery</span><b>Material + cell network</b><small>Depends on minerals, chemical processing, cell production, and assembly.</small></div>
+              <div><span>Camera</span><b>Precision components</b><small>Lenses and sensors can come through separate supplier chains.</small></div>
+              <div><span>Display</span><b>Advanced manufacturing</b><small>Screen production requires specialized factories and materials.</small></div>
+            </div>
+
+            <div class="app-insight">
+              <strong>Hidden idea:</strong> globalization can happen inside one product before that product ever reaches a customer.
+            </div>
+          </div>
+
+          <div class="explorer-view" id="explorer-tracker" hidden>
+            <div class="app-screen-header">
+              <span class="app-screen-icon">➜</span>
+              <div>
+                <strong>Shipment Tracker</strong>
+                <small>The journey continues after production.</small>
+              </div>
+            </div>
+
+            <div class="tracking-line">
+              <div class="track-step done"><b>1</b><span>Factory</span><small>Finished units are packed.</small></div>
+              <div class="track-step done"><b>2</b><span>Port</span><small>Products join international cargo.</small></div>
+              <div class="track-step current"><b>3</b><span>Distribution</span><small>Warehouses divide products by market.</small></div>
+              <div class="track-step"><b>4</b><span>Retail</span><small>Stores and sellers receive inventory.</small></div>
+              <div class="track-step"><b>5</b><span>Customer</span><small>The global chain finally reaches one person.</small></div>
+            </div>
+
+            <div class="app-insight">
+              <strong>Hidden idea:</strong> transport, customs, fuel costs, delays, and warehouses can all affect when a product arrives.
+            </div>
+          </div>
+
+          <div class="explorer-view" id="explorer-cloud" hidden>
+            <div class="app-screen-header">
+              <span class="app-screen-icon">☁</span>
+              <div>
+                <strong>Cloud Network</strong>
+                <small>The phone stays global even after it is sold.</small>
+              </div>
+            </div>
+
+            <div class="cloud-map">
+              <div class="cloud-center">Your Phone</div>
+              <div class="cloud-node n1">App Stores</div>
+              <div class="cloud-node n2">Cloud Storage</div>
+              <div class="cloud-node n3">Streaming</div>
+              <div class="cloud-node n4">Updates</div>
+              <div class="cloud-node n5">Customer Support</div>
+              <div class="cloud-node n6">Social Platforms</div>
+            </div>
+
+            <div class="app-insight">
+              <strong>Hidden idea:</strong> buying the device is only the beginning. Daily use can depend on servers, platforms, software teams, and online services across borders.
+            </div>
+          </div>
+
+          <div class="explorer-view" id="explorer-price" hidden>
+            <div class="app-screen-header">
+              <span class="app-screen-icon">₱</span>
+              <div>
+                <strong>Price Puzzle</strong>
+                <small>Why can the same type of phone become more expensive?</small>
+              </div>
+            </div>
+
+            <div class="price-puzzle">
+              <button type="button" data-price-factor="shipping">Shipping Costs</button>
+              <button type="button" data-price-factor="currency">Currency Changes</button>
+              <button type="button" data-price-factor="parts">Part Shortage</button>
+              <button type="button" data-price-factor="tax">Taxes + Import Costs</button>
+            </div>
+
+            <div class="price-result" id="priceResult">
+              Tap one factor to see how a global change can reach the final price.
+            </div>
+
+            <div class="app-insight">
+              <strong>Hidden idea:</strong> a product's local price can be affected by events happening far away.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="source">This is a simplified example showing how global supply chains can connect design, materials, production, transport, digital services, and customers.</div>
+  </section>
+
+  
+  <!-- this slide shows some possible benefits of globalization -->
+  <section class="slide s6">
+    <div class="page">06 / 11</div>
+    <div class="eyebrow">Possible Benefits</div>
+    <h2>Connection Can Create More Opportunities.</h2>
+
+    <div class="benefits interactive-group" data-focus-group>
+      <div class="benefit">
+        <div>
+          <div class="symbol">↗</div>
+          <h3>Bigger Markets</h3>
+        </div>
+        <p>Businesses can reach customers outside their own country, while consumers gain access to more products and services.</p>
+      </div>
+
+      <div class="benefit">
+        <div>
+          <div class="symbol">✦</div>
+          <h3>Knowledge</h3>
+        </div>
+        <p>Ideas, research, and technology can spread faster.</p>
+      </div>
+
+      <div class="benefit">
+        <div>
+          <div class="symbol">◎</div>
+          <h3>Jobs</h3>
+        </div>
+        <p>Global business can create new kinds of work and services.</p>
+      </div>
+
+      <div class="benefit">
+        <div>
+          <div class="symbol">↔</div>
+          <h3>More Choices</h3>
+        </div>
+        <p>People can access products, media, and services from many places.</p>
+      </div>
+
+      <div class="benefit">
+        <div>
+          <div class="symbol">+</div>
+          <h3>Cooperation</h3>
+        </div>
+        <p>countries can share Knowledge and work together on common problems.</p>
+      </div>
+    </div>
+
+    <div class="source"><a class="inline-source-link" href="https://www.worldbank.org/en/programs/knowledge-for-change/brief/Trade-and-Globalization" target="_blank" rel="noopener noreferrer">Source [3] ↗</a>: The World Bank notes that international integration can support growth and prosperity, while also emphasizing that benefits are not shared equally everywhere.</div>
+  </section>
+
+  
+  <!-- this slide shows some possible problems caused by globalization -->
+  <section class="slide s7">
+    <div class="page">07 / 11</div>
+    <div class="eyebrow">Possible Challenges</div>
+    <h2>More Connection Can Also Create Problems.</h2>
+
+    <div class="challenge-wrap">
+      <!-- this warning circle opens a quick explanation of the challenges -->
+      <button class="warning-circle warning-button" id="warningButton" aria-label="Open challenge explanation">
+        !
+        <span class="warning-label">Tap to Explore</span>
+      </button>
+
+      <!-- this panel uses short scenarios so the interaction adds something new -->
+      <div class="warning-popup" id="warningPopup" aria-hidden="true">
+        <div class="warning-window scenario-window">
+          <button class="popup-close" id="warningClose" aria-label="Close scenario simulator">×</button>
+          <div class="popup-kicker">Chain-Reaction Simulator</div>
+          <h3>What happens when one part of a global connection suddenly changes?</h3>
+          <p class="scenario-intro">Choose a situation. The panel will show how one event can create effects somewhere else.</p>
+
+          <div class="scenario-buttons">
+            <button type="button" class="scenario-button active" data-scenario="cargo">
+              <span>🚢</span><strong>Cargo Delay</strong>
+            </button>
+            <button type="button" class="scenario-button" data-scenario="factory">
+              <span>🏭</span><strong>Factory Shutdown</strong>
+            </button>
+            <button type="button" class="scenario-button" data-scenario="currency">
+              <span>₱</span><strong>Currency Change</strong>
+            </button>
+            <button type="button" class="scenario-button" data-scenario="trend">
+              <span>↗</span><strong>Viral Global Trend</strong>
+            </button>
+          </div>
+
+          <!-- only the selected scenario appears here -->
+          <div class="scenario-result" id="scenarioResult">
+            <div class="scenario-title">
+              <span>🚢</span>
+              <div><strong>Cargo Delay</strong><small>A shipping route is suddenly delayed.</small></div>
+            </div>
+
+            <div class="reaction-chain">
+              <div><b>1</b><span>Delivery slows</span><small>Stores receive fewer products on time.</small></div>
+              <div><b>2</b><span>Inventory gets tighter</span><small>Sellers have less stock available.</small></div>
+              <div><b>3</b><span>Customers feel it</span><small>Waiting times or prices may increase.</small></div>
+            </div>
+
+            <div class="who-feels-it">
+              <span>Who feels it?</span>
+              <b>Businesses</b><b>Stores</b><b>Customers</b>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="challenge-list interactive-group" data-focus-group>
+        <div class="challenge">
+          <b>1</b>
+          <div>
+            <h3>Unequal Benefits</h3>
+            <p>Some countries, communities, or workers may benefit more than others.</p>
+          </div>
+        </div>
+
+        <div class="challenge">
+          <b>2</b>
+          <div>
+            <h3>Job Pressure</h3>
+            <p>Local workers and businesses may face stronger international competition.</p>
+          </div>
+        </div>
+
+        <div class="challenge">
+          <b>3</b>
+          <div>
+            <h3>Cultural Pressure</h3>
+            <p>Popular global trends can sometimes reduce attention given to local traditions and products.</p>
+          </div>
+        </div>
+
+        <div class="challenge">
+          <b>4</b>
+          <div>
+            <h3>Environmental Cost</h3>
+            <p>Large-scale production and transportation can increase resource use and pollution.</p>
+          </div>
+        </div>
+
+        <div class="challenge">
+          <b>5</b>
+          <div>
+            <h3>Global Dependence</h3>
+            <p>A problem in one part of a supply chain can affect people and businesses far away.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="source"><a class="inline-source-link" href="https://www.worldbank.org/en/programs/knowledge-for-change/brief/Trade-and-Globalization" target="_blank" rel="noopener noreferrer">Source [3] ↗</a>: The World Bank emphasizes that global integration can support growth but that prosperity is not automatically shared by all countries or communities.</div>
+  </section>
+
+  
+  <!-- this slide shows examples of globalization in everyday filipino life -->
+  <section class="slide s8">
+    <div class="page">08 / 11</div>
+    <div class="eyebrow">Globalization Around Us</div>
+    <h2>You Can See It in Everyday Filipino Life.</h2>
+
+    <div class="daily-grid interactive-group" data-focus-group>
+      <div class="daily">
+        <div class="symbol">▣</div>
+        <h3>Products</h3>
+        <p>Phones, clothes, food, appliances, and other products may come from international brands or supply chains.</p>
+      </div>
+
+      <div class="daily">
+        <div class="symbol">♫</div>
+        <h3>Entertainment</h3>
+        <p>Music, movies, games, anime, K-pop, and online trends move easily between countries.</p>
+      </div>
+
+      <div class="daily">
+        <div class="symbol">⌨</div>
+        <h3>Global Work</h3>
+        <p>BPO, online services, freelancing, and remote work can connect Filipino workers with international clients.</p>
+      </div>
+
+      <div class="daily">
+        <div class="symbol">✈</div>
+        <h3>Migration</h3>
+        <p>Filipinos may study, live, or work abroad while remaining connected to families at home.</p>
+      </div>
+
+      <div class="daily">
+        <div class="symbol">◎</div>
+        <h3>Communication</h3>
+        <p>Social media, messaging, and video calls make international communication part of daily life.</p>
+      </div>
+
+      <div class="daily">
+        <div class="symbol">✦</div>
+        <h3>Learning</h3>
+        <p>Students can access ideas, tutorials, research, and educational resources from around the world.</p>
+      </div>
+    </div>
+
+    <div class="source">These are everyday examples of the cross-border movement of products, people, services, culture, and information described by The IMF definition of globalization.</div>
+  </section>
+
+  
+  <!-- this final content slide gives the group definition and main takeaway -->
+  <section class="slide s9">
+    <div class="page">09 / 11</div>
+    <div class="eyebrow">Our Agreed Definition</div>
+
+    <div class="final-takeaway-wrap">
+      <div class="final-badge">Group Two's Final Take</div>
+
+      <div class="our-definition">
+        Globalization is the process of making the world <span>more connected and interdependent</span> as people, products, services, money, technology, culture, and ideas move across countries.
+      </div>
+
+      <p class="takeaway">
+        It can create opportunities and bring people closer, but its benefits and problems are not experienced equally. Understanding both sides helps us see globalization as something that affects everyday life, not only governments and large companies.
+      </p>
+
+      <div class="final-choice-row" data-focus-group>
+        <button class="final-choice">
+          <span class="choice-icon">+</span>
+          <strong>More Opportunities</strong>
+          <small>Trade, jobs, knowledge, and wider access.</small>
+        </button>
+
+        <button class="final-choice">
+          <span class="choice-icon">↔</span>
+          <strong>More Connections</strong>
+          <small>People, culture, technology, and ideas move faster.</small>
+        </button>
+
+        <button class="final-choice">
+          <span class="choice-icon">!</span>
+          <strong>More Responsibility</strong>
+          <small>Benefits should be balanced with social and environmental concerns.</small>
+        </button>
+      </div>
+
+      <div class="tap-note">Click a takeaway card to spotlight it.</div>
+    </div>
+  </section>
+
+
+  <!-- this slide gives the group members their own creative page -->
+  <section class="slide s10">
+    <div class="page">10 / 11</div>
+    <div class="eyebrow">Group Two • Meet the Team</div>
+    <h2>Six Members. One Shared Infographic.</h2>
+
+    <div class="team-stage">
+      <div class="team-center">
+        <div class="team-center-ring">G2</div>
+        <strong>Group Two</strong>
+        <span>Click a member</span>
+      </div>
+
+      <button class="orbit-member om1" data-member="Christian Karl Bagtas" data-initials="CB">
+        <span>CB</span>
+        <strong>Christian Karl Bagtas</strong>
+      </button>
+
+      <button class="orbit-member om2" data-member="John Cornelio Esteves" data-initials="JE">
+        <span>JE</span>
+        <strong>John Cornelio Esteves</strong>
+      </button>
+
+      <button class="orbit-member om3" data-member="John Philip Fernando" data-initials="JF">
+        <span>JF</span>
+        <strong>John Philip Fernando</strong>
+      </button>
+
+      <button class="orbit-member om4" data-member="Lance Sunga" data-initials="LS">
+        <span>LS</span>
+        <strong>Lance Sunga</strong>
+      </button>
+
+      <button class="orbit-member om5" data-member="Nice Lobido" data-initials="NL">
+        <span>NL</span>
+        <strong>Nice Lobido</strong>
+      </button>
+
+      <button class="orbit-member om6" data-member="Showny Jane Sadiasa" data-initials="SS">
+        <span>SS</span>
+        <strong>Showny Jane Sadiasa</strong>
+      </button>
+    </div>
+
+    <div class="team-spotlight-box" id="teamSpotlightBox">
+      <div class="spot-avatar" id="spotAvatar">G2</div>
+      <div>
+        <span class="mini-label">Group Collaboration</span>
+        <h3 id="spotName">Choose a Group Member</h3>
+        <p id="spotText">Select any name above to give that member a spotlight.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- this slide keeps the sources and useful presentation resources in one interactive place -->
+  <section class="slide s11">
+    <div class="page">11 / 11</div>
+    <div class="eyebrow">Sources & Resources</div>
+    <h2>Where the Information Came From.</h2>
+
+    <div class="reference-layout">
+      <div class="reference-menu">
+        <button class="reference-tab active" data-reference="source1">
+          <span>01</span>
+          <div><strong>IMF Glossary</strong><small>Definition</small></div>
+        </button>
+
+        <button class="reference-tab" data-reference="source2">
+          <span>02</span>
+          <div><strong>IMF Overview</strong><small>Dimensions</small></div>
+        </button>
+
+        <button class="reference-tab" data-reference="source3">
+          <span>03</span>
+          <div><strong>World Bank</strong><small>Benefits + Challenges</small></div>
+        </button>
+
+        <button class="reference-tab" data-reference="tips">
+          <span>✦</span>
+          <div><strong>Presentation Resources</strong><small>Quick review</small></div>
+        </button>
+      </div>
+
+      <div class="reference-view">
+        <div class="reference-content active" id="ref-source1">
+          <div class="reference-icon">01</div>
+          <span class="mini-label">Source</span>
+          <h3>International Monetary Fund — IMF Glossary: Globalization</h3>
+          <p>This was used for the main definition of globalization and the movement of goods, services, people, money, technology, and ideas across countries.</p>
+          <div class="used-on">Used mainly on: Slides 2, 3, and 8</div>
+          <a class="official-link" href="https://www.imf.org/en/about/glossary" target="_blank" rel="noopener noreferrer">Open Official IMF Glossary ↗</a>
+        </div>
+
+        <div class="reference-content" id="ref-source2">
+          <div class="reference-icon">02</div>
+          <span class="mini-label">Source</span>
+          <h3>International Monetary Fund — Globalization: A Brief Overview</h3>
+          <p>This supports the explanation that globalization is not only economic. It can also have cultural, political, social, technological, and environmental dimensions.</p>
+          <div class="used-on">Used mainly on: Slides 3 and 4</div>
+          <a class="official-link" href="https://www.imf.org/external/np/exr/ib/2008/053008.htm" target="_blank" rel="noopener noreferrer">Open IMF Overview ↗</a>
+        </div>
+
+        <div class="reference-content" id="ref-source3">
+          <div class="reference-icon">03</div>
+          <span class="mini-label">Source</span>
+          <h3>World Bank — Trade and Globalization</h3>
+          <p>This supports the balanced explanation that international integration can create opportunities while its benefits may not be shared equally.</p>
+          <div class="used-on">Used mainly on: Slides 6 and 7</div>
+          <a class="official-link" href="https://www.worldbank.org/en/programs/knowledge-for-change/brief/Trade-and-Globalization" target="_blank" rel="noopener noreferrer">Open World Bank Source ↗</a>
+        </div>
+
+        <div class="reference-content" id="ref-tips">
+          <div class="reference-icon">✦</div>
+          <span class="mini-label">Quick Review</span>
+          <h3>Useful Slides During the Presentation</h3>
+          <div class="quick-resource-grid">
+            <button data-jump="1">Definition <span>Slide 2</span></button>
+            <button data-jump="4">Phone Example <span>Slide 5</span></button>
+            <button data-jump="5">Benefits <span>Slide 6</span></button>
+            <button data-jump="6">Challenges <span>Slide 7</span></button>
+            <button data-jump="7">Filipino Life <span>Slide 8</span></button>
+            <button data-jump="8">Final Definition <span>Slide 9</span></button>
+            <a class="resource-external" href="https://www.imf.org/en/publications/fandd/issues/2024/06/b2b-globalization-today-adam-jakubik-and-elizabeth-van-heuvelen" target="_blank" rel="noopener noreferrer">
+              Further Reading <span>IMF: Globalization Today ↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reference-footer">
+      Click a source to see what information it supports, or use the quick review buttons to jump back to an important slide.
+    </div>
+  </section>
+
+</div>
+
+
+<!-- these side areas give the presenter another easy way to change slides -->
+<button class="edge-nav left" id="edgePrev" data-arrow="‹" aria-label="Previous slide"></button>
+<button class="edge-nav right" id="edgeNext" data-arrow="›" aria-label="Next slide"></button>
+<div class="keyboard-help">← → arrow keys change slides</div>
+
+<!-- these buttons let the presenter move through the slides and open fullscreen -->
+<div class="controls">
+  <button id="prev">←</button>
+  <div class="counter" id="counter">1 / 11</div>
+  <button id="next">→</button>
+  <button id="fullscreen">Fullscreen</button>
+</div>
+
+<script>
+  // this keeps track of the slides and the buttons used to move through the presentation
+  const slides = [...document.querySelectorAll('.slide')];
+  const counter = document.getElementById('counter');
+  const progressFill = document.getElementById('progressFill');
+  const dotNav = document.getElementById('dotNav');
+  const nextButton = document.getElementById('next');
+  const prevButton = document.getElementById('prev');
+  const edgeNext = document.getElementById('edgeNext');
+  const edgePrev = document.getElementById('edgePrev');
+  const fullscreenButton = document.getElementById('fullscreen');
+
+  let current = 0;
+
+  // this creates the small navigation dots on the right side
+  const dots = [];
+
+  if(dotNav){
+    slides.forEach((slide,index)=>{
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.title = `Go to slide ${index + 1}`;
+      dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+      dot.addEventListener('click', ()=>showSlide(index));
+      dotNav.appendChild(dot);
+      dots.push(dot);
+    });
+  }
+
+  // this shows one slide and updates the page number and progress bar
+  function showSlide(index){
+    if(!slides.length) return;
+
+    current = (index + slides.length) % slides.length;
+
+    slides.forEach((slide,i)=>{
+      slide.classList.remove('active','before');
+      if(i < current) slide.classList.add('before');
+    });
+
+    slides[current].classList.add('active');
+    slides[current].scrollTop = 0;
+
+    if(counter) counter.textContent = `${current + 1} / ${slides.length}`;
+    if(progressFill) progressFill.style.width = `${((current + 1) / slides.length) * 100}%`;
+
+    dots.forEach((dot,i)=>{
+      dot.classList.toggle('active', i === current);
+    });
+
+    closePhone();
+    closeWarning();
+  }
+
+  // these buttons move to the next or previous slide
+  if(nextButton) nextButton.addEventListener('click', ()=>showSlide(current + 1));
+  if(prevButton) prevButton.addEventListener('click', ()=>showSlide(current - 1));
+  if(edgeNext) edgeNext.addEventListener('click', ()=>showSlide(current + 1));
+  if(edgePrev) edgePrev.addEventListener('click', ()=>showSlide(current - 1));
+
+  // this opens fullscreen for presenting in class
+  if(fullscreenButton){
+    fullscreenButton.addEventListener('click', async ()=>{
+      try{
+        if(!document.fullscreenElement){
+          await document.documentElement.requestFullscreen();
+        }else{
+          await document.exitFullscreen();
+        }
+      }catch(error){}
+    });
+  }
+
+  // this lets infographic cards be clicked so one idea stands out
+  document.querySelectorAll('[data-focus-group]').forEach(group=>{
+    [...group.children].forEach(card=>{
+      card.addEventListener('click', ()=>{
+        const alreadySelected = card.classList.contains('focus-card');
+        [...group.children].forEach(item=>item.classList.remove('focus-card'));
+        group.classList.remove('has-focus');
+
+        if(!alreadySelected){
+          group.classList.add('has-focus');
+          card.classList.add('focus-card');
+        }
+      });
+    });
+  });
+
+  // this runs the phone explorer and only shows the app the audience selected
+  const globalPhone = document.getElementById('globalPhone');
+  const phonePopup = document.getElementById('phonePopup');
+  const phoneClose = document.getElementById('phoneClose');
+  const phoneBack = document.getElementById('phoneBack');
+  const phoneHomeView = document.getElementById('phoneHomeView');
+  const phoneExplorerTitle = document.getElementById('phoneExplorerTitle');
+  const explorerViews = [...document.querySelectorAll('.explorer-view')];
+  const explorerButtons = [...document.querySelectorAll('[data-explorer-app]')];
+  const phoneLaunchButtons = [...document.querySelectorAll('[data-open-explorer]')];
+
+  if(phonePopup && phonePopup.parentElement !== document.body){
+    document.body.appendChild(phonePopup);
+  }
+
+  function showPhoneHome(){
+    if(phoneHomeView) phoneHomeView.hidden = false;
+    explorerViews.forEach(view=>view.hidden = true);
+    if(phoneExplorerTitle) phoneExplorerTitle.textContent = 'Choose an App';
+    if(phoneBack) phoneBack.disabled = true;
+  }
+
+  function showExplorerApp(name){
+    if(phoneHomeView) phoneHomeView.hidden = true;
+
+    explorerViews.forEach(view=>{
+      view.hidden = view.id !== `explorer-${name}`;
+    });
+
+    const names = {
+      passport:'Component Passport',
+      tracker:'Shipment Tracker',
+      cloud:'Cloud Network',
+      price:'Price Puzzle'
+    };
+
+    if(phoneExplorerTitle) phoneExplorerTitle.textContent = names[name] || 'Global Product Explorer';
+    if(phoneBack) phoneBack.disabled = false;
+  }
+
+  function openPhone(appName=null){
+    if(!phonePopup) return;
+
+    phonePopup.classList.add('open');
+    phonePopup.setAttribute('aria-hidden','false');
+
+    if(appName){
+      showExplorerApp(appName);
+    }else{
+      showPhoneHome();
+    }
+  }
+
+  function closePhone(){
+    if(!phonePopup) return;
+    phonePopup.classList.remove('open');
+    phonePopup.setAttribute('aria-hidden','true');
+  }
+
+  if(globalPhone){
+    globalPhone.addEventListener('click', event=>{
+      if(event.target.closest('[data-open-explorer]')) return;
+      openPhone();
+    });
+
+    globalPhone.addEventListener('keydown', event=>{
+      if(event.key === 'Enter' || event.key === ' '){
+        event.preventDefault();
+        openPhone();
+      }
+    });
+  }
+
+  phoneLaunchButtons.forEach(button=>{
+    button.addEventListener('click', event=>{
+      event.stopPropagation();
+      openPhone(button.dataset.openExplorer);
+    });
+  });
+
+  explorerButtons.forEach(button=>{
+    button.addEventListener('click', ()=>{
+      showExplorerApp(button.dataset.explorerApp);
+    });
+  });
+
+  if(phoneBack){
+    phoneBack.addEventListener('click', showPhoneHome);
+  }
+
+  if(phoneClose){
+    phoneClose.addEventListener('click', closePhone);
+  }
+
+  if(phonePopup){
+    phonePopup.addEventListener('click', event=>{
+      if(event.target === phonePopup) closePhone();
+    });
+  }
+
+  // this lets the price app show one price factor at a time
+  const priceResult = document.getElementById('priceResult');
+  const priceButtons = [...document.querySelectorAll('[data-price-factor]')];
+
+  const priceMessages = {
+    shipping:'If international shipping becomes more expensive, sellers may pay more to move products. Some of that extra cost can reach the final customer.',
+    currency:'If the local currency becomes weaker against the currency used to buy imported products or parts, the same phone can cost more locally.',
+    parts:'If an important part becomes hard to find, production can slow down. Limited supply can make finished products harder or more expensive to obtain.',
+    tax:'Import taxes, duties, and other border costs can change the price paid after the product enters a country.'
+  };
+
+  priceButtons.forEach(button=>{
+    button.addEventListener('click', ()=>{
+      priceButtons.forEach(item=>item.classList.remove('active'));
+      button.classList.add('active');
+      if(priceResult) priceResult.textContent = priceMessages[button.dataset.priceFactor];
+    });
+  });
+
+  // this runs the warning simulator and shows only the selected scenario
+  const warningButton = document.getElementById('warningButton');
+  const warningPopup = document.getElementById('warningPopup');
+  const warningClose = document.getElementById('warningClose');
+  const scenarioButtons = [...document.querySelectorAll('[data-scenario]')];
+  const scenarioResult = document.getElementById('scenarioResult');
+
+  if(warningPopup && warningPopup.parentElement !== document.body){
+    document.body.appendChild(warningPopup);
+  }
+
+  const scenarios = {
+    cargo:{
+      icon:'🚢',
+      title:'Cargo Delay',
+      subtitle:'A shipping route is suddenly delayed.',
+      steps:[
+        ['Delivery slows','Stores receive fewer products on time.'],
+        ['Inventory gets tighter','Sellers have less stock available.'],
+        ['Customers feel it','Waiting times or prices may increase.']
+      ],
+      people:['Businesses','Stores','Customers']
+    },
+    factory:{
+      icon:'🏭',
+      title:'Factory Shutdown',
+      subtitle:'A major supplier stops production for a period of time.',
+      steps:[
+        ['One part disappears','Other factories cannot finish some products.'],
+        ['Production slows','Companies search for another supplier or wait.'],
+        ['Effects spread','Other countries may see shortages or delays.']
+      ],
+      people:['Factories','Workers','Retailers']
+    },
+    currency:{
+      icon:'₱',
+      title:'Currency Change',
+      subtitle:'Exchange rates move quickly between two currencies.',
+      steps:[
+        ['Import cost changes','Buying products or parts from abroad costs more or less.'],
+        ['Businesses recalculate','Companies adjust costs, orders, or prices.'],
+        ['Local prices react','Customers may notice a different price even for the same product.']
+      ],
+      people:['Importers','Businesses','Customers']
+    },
+    trend:{
+      icon:'↗',
+      title:'Viral Global Trend',
+      subtitle:'A product, song, style, or idea suddenly becomes popular worldwide.',
+      steps:[
+        ['Demand jumps','Many people want the same thing at once.'],
+        ['Local markets react','Stores, creators, and brands quickly respond.'],
+        ['Culture mixes','The global trend gets adapted into local styles and habits.']
+      ],
+      people:['Creators','Businesses','Communities']
+    }
+  };
+
+  function renderScenario(name){
+    const s = scenarios[name];
+    if(!s || !scenarioResult) return;
+
+    scenarioResult.innerHTML = `
+      <div class="scenario-title">
+        <span>${s.icon}</span>
+        <div><strong>${s.title}</strong><small>${s.subtitle}</small></div>
+      </div>
+      <div class="reaction-chain">
+        ${s.steps.map((step,index)=>`
+          <div><b>${index + 1}</b><span>${step[0]}</span><small>${step[1]}</small></div>
+        `).join('')}
+      </div>
+      <div class="who-feels-it">
+        <span>Who feels it?</span>
+        ${s.people.map(person=>`<b>${person}</b>`).join('')}
+      </div>
+    `;
+  }
+
+  function openWarning(){
+    if(!warningPopup) return;
+    warningPopup.classList.add('open');
+    warningPopup.setAttribute('aria-hidden','false');
+  }
+
+  function closeWarning(){
+    if(!warningPopup) return;
+    warningPopup.classList.remove('open');
+    warningPopup.setAttribute('aria-hidden','true');
+  }
+
+  if(warningButton) warningButton.addEventListener('click', openWarning);
+  if(warningClose) warningClose.addEventListener('click', closeWarning);
+
+  if(warningPopup){
+    warningPopup.addEventListener('click', event=>{
+      if(event.target === warningPopup) closeWarning();
+    });
+  }
+
+  scenarioButtons.forEach(button=>{
+    button.addEventListener('click', ()=>{
+      scenarioButtons.forEach(item=>item.classList.remove('active'));
+      button.classList.add('active');
+      renderScenario(button.dataset.scenario);
+    });
+  });
+
+  // this gives each group member a spotlight
+  const orbitMembers = [...document.querySelectorAll('.orbit-member')];
+  const spotAvatar = document.getElementById('spotAvatar');
+  const spotName = document.getElementById('spotName');
+  const spotText = document.getElementById('spotText');
+
+  orbitMembers.forEach(member=>{
+    member.addEventListener('click', ()=>{
+      orbitMembers.forEach(item=>item.classList.remove('active'));
+      member.classList.add('active');
+
+      if(spotAvatar) spotAvatar.textContent = member.dataset.initials;
+      if(spotName) spotName.textContent = member.dataset.member;
+      if(spotText){
+        spotText.textContent = `${member.dataset.member} is highlighted as one of the six members who worked together on Group Two's globalization infographic.`;
+      }
+    });
+  });
+
+  // this switches between sources and resources
+  const referenceTabs = [...document.querySelectorAll('.reference-tab')];
+  const referenceContents = [...document.querySelectorAll('.reference-content')];
+
+  referenceTabs.forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      referenceTabs.forEach(item=>item.classList.remove('active'));
+      referenceContents.forEach(item=>item.classList.remove('active'));
+      tab.classList.add('active');
+
+      const selected = document.getElementById(`ref-${tab.dataset.reference}`);
+      if(selected) selected.classList.add('active');
+    });
+  });
+
+  // these buttons jump back to useful slides
+  document.querySelectorAll('[data-jump]').forEach(button=>{
+    button.addEventListener('click', ()=>{
+      showSlide(Number(button.dataset.jump));
+    });
+  });
+
+  // this keeps arrow keys working across the website
+  document.addEventListener('keydown', event=>{
+    const popupOpen =
+      (phonePopup && phonePopup.classList.contains('open')) ||
+      (warningPopup && warningPopup.classList.contains('open'));
+
+    if(event.key === 'Escape'){
+      if(phonePopup && phonePopup.classList.contains('open')){
+        closePhone();
+        event.preventDefault();
+        return;
+      }
+
+      if(warningPopup && warningPopup.classList.contains('open')){
+        closeWarning();
+        event.preventDefault();
+        return;
+      }
+    }
+
+    if(popupOpen) return;
+
+    const tag = document.activeElement ? document.activeElement.tagName : '';
+    const writing =
+      tag === 'INPUT' ||
+      tag === 'TEXTAREA' ||
+      tag === 'SELECT' ||
+      (document.activeElement && document.activeElement.isContentEditable);
+
+    if(writing) return;
+
+    if(event.key === 'ArrowRight' || event.key === 'PageDown'){
+      event.preventDefault();
+      showSlide(current + 1);
+      return;
+    }
+
+    if(event.key === 'ArrowLeft' || event.key === 'PageUp'){
+      event.preventDefault();
+      showSlide(current - 1);
+      return;
+    }
+
+    if(event.code === 'Space'){
+      event.preventDefault();
+      showSlide(current + 1);
+      return;
+    }
+
+    if(event.key === 'Home'){
+      event.preventDefault();
+      showSlide(0);
+    }
+
+    if(event.key === 'End'){
+      event.preventDefault();
+      showSlide(slides.length - 1);
+    }
+  }, true);
+
+  // this lets phone users swipe sideways while keeping normal vertical scrolling
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  document.addEventListener('touchstart', event=>{
+    if(event.touches.length !== 1) return;
+    touchStartX = event.touches[0].clientX;
+    touchStartY = event.touches[0].clientY;
+  }, {passive:true});
+
+  document.addEventListener('touchend', event=>{
+    if(!event.changedTouches.length) return;
+
+    const popupOpen =
+      (phonePopup && phonePopup.classList.contains('open')) ||
+      (warningPopup && warningPopup.classList.contains('open'));
+
+    if(popupOpen) return;
+
+    const dx = event.changedTouches[0].clientX - touchStartX;
+    const dy = event.changedTouches[0].clientY - touchStartY;
+
+    if(Math.abs(dx) > 65 && Math.abs(dx) > Math.abs(dy) * 1.35){
+      if(dx < 0) showSlide(current + 1);
+      else showSlide(current - 1);
+    }
+  }, {passive:true});
+
+  // this keeps mouse-wheel scrolling inside the slide
+  slides.forEach(slide=>{
+    slide.addEventListener('wheel', event=>event.stopPropagation(), {passive:true});
+  });
+
+  // this helps the layout follow a phone browser's visible height
+  function updatePhoneHeight(){
+    document.documentElement.style.setProperty('--phone-height', `${window.innerHeight}px`);
+  }
+
+  updatePhoneHeight();
+  window.addEventListener('resize', updatePhoneHeight);
+  window.addEventListener('orientationchange', updatePhoneHeight);
+
+  // this starts the website on the first slide
+  showSlide(0);
+</script>
+
+</body>
+</html>
