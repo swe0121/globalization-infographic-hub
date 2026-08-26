@@ -1175,22 +1175,34 @@ const spotlightGroups=[
 
 spotlightGroups.forEach(([groupSelector,cardSelector])=>{
   const group=document.querySelector(groupSelector);
-  if(!group) return;
+  const slide=group?.closest(".slide");
+  if(!group||!slide) return;
 
   const cards=[...group.querySelectorAll(cardSelector)];
 
-  cards.forEach(card=>{
-    card.addEventListener("click",()=>{
-      const alreadySelected=card.classList.contains("focus-card");
+  function clearSpotlight(){
+    cards.forEach(card=>card.classList.remove("focus-card"));
+    group.classList.remove("has-focus");
+  }
 
-      cards.forEach(item=>item.classList.remove("focus-card"));
-      group.classList.remove("has-focus");
+  cards.forEach(card=>{
+    card.addEventListener("click",event=>{
+      event.stopPropagation();
+
+      const alreadySelected=card.classList.contains("focus-card");
+      clearSpotlight();
 
       if(!alreadySelected){
         group.classList.add("has-focus");
         card.classList.add("focus-card");
       }
     });
+  });
+
+  // clicking empty space on the page returns all cards to normal
+  slide.addEventListener("click",event=>{
+    if(event.target.closest(cardSelector)) return;
+    clearSpotlight();
   });
 });
 
