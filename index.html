@@ -3267,6 +3267,180 @@
     }
   }
 
+
+  /* this designs the major parts slide as five colorful interactive cards */
+  .sMajor{
+    background:linear-gradient(145deg,#fff8e8,#edf7ff 58%,#f2ecff);
+  }
+
+  .major-layout{
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:20px;
+    margin-top:4vh;
+    align-items:stretch;
+  }
+
+  .major-cards{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:11px;
+  }
+
+  .major-card{
+    min-height:135px;
+    border:1.5px solid #15213d;
+    border-radius:21px;
+    padding:15px;
+    text-align:left;
+    cursor:pointer;
+    color:#18212f;
+    position:relative;
+    transition:.22s ease;
+    box-shadow:0 6px 14px rgba(20,33,61,.05);
+  }
+
+  .major-card:nth-child(1){background:#cdeaff}
+  .major-card:nth-child(2){background:#ffd978}
+  .major-card:nth-child(3){background:#c9f0d6}
+  .major-card:nth-child(4){background:#f7c6d8}
+  .major-card:nth-child(5){
+    background:#ddd2ff;
+    grid-column:1 / -1;
+  }
+
+  .major-card:hover,
+  .major-card.active{
+    transform:translateY(-5px);
+    box-shadow:0 14px 26px rgba(20,33,61,.13);
+    outline:4px solid rgba(124,58,237,.12);
+  }
+
+  .major-number{
+    position:absolute;
+    right:13px;
+    top:12px;
+    font-size:9px;
+    font-weight:900;
+    opacity:.55;
+  }
+
+  .major-icon{
+    display:grid;
+    place-items:center;
+    width:40px;
+    height:40px;
+    border-radius:13px;
+    background:#15213d;
+    color:white;
+    font-size:19px;
+    margin-bottom:13px;
+  }
+
+  .major-card strong{
+    display:block;
+    font-size:13px;
+  }
+
+  .major-card small{
+    display:block;
+    margin-top:5px;
+    max-width:88%;
+    font-size:8px;
+    line-height:1.4;
+    color:#58616e;
+  }
+
+  .major-detail{
+    border-radius:26px;
+    background:#15213d;
+    color:white;
+    padding:25px;
+    min-height:360px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    box-shadow:0 18px 36px rgba(20,33,61,.17);
+  }
+
+  .major-detail-top{
+    display:flex;
+    align-items:center;
+    gap:13px;
+  }
+
+  .major-detail-icon{
+    width:62px;
+    height:62px;
+    border-radius:18px;
+    background:#ffd166;
+    color:#15213d;
+    display:grid;
+    place-items:center;
+    font-size:28px;
+  }
+
+  .major-detail h3{
+    font-size:24px;
+  }
+
+  .major-detail p{
+    margin-top:22px;
+    font-size:16px;
+    line-height:1.5;
+    color:#e7edf7;
+  }
+
+  .major-keywords{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+    margin-top:22px;
+  }
+
+  .major-keywords span{
+    border:1px solid rgba(255,255,255,.24);
+    background:rgba(255,255,255,.08);
+    border-radius:999px;
+    padding:6px 9px;
+    font-size:8px;
+    font-weight:800;
+  }
+
+  .major-note{
+    margin-top:11px;
+    font-size:9px;
+    color:#6d7580;
+  }
+
+  @media(max-width:700px){
+    .major-layout{
+      grid-template-columns:1fr;
+      margin-top:24px;
+    }
+
+    .major-cards{
+      grid-template-columns:1fr;
+    }
+
+    .major-card:nth-child(5){
+      grid-column:auto;
+    }
+
+    .major-card{
+      min-height:120px;
+    }
+
+    .major-detail{
+      min-height:300px;
+      padding:20px;
+    }
+
+    .major-detail p{
+      font-size:14px;
+    }
+  }
+
 </style>
 </head>
 
@@ -3283,7 +3457,7 @@
   
   <!-- this is the cover slide and introduces the topic and group -->
   <section class="slide s1 active">
-    <div class="page">01 / 11</div>
+    <div class="page">01 / 12</div>
     <div class="left">
       <div class="eyebrow">Group Two • The Contemporary World</div>
       <h1>Globalization:<br><span class="accent">One World,</span><br>Many Connections.</h1>
@@ -3310,7 +3484,7 @@
   
   <!-- this slide gives a simple definition of globalization -->
   <section class="slide s2">
-    <div class="page">02 / 11</div>
+    <div class="page">02 / 12</div>
     <div class="eyebrow">What Is Globalization?</div>
     <h2>The World Becomes More Connected.</h2>
 
@@ -3357,7 +3531,7 @@
   
   <!-- this slide explains what helps globalization grow -->
   <section class="slide s3">
-    <div class="page">03 / 11</div>
+    <div class="page">03 / 12</div>
     <div class="eyebrow">What Makes It Happen?</div>
     <h2>Four Forces Make the World Feel Smaller.</h2>
 
@@ -3402,7 +3576,7 @@
   
   <!-- this slide shows that globalization affects more than business -->
   <section class="slide s4">
-    <div class="page">04 / 11</div>
+    <div class="page">04 / 12</div>
     <div class="eyebrow">The Different Sides of Globalization</div>
     <h2>It Is Not Only About Money.</h2>
 
@@ -3439,10 +3613,80 @@
     <div class="source"><a class="inline-source-link" href="https://www.imf.org/external/np/exr/ib/2008/053008.htm" target="_blank" rel="noopener noreferrer">Source [2] ↗</a>: The IMF notes that globalization has economic as well as broader cultural, political, and environmental dimensions.</div>
   </section>
 
+  <!-- this slide explains the five major parts of globalization using clickable cards -->
+  <section class="slide sMajor">
+    <div class="page">05 / 12</div>
+    <div class="eyebrow">Major Parts of Globalization</div>
+    <h2>Five Major Parts That Keep the World Connected.</h2>
+
+    <div class="major-layout">
+      <div class="major-cards">
+        <button class="major-card active" data-major="technology">
+          <span class="major-number">01</span>
+          <span class="major-icon">⌘</span>
+          <strong>Technology</strong>
+          <small>Communication, information, and teamwork across countries.</small>
+        </button>
+
+        <button class="major-card" data-major="economy">
+          <span class="major-number">02</span>
+          <span class="major-icon">₱</span>
+          <strong>Economy</strong>
+          <small>Trade, products, services, and business opportunities.</small>
+        </button>
+
+        <button class="major-card" data-major="connections">
+          <span class="major-number">03</span>
+          <span class="major-icon">🤝</span>
+          <strong>Connections</strong>
+          <small>Trade, travel, communication, migration, and cooperation.</small>
+        </button>
+
+        <button class="major-card" data-major="culture">
+          <span class="major-number">04</span>
+          <span class="major-icon">♫</span>
+          <strong>Culture</strong>
+          <small>Ideas, food, music, clothing, language, and traditions.</small>
+        </button>
+
+        <button class="major-card" data-major="impact">
+          <span class="major-number">05</span>
+          <span class="major-icon">↗</span>
+          <strong>Impact</strong>
+          <small>Benefits and challenges created by globalization.</small>
+        </button>
+      </div>
+
+      <!-- this panel shows only the explanation for the part that was clicked -->
+      <div class="major-detail" id="majorDetail">
+        <div class="major-detail-top">
+          <span class="major-detail-icon" id="majorDetailIcon">⌘</span>
+          <div>
+            <span class="mini-label" id="majorDetailNumber">01</span>
+            <h3 id="majorDetailTitle">Technology</h3>
+          </div>
+        </div>
+
+        <p id="majorDetailText">
+          Technology allows people from different countries to communicate, share information, and work together quickly.
+        </p>
+
+        <div class="major-keywords" id="majorKeywords">
+          <span>Communication</span>
+          <span>Information</span>
+          <span>Collaboration</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="major-note">Click a part to change the explanation.</div>
+  </section>
+
+
   
   <!-- this slide uses a product example to show global connections -->
   <section class="slide s5">
-    <div class="page">05 / 11</div>
+    <div class="page">12 / 12</div>
     <div class="eyebrow">How Does It Work?</div>
     <h2>One Product Can Connect Many Places.</h2>
 
@@ -3636,7 +3880,7 @@
   
   <!-- this slide shows some possible benefits of globalization -->
   <section class="slide s6">
-    <div class="page">06 / 11</div>
+    <div class="page">12 / 12</div>
     <div class="eyebrow">Possible Benefits</div>
     <h2>Connection Can Create More Opportunities.</h2>
 
@@ -3688,7 +3932,7 @@
   
   <!-- this slide shows some possible problems caused by globalization -->
   <section class="slide s7">
-    <div class="page">07 / 11</div>
+    <div class="page">12 / 12</div>
     <div class="eyebrow">Possible Challenges</div>
     <h2>More Connection Can Also Create Problems.</h2>
 
@@ -3792,7 +4036,7 @@
   
   <!-- this slide shows examples of globalization in everyday filipino life -->
   <section class="slide s8">
-    <div class="page">08 / 11</div>
+    <div class="page">12 / 12</div>
     <div class="eyebrow">Globalization Around Us</div>
     <h2>You Can See It in Everyday Filipino Life.</h2>
 
@@ -3840,7 +4084,7 @@
   
   <!-- this final content slide gives the group definition and main takeaway -->
   <section class="slide s9">
-    <div class="page">09 / 11</div>
+    <div class="page">12 / 12</div>
     <div class="eyebrow">Our Agreed Definition</div>
 
     <div class="final-takeaway-wrap">
@@ -3881,7 +4125,7 @@
 
   <!-- this slide gives the group members their own creative page -->
   <section class="slide s10">
-    <div class="page">10 / 11</div>
+    <div class="page">12 / 12</div>
     <div class="eyebrow">Group Two • Meet the Team</div>
     <h2>Six Members. One Shared Infographic.</h2>
 
@@ -3935,7 +4179,7 @@
 
   <!-- this slide keeps the sources and useful presentation resources in one interactive place -->
   <section class="slide s11">
-    <div class="page">11 / 11</div>
+    <div class="page">12 / 12</div>
     <div class="eyebrow">Sources & Resources</div>
     <h2>Where the Information Came From.</h2>
 
@@ -3968,7 +4212,7 @@
           <span class="mini-label">Source</span>
           <h3>International Monetary Fund — IMF Glossary: Globalization</h3>
           <p>This was used for the main definition of globalization and the movement of goods, services, people, money, technology, and ideas across countries.</p>
-          <div class="used-on">Used mainly on: Slides 2, 3, and 8</div>
+          <div class="used-on">Used mainly on: Slides 2, 3, and 9</div>
           <a class="official-link" href="https://www.imf.org/en/about/glossary" target="_blank" rel="noopener noreferrer">Open Official IMF Glossary ↗</a>
         </div>
 
@@ -3986,7 +4230,7 @@
           <span class="mini-label">Source</span>
           <h3>World Bank — Trade and Globalization</h3>
           <p>This supports the balanced explanation that international integration can create opportunities while its benefits may not be shared equally.</p>
-          <div class="used-on">Used mainly on: Slides 6 and 7</div>
+          <div class="used-on">Used mainly on: Slides 7 and 8</div>
           <a class="official-link" href="https://www.worldbank.org/en/programs/knowledge-for-change/brief/Trade-and-Globalization" target="_blank" rel="noopener noreferrer">Open World Bank Source ↗</a>
         </div>
 
@@ -3996,11 +4240,11 @@
           <h3>Useful Slides During the Presentation</h3>
           <div class="quick-resource-grid">
             <button data-jump="1">Definition <span>Slide 2</span></button>
-            <button data-jump="4">Phone Example <span>Slide 5</span></button>
-            <button data-jump="5">Benefits <span>Slide 6</span></button>
-            <button data-jump="6">Challenges <span>Slide 7</span></button>
-            <button data-jump="7">Filipino Life <span>Slide 8</span></button>
-            <button data-jump="8">Final Definition <span>Slide 9</span></button>
+            <button data-jump="5">Phone Example <span>Slide 6</span></button>
+            <button data-jump="6">Benefits <span>Slide 7</span></button>
+            <button data-jump="7">Challenges <span>Slide 8</span></button>
+            <button data-jump="8">Filipino Life <span>Slide 9</span></button>
+            <button data-jump="9">Final Definition <span>Slide 10</span></button>
             <a class="resource-external" href="https://www.imf.org/en/publications/fandd/issues/2024/06/b2b-globalization-today-adam-jakubik-and-elizabeth-van-heuvelen" target="_blank" rel="noopener noreferrer">
               Further Reading <span>IMF: Globalization Today ↗</span>
             </a>
@@ -4025,7 +4269,7 @@
 <!-- these buttons let the presenter move through the slides and open fullscreen -->
 <div class="controls">
   <button id="prev">←</button>
-  <div class="counter" id="counter">1 / 11</div>
+  <div class="counter" id="counter">1 / 12</div>
   <button id="next">→</button>
   <button id="fullscreen">Fullscreen</button>
 </div>
@@ -4343,6 +4587,72 @@
       scenarioButtons.forEach(item=>item.classList.remove('active'));
       button.classList.add('active');
       renderScenario(button.dataset.scenario);
+    });
+  });
+
+
+  // this changes the major parts explanation so only the selected topic is shown
+  const majorCards = [...document.querySelectorAll('.major-card')];
+  const majorDetailIcon = document.getElementById('majorDetailIcon');
+  const majorDetailNumber = document.getElementById('majorDetailNumber');
+  const majorDetailTitle = document.getElementById('majorDetailTitle');
+  const majorDetailText = document.getElementById('majorDetailText');
+  const majorKeywords = document.getElementById('majorKeywords');
+
+  const majorParts = {
+    technology:{
+      number:'01',
+      icon:'⌘',
+      title:'Technology',
+      text:'Technology allows people from different countries to communicate, share information, and work together quickly.',
+      keywords:['Communication','Information','Collaboration']
+    },
+    economy:{
+      number:'02',
+      icon:'₱',
+      title:'Economy',
+      text:'Countries buy and sell products and services from one another, creating more business opportunities and international trade.',
+      keywords:['Business','Trade','Products + Services']
+    },
+    connections:{
+      number:'03',
+      icon:'🤝',
+      title:'Connections',
+      text:'People, businesses, and countries interact through trade, travel, communication, migration, and cooperation.',
+      keywords:['Travel','Migration','Cooperation']
+    },
+    culture:{
+      number:'04',
+      icon:'♫',
+      title:'Culture',
+      text:'Ideas, food, music, clothing, languages, and traditions can spread from one country to another.',
+      keywords:['Food','Music','Traditions']
+    },
+    impact:{
+      number:'05',
+      icon:'↗',
+      title:'Impact',
+      text:'Globalization can create jobs, provide access to new products and technology, and encourage economic growth. However, it can also create challenges such as inequality, competition, and the loss of some local traditions.',
+      keywords:['Jobs','Growth','Challenges']
+    }
+  };
+
+  majorCards.forEach(card=>{
+    card.addEventListener('click', ()=>{
+      const part = majorParts[card.dataset.major];
+      if(!part) return;
+
+      majorCards.forEach(item=>item.classList.remove('active'));
+      card.classList.add('active');
+
+      if(majorDetailIcon) majorDetailIcon.textContent = part.icon;
+      if(majorDetailNumber) majorDetailNumber.textContent = part.number;
+      if(majorDetailTitle) majorDetailTitle.textContent = part.title;
+      if(majorDetailText) majorDetailText.textContent = part.text;
+
+      if(majorKeywords){
+        majorKeywords.innerHTML = part.keywords.map(word=>`<span>${word}</span>`).join('');
+      }
     });
   });
 
