@@ -1226,12 +1226,39 @@ document.querySelectorAll(".flow,.driver,.major-card,.benefit,.daily").forEach(c
 });
 
 // group spotlight
+const teamSlide=document.querySelector(".s10");
 const teamStage=document.querySelector(".team-stage");
 const spotlight=document.getElementById("teamSpotlightBox");
 const members=[...document.querySelectorAll(".orbit-member")];
 
+const defaultSpot={
+  initials:"G2",
+  name:"Group Two",
+  text:"Click a member to highlight them."
+};
+
+function clearTeamSpotlight(){
+  members.forEach(member=>member.classList.remove("active"));
+  teamStage?.classList.remove("has-selection");
+
+  if(spotlight){
+    spotlight.classList.remove("active");
+    spotlight.removeAttribute("data-selected");
+  }
+
+  const avatar=document.getElementById("spotAvatar");
+  const name=document.getElementById("spotName");
+  const text=document.getElementById("spotText");
+
+  if(avatar) avatar.textContent=defaultSpot.initials;
+  if(name) name.textContent=defaultSpot.name;
+  if(text) text.textContent=defaultSpot.text;
+}
+
 members.forEach(member=>{
-  member.addEventListener("click",()=>{
+  member.addEventListener("click",event=>{
+    event.stopPropagation();
+
     members.forEach(x=>x.classList.remove("active"));
     member.classList.add("active");
 
@@ -1246,6 +1273,19 @@ members.forEach(member=>{
     document.getElementById("spotText").textContent=
       `${member.dataset.member} is highlighted as one of the six members who worked together on Group Two's globalization infographic.`;
   });
+});
+
+// clicking empty space on the team page clears the selected member
+teamSlide?.addEventListener("click",event=>{
+  if(event.target.closest(".orbit-member")) return;
+  if(event.target.closest(".team-spotlight-box")) return;
+  clearTeamSpotlight();
+});
+
+
+spotlight?.addEventListener("click",event=>{
+  event.stopPropagation();
+  clearTeamSpotlight();
 });
 
 // keyboard + swipe
