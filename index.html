@@ -767,6 +767,72 @@ button:active{transform:scale(.98)}
   }
 }
 
+
+/* strong card spotlight */
+.s2 .flows.has-focus .flow,
+.s3 .driver-grid.has-focus .driver,
+.sMajor .major-cards.has-focus .major-card,
+.s6 .benefits.has-focus .benefit,
+.s8 .daily-grid.has-focus .daily{
+  opacity:.24;
+  filter:brightness(.42) saturate(.45);
+  transform:scale(.985);
+  transition:
+    opacity .2s ease,
+    filter .2s ease,
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.s2 .flows.has-focus .flow.focus-card,
+.s3 .driver-grid.has-focus .driver.focus-card,
+.sMajor .major-cards.has-focus .major-card.focus-card,
+.s6 .benefits.has-focus .benefit.focus-card,
+.s8 .daily-grid.has-focus .daily.focus-card{
+  opacity:1;
+  filter:none;
+  transform:translateY(-6px) scale(1.035);
+  z-index:5;
+  position:relative;
+  box-shadow:
+    0 20px 38px rgba(20,33,61,.22),
+    0 0 0 5px rgba(124,58,237,.16);
+}
+
+/* selected cards keep their original colors clearly visible */
+.s2 .flows.has-focus .flow.focus-card,
+.s3 .driver-grid.has-focus .driver.focus-card,
+.s6 .benefits.has-focus .benefit.focus-card,
+.s8 .daily-grid.has-focus .daily.focus-card{
+  border-color:#7c3aed;
+}
+
+/* the team page uses the same stronger dimming */
+.s10 .team-stage.has-selection .orbit-member{
+  opacity:.22 !important;
+  filter:brightness(.38) saturate(.45) !important;
+  transform:scale(.98);
+}
+
+.s10 .team-stage.has-selection .orbit-member.active{
+  opacity:1 !important;
+  filter:none !important;
+  transform:translateY(-6px) scale(1.04);
+  z-index:5;
+}
+
+/* mobile still keeps the spotlight obvious without moving cards too far */
+@media(max-width:700px){
+  .s2 .flows.has-focus .flow.focus-card,
+  .s3 .driver-grid.has-focus .driver.focus-card,
+  .sMajor .major-cards.has-focus .major-card.focus-card,
+  .s6 .benefits.has-focus .benefit.focus-card,
+  .s8 .daily-grid.has-focus .daily.focus-card,
+  .s10 .team-stage.has-selection .orbit-member.active{
+    transform:scale(1.02);
+  }
+}
+
 </style>
 </head>
 <body>
@@ -801,28 +867,28 @@ button:active{transform:scale(.98)}
 <div class="definition">
       Globalization is the growing connection of countries through the movement of <strong>goods, services, people, money, technology, and ideas.</strong>
 </div>
-<div class="flows interactive-group" data-focus-group="">
-<div class="flow">
+<div class="flows interactive-group" role="button" tabindex="0" data-focus-group="">
+<div class="flow" role="button" tabindex="0">
 <div class="icon">▣</div>
 <h3>Goods</h3>
 <p>Products can be made in one country and bought in another.</p>
 </div>
-<div class="flow">
+<div class="flow" role="button" tabindex="0">
 <div class="icon">↔</div>
 <h3>Services</h3>
 <p>Work and services can be offered to customers across borders.</p>
 </div>
-<div class="flow">
+<div class="flow" role="button" tabindex="0">
 <div class="icon">◎</div>
 <h3>People</h3>
 <p>People travel, migrate, study, and work in different countries.</p>
 </div>
-<div class="flow">
+<div class="flow" role="button" tabindex="0">
 <div class="icon">₱</div>
 <h3>Money</h3>
 <p>Businesses invest and financial activities move between countries.</p>
 </div>
-<div class="flow">
+<div class="flow" role="button" tabindex="0">
 <div class="icon">✦</div>
 <h3>Ideas</h3>
 <p>Information, culture, Knowledge, and technology spread quickly.</p>
@@ -835,30 +901,30 @@ button:active{transform:scale(.98)}
 <div class="page">03 / 07</div>
 <div class="eyebrow">What Makes It Happen?</div>
 <h2>Four Forces Make the World Feel Smaller.</h2>
-<div class="driver-grid interactive-group" data-focus-group="">
-<div class="driver">
-<div class="driver-num">01</div>
+<div class="driver-grid interactive-group" role="button" tabindex="0" data-focus-group="">
+<div class="driver" role="button" tabindex="0">
+<div class="driver-num" role="button" tabindex="0">01</div>
 <div>
 <h3>Internet + Communication</h3>
 <p>Messages, news, work, videos, and information can reach another country almost instantly.</p>
 </div>
 </div>
-<div class="driver">
-<div class="driver-num">02</div>
+<div class="driver" role="button" tabindex="0">
+<div class="driver-num" role="button" tabindex="0">02</div>
 <div>
 <h3>Faster Transportation</h3>
 <p>Planes, ships, roads, and logistics make it easier to move people and products around the world.</p>
 </div>
 </div>
-<div class="driver">
-<div class="driver-num">03</div>
+<div class="driver" role="button" tabindex="0">
+<div class="driver-num" role="button" tabindex="0">03</div>
 <div>
 <h3>International Trade</h3>
 <p>Countries buy and sell products and services from each other instead of relying only on local markets.</p>
 </div>
 </div>
-<div class="driver">
-<div class="driver-num">04</div>
+<div class="driver" role="button" tabindex="0">
+<div class="driver-num" role="button" tabindex="0">04</div>
 <div>
 <h3>Technology + Business</h3>
 <p>Digital systems and international companies connect workers, customers, suppliers, and markets.</p>
@@ -929,36 +995,36 @@ button:active{transform:scale(.98)}
 <div class="page">05 / 07</div>
 <div class="eyebrow">Possible Benefits</div>
 <h2>Connection Can Create More Opportunities.</h2>
-<div class="benefits interactive-group" data-focus-group="">
-<div class="benefit">
+<div class="benefits interactive-group" role="button" tabindex="0" data-focus-group="">
+<div class="benefit" role="button" tabindex="0">
 <div>
 <div class="symbol">↗</div>
 <h3>Bigger Markets</h3>
 </div>
 <p>Businesses can reach customers outside their own country, while consumers gain access to more products and services.</p>
 </div>
-<div class="benefit">
+<div class="benefit" role="button" tabindex="0">
 <div>
 <div class="symbol">✦</div>
 <h3>Knowledge</h3>
 </div>
 <p>Ideas, research, and technology can spread faster.</p>
 </div>
-<div class="benefit">
+<div class="benefit" role="button" tabindex="0">
 <div>
 <div class="symbol">◎</div>
 <h3>Jobs</h3>
 </div>
 <p>Global business can create new kinds of work and services.</p>
 </div>
-<div class="benefit">
+<div class="benefit" role="button" tabindex="0">
 <div>
 <div class="symbol">↔</div>
 <h3>More Choices</h3>
 </div>
 <p>People can access products, media, and services from many places.</p>
 </div>
-<div class="benefit">
+<div class="benefit" role="button" tabindex="0">
 <div>
 <div class="symbol">+</div>
 <h3>Cooperation</h3>
@@ -972,33 +1038,33 @@ button:active{transform:scale(.98)}
 <div class="page">06 / 07</div>
 <div class="eyebrow">Globalization Around Us</div>
 <h2>You Can See It in Everyday Filipino Life.</h2>
-<div class="daily-grid interactive-group" data-focus-group="">
-<div class="daily">
+<div class="daily-grid interactive-group" role="button" tabindex="0" data-focus-group="">
+<div class="daily" role="button" tabindex="0">
 <div class="symbol">▣</div>
 <h3>Products</h3>
 <p>Phones, clothes, food, appliances, and other products may come from international brands or supply chains.</p>
 </div>
-<div class="daily">
+<div class="daily" role="button" tabindex="0">
 <div class="symbol">♫</div>
 <h3>Entertainment</h3>
 <p>Music, movies, games, anime, K-pop, and online trends move easily between countries.</p>
 </div>
-<div class="daily">
+<div class="daily" role="button" tabindex="0">
 <div class="symbol">⌨</div>
 <h3>Global Work</h3>
 <p>BPO, online services, freelancing, and remote work can connect Filipino workers with international clients.</p>
 </div>
-<div class="daily">
+<div class="daily" role="button" tabindex="0">
 <div class="symbol">✈</div>
 <h3>Migration</h3>
 <p>Filipinos may study, live, or work abroad while remaining connected to families at home.</p>
 </div>
-<div class="daily">
+<div class="daily" role="button" tabindex="0">
 <div class="symbol">◎</div>
 <h3>Communication</h3>
 <p>Social media, messaging, and video calls make international communication part of daily life.</p>
 </div>
-<div class="daily">
+<div class="daily" role="button" tabindex="0">
 <div class="symbol">✦</div>
 <h3>Learning</h3>
 <p>Students can access ideas, tutorials, research, and educational resources from around the world.</p>
@@ -1098,20 +1164,36 @@ document.getElementById("fullscreen")?.addEventListener("click",async()=>{
     else await document.documentElement.requestFullscreen();
   }catch{}
 });
-// card highlights
-document.querySelectorAll("[data-focus-group]").forEach(group=>{
-  [...group.children].forEach(card=>{
+// card spotlight
+const spotlightGroups=[
+  [".s2 .flows",".flow"],
+  [".s3 .driver-grid",".driver"],
+  [".sMajor .major-cards",".major-card"],
+  [".s6 .benefits",".benefit"],
+  [".s8 .daily-grid",".daily"]
+];
+
+spotlightGroups.forEach(([groupSelector,cardSelector])=>{
+  const group=document.querySelector(groupSelector);
+  if(!group) return;
+
+  const cards=[...group.querySelectorAll(cardSelector)];
+
+  cards.forEach(card=>{
     card.addEventListener("click",()=>{
-      const selected=card.classList.contains("focus-card");
-      [...group.children].forEach(item=>item.classList.remove("focus-card"));
+      const alreadySelected=card.classList.contains("focus-card");
+
+      cards.forEach(item=>item.classList.remove("focus-card"));
       group.classList.remove("has-focus");
-      if(!selected){
+
+      if(!alreadySelected){
         group.classList.add("has-focus");
         card.classList.add("focus-card");
       }
     });
   });
 });
+
 // major parts
 const majorParts={
   technology:["01","⌘","Technology","Technology allows people from different countries to communicate, share information, and work together quickly.",["Communication","Information","Collaboration"]],
@@ -1132,6 +1214,17 @@ majorCards.forEach(card=>card.addEventListener("click",()=>{
   document.getElementById("majorDetailText").textContent=part[3];
   document.getElementById("majorKeywords").innerHTML=part[4].map(x=>`<span>${x}</span>`).join("");
 }));
+
+// keyboard spotlight
+document.querySelectorAll(".flow,.driver,.major-card,.benefit,.daily").forEach(card=>{
+  card.addEventListener("keydown",e=>{
+    if(e.key==="Enter"||e.key===" "){
+      e.preventDefault();
+      card.click();
+    }
+  });
+});
+
 // group spotlight
 const teamStage=document.querySelector(".team-stage");
 const spotlight=document.getElementById("teamSpotlightBox");
