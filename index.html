@@ -55,27 +55,27 @@ p{font-size:clamp(14px,1.25vw,20px);line-height:1.42}
 .driver:nth-child(4){background:#ffb3c6}
 .driver-num{width:55px;height:55px;border-radius:50%;background:#15213d;color:white;display:grid;place-items:center;font-size:18px;font-weight:900}
 .driver p{margin-top:12px;font-size:14px}
-.s6{background:#e3f8e9}
-.benefits{margin-top:4vh;display:grid;grid-template-columns:1.25fr .9fr .9fr;grid-template-rows:1fr 1fr;gap:14px;height:57vh}
-.benefit{padding:23px;border-radius:25px;border:2px solid var(--navy);display:flex;flex-direction:column;justify-content:space-between}
-.benefit:nth-child(1){grid-row:1/3;background:#15213d;color:white}
-.benefit:nth-child(2){background:#ffd166}
-.benefit:nth-child(3){background:#9fd8ff}
-.benefit:nth-child(4){background:#ffb3c6}
-.benefit:nth-child(5){background:#fff}
-.benefit .symbol{font-size:38px;margin-bottom:15px}
-.benefit p{margin-top:10px;font-size:13px}
-.s8{background:#dff3ff}
-.daily-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:4vh}
-.daily{min-height:23vh;padding:20px;background:white;border-radius:24px;border:2px solid var(--navy);position:relative;overflow:hidden}
-.daily:nth-child(1){background:#ffd166}
-.daily:nth-child(2){background:#ffb3c6}
-.daily:nth-child(3){background:#b7e4c7}
-.daily:nth-child(4){background:#fff}
-.daily:nth-child(5){background:#d8cbff}
-.daily:nth-child(6){background:#9fd8ff}
-.daily .symbol{font-size:34px;margin-bottom:15px}
-.daily p{font-size:12px;margin-top:8px}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .controls{position:fixed;left:50%;bottom:17px;transform:translateX(-50%);z-index:100;display:flex;gap:8px;align-items:center;background:rgba(12,16,28,.8);backdrop-filter:blur(12px);padding:7px;border-radius:999px}
 .controls button{border:0;height:38px;border-radius:999px;background:white;color:#111;padding:0 14px;font-weight:800;font-size:11px;cursor:pointer}
 .controls button:hover{background:#e9edf5}
@@ -87,9 +87,9 @@ p{font-size:clamp(14px,1.25vw,20px);line-height:1.42}
   .flows{grid-template-columns:1fr 1fr}
   .flow{min-height:auto}
   .driver-grid{grid-template-columns:1fr}
-  .benefits{grid-template-columns:1fr 1fr;height:auto}
-  .benefit:nth-child(1){grid-row:auto}
-  .daily-grid{grid-template-columns:1fr 1fr}
+  
+  
+  
 }
 .progress-track{position:fixed;left:0;top:0;width:100%;height:4px;background:rgba(255,255,255,.12);z-index:120}
 .progress-fill{height:100%;width:11.111%;background:linear-gradient(90deg,#ffd166,#ff8c42,#9b7ede,#3b82f6);transition:width .35s ease}
@@ -97,8 +97,8 @@ p{font-size:clamp(14px,1.25vw,20px);line-height:1.42}
 .dot-nav button{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:.2s ease}
 .dot-nav button:hover{transform:scale(1.45);background:#fff}
 .dot-nav button.active{height:22px;border-radius:999px;background:#ffd166}
-.flow,.driver,.benefit,.daily{transition:transform .2s ease, box-shadow .2s ease, opacity .2s ease, filter .2s ease}
-.flow:hover,.driver:hover,.benefit:hover,.daily:hover{transform:translateY(-5px);box-shadow:0 13px 24px rgba(20,33,61,.13)}
+.flow,.driver,.benefit,
+.flow:hover,.driver:hover,.benefit:hover,
 .micro-hint{position:absolute;right:5.5vw;bottom:2vw;font-size:10px;font-weight:700;color:rgba(24,33,47,.48);letter-spacing:.04em}
 .micro-hint.dark{color:rgba(255,255,255,.55)}
 .first-slide-hint{position:absolute;right:5.5vw;bottom:5.7vw;z-index:7;font-size:9px;font-weight:700;color:#6d7380;display:flex;gap:7px;align-items:center}
@@ -128,33 +128,33 @@ button:active{transform:scale(.98)}
   to{opacity:1;transform:translateY(0)}
 }
 .s10{background:linear-gradient(145deg,#fff8e9,#eee9ff 55%,#e0f3ff)}
-.team-stage{margin-top:3vh;height:46vh;position:relative;max-width:1120px}
-.team-center{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:5px}
-.team-center-ring{width:95px;height:95px;border-radius:50%;background:#15213d;color:white;display:grid;place-items:center;font-size:27px;font-weight:900;box-shadow:0 0 0 12px rgba(124,58,237,.1)}
-.team-center strong{font-size:12px}
-.team-center span{font-size:8px;color:#6f7682}
-.orbit-member{position:absolute;width:220px;min-height:68px;border:1.5px solid #15213d;background:white;border-radius:20px;padding:11px;display:grid;grid-template-columns:42px 1fr;gap:10px;align-items:center;text-align:left;cursor:pointer;box-shadow:0 8px 18px rgba(20,33,61,.08);transition:.22s ease}
-.orbit-member > span{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-size:10px;font-weight:900;border:1px solid #15213d}
-.orbit-member strong{font-size:9px}
-.orbit-member:hover,.orbit-member.active{transform:translateY(-5px) scale(1.02);box-shadow:0 15px 28px rgba(20,33,61,.13);border-color:#7c3aed}
-.om1{left:2%;top:2%}
-.om1 span{background:#ffd166}
-.om2{right:2%;top:2%}
-.om2 span{background:#9fd8ff}
-.om3{left:5%;top:37%}
-.om3 span{background:#ffb3c6}
-.om4{right:5%;top:37%}
-.om4 span{background:#afe6c0}
-.om5{left:15%;bottom:1%}
-.om5 span{background:#ddd2ff}
-.om6{right:15%;bottom:1%}
-.om6 span{background:#ffe0a3}
-.team-spotlight-box{margin-top:4px;max-width:850px;min-height:82px;border-radius:20px;background:#15213d;color:white;padding:14px 17px;display:grid;grid-template-columns:52px 1fr;gap:12px;align-items:center}
-.spot-avatar{width:52px;height:52px;border-radius:15px;background:#ffd166;color:#15213d;display:grid;place-items:center;font-weight:900}
-.team-spotlight-box h3{font-size:14px}
-.team-spotlight-box p{font-size:9px;color:#cfd9ea;margin-top:4px}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media (max-width:850px){
-  .orbit-member{width:180px}
+  
 }
 .controls{z-index:200}
 .slide{overflow-y:auto;overflow-x:hidden;padding-bottom:110px;scrollbar-width:thin;scrollbar-color:rgba(21,33,61,.38) transparent;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
@@ -167,7 +167,7 @@ button:active{transform:scale(.98)}
 .s10{padding-bottom:135px}
 @media (max-height:720px){
   .slide{padding-top:34px;padding-bottom:120px}
-  .team-stage{height:auto;min-height:520px}
+  
 }
 /* mobile */
 @media (max-width:700px){
@@ -202,28 +202,28 @@ button:active{transform:scale(.98)}
   .driver{min-height:0;padding:17px;grid-template-columns:48px 1fr}
   .driver-num{width:46px;height:46px;font-size:15px}
   .driver p{font-size:13px}
-  .benefits{display:grid;grid-template-columns:1fr;grid-template-rows:none;height:auto;gap:12px;margin-top:24px}
-  .benefit,.benefit:nth-child(1){grid-row:auto;min-height:180px;padding:18px}
-  .daily-grid{grid-template-columns:1fr;gap:12px;margin-top:24px}
-  .daily{min-height:0;padding:18px}
-  .team-stage{height:auto;min-height:0;margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .team-center{position:static;transform:none;grid-column:1 / -1;margin-bottom:6px}
-  .team-center-ring{width:78px;height:78px}
-  .orbit-member{position:static;width:100%;min-height:110px;display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:12px}
-  .orbit-member > span{width:40px;height:40px}
-  .orbit-member strong{font-size:9px;line-height:1.25}
-  .om1,.om2,.om3,.om4,.om5,.om6{left:auto;right:auto;top:auto;bottom:auto}
-  .team-spotlight-box{margin-top:14px;grid-template-columns:48px 1fr;padding:13px}
+  
+  .benefit,
+  
+  
+  
+  
+  
+  
+  
+  
+  .om1,.om2,.om3,.om4,.om5,
+  
   button{touch-action:manipulation}
-  .flow,.driver,.benefit,.daily,.orbit-member{-webkit-tap-highlight-color:transparent}
-  .flow:hover,.driver:hover,.benefit:hover,.daily:hover{transform:none}
+  .flow,.driver,.benefit,.daily,
+  .flow:hover,.driver:hover,.benefit:hover,
 }
 @media (max-width:390px){
   .slide{padding-left:14px;padding-right:14px}
   h1{font-size:47px}
   h2{font-size:34px}
   .group-box{grid-template-columns:1fr}
-  .team-stage{grid-template-columns:1fr}
+  
   .controls{left:6px;right:6px;gap:4px;padding:6px}
   .controls button{padding:0 9px}
   .controls #fullscreen{max-width:104px}
@@ -292,53 +292,53 @@ button:active{transform:scale(.98)}
 .sMajor .major-icon{width:36px;height:36px;margin-bottom:9px}
 .sMajor .major-detail{min-height:315px;padding:21px}
 .sMajor .major-detail p{margin-top:17px;font-size:14px}
-.s6 .benefits{margin-top:3vh;height:auto;min-height:48vh;gap:10px}
-.s6 .benefit{min-width:0;padding:18px}
-.s6 .benefit .symbol{margin-bottom:9px}
-.s6 .benefit p{margin-top:7px;font-size:12px;line-height:1.35}
-.s8 .daily-grid{margin-top:3vh;gap:10px}
-.s8 .daily{min-height:19vh;padding:16px}
-.s8 .daily .symbol{margin-bottom:9px}
-.s8 .daily p{margin-top:6px;font-size:11.5px;line-height:1.35}
-.s10 .team-stage{margin:2vh auto 0;width:min(100%, 920px);height:auto;max-width:920px;display:grid;grid-template-columns:minmax(0,1fr) 150px minmax(0,1fr);grid-template-rows:repeat(3,auto);gap:9px 18px;align-items:center}
-.s10 .team-center{position:static;left:auto;top:auto;transform:none;grid-column:2;grid-row:1 / 4;justify-self:center;align-self:center}
-.s10 .team-center-ring{width:82px;height:82px;font-size:23px;box-shadow:0 0 0 9px rgba(124,58,237,.09)}
-.s10 .orbit-member{position:static;width:100%;min-width:0;min-height:62px;padding:9px 10px;grid-template-columns:38px minmax(0,1fr);gap:8px;border-radius:16px}
-.s10 .orbit-member > span{width:38px;height:38px}
-.s10 .orbit-member strong{font-size:8.7px;line-height:1.25}
-.s10 .om1{grid-column:1;grid-row:1}
-.s10 .om2{grid-column:3;grid-row:1}
-.s10 .om3{grid-column:1;grid-row:2}
-.s10 .om4{grid-column:3;grid-row:2}
-.s10 .om5{grid-column:1;grid-row:3}
-.s10 .om6{grid-column:3;grid-row:3}
-.s10 .team-spotlight-box{width:min(100%, 920px);max-width:920px;margin:11px auto 0;min-height:68px;padding:10px 14px;grid-template-columns:44px minmax(0,1fr);gap:10px}
-.s10 .spot-avatar{width:44px;height:44px}
-.s10 .team-spotlight-box h3{font-size:12px}
-.s10 .team-spotlight-box p{font-size:8.5px;line-height:1.35}
+
+
+
+
+
+
+
+
+.s10 
+.s10 
+.s10 
+.s10 
+.s10 
+.s10 
+.s10 
+.s10 
+.s10 
+.s10 
+.s10 
+.s10 
+.s10 
+.s10 
+.s10 
+.s10 
 @media (max-height:800px) and (min-width:701px){
   .slide{padding-top:45px;padding-bottom:92px}
   .slide h2{font-size:clamp(32px,4vw,58px)}
   .s2 .flows{margin-top:3vh}
   .s3 .driver{min-height:20vh}
-  .s6 .benefits{min-height:43vh}
-  .s8 .daily{min-height:17vh}
-  .s10 .team-stage{margin-top:1.5vh}
+  
+  
+  .s10 
 }
 /* mobile */
 @media (max-width:700px){
   .slide h2{padding-right:0;font-size:clamp(31px,10vw,46px)}
   .page{top:12px;right:12px;font-size:9px}
   .s2 .definition{width:100%;font-size:22px}
-  .s10 .team-stage{width:100%;grid-template-columns:1fr 1fr;grid-template-rows:auto;gap:9px}
-  .s10 .team-center{grid-column:1 / -1;grid-row:auto;margin-bottom:3px}
-  .s10 .om1,.s10 .om2,.s10 .om3,.s10 .om4,.s10 .om5,.s10 .om6{grid-column:auto;grid-row:auto}
-  .s10 .orbit-member{min-height:88px;display:flex;flex-direction:column;align-items:flex-start}
-  .s10 .team-spotlight-box{width:100%;margin-top:10px}
+  .s10 
+  .s10 
+  .s10 .om1,.s10 .om2,.s10 .om3,.s10 .om4,.s10 .om5,.s10 
+  .s10 
+  .s10 
 }
 @media (max-width:390px){
-  .s10 .team-stage{grid-template-columns:1fr}
-  .s10 .team-center{grid-column:1}
+  .s10 
+  .s10 
 }
 
 /* compact team page */
@@ -363,75 +363,27 @@ button:active{transform:scale(.98)}
   line-height:.98;
 }
 
-.s10 .team-stage{
-  width:min(100%,860px);
-  max-width:860px;
-  margin:18px auto 0;
-  grid-template-columns:minmax(0,1fr) 112px minmax(0,1fr);
-  gap:7px 14px;
-}
+.s10 
 
-.s10 .team-center-ring{
-  width:68px;
-  height:68px;
-  font-size:20px;
-  box-shadow:0 0 0 7px rgba(124,58,237,.09);
-}
+.s10 
 
-.s10 .team-center strong{
-  font-size:10px;
-}
+.s10 
 
-.s10 .team-center span{
-  font-size:7px;
-}
+.s10 
 
-.s10 .orbit-member{
-  min-height:54px;
-  padding:7px 9px;
-  grid-template-columns:34px minmax(0,1fr);
-  gap:7px;
-  border-radius:14px;
-}
+.s10 
 
-.s10 .orbit-member > span{
-  width:34px;
-  height:34px;
-  border-radius:10px;
-  font-size:9px;
-}
+.s10 
 
-.s10 .orbit-member strong{
-  font-size:8.5px;
-}
+.s10 
 
-.s10 .team-spotlight-box{
-  width:min(100%,860px);
-  max-width:860px;
-  min-height:58px;
-  margin:8px auto 0;
-  padding:8px 12px;
-  grid-template-columns:38px minmax(0,1fr);
-  gap:9px;
-  border-radius:16px;
-}
+.s10 
 
-.s10 .spot-avatar{
-  width:38px;
-  height:38px;
-  border-radius:11px;
-  font-size:13px;
-}
+.s10 
 
-.s10 .team-spotlight-box h3{
-  font-size:11px;
-}
+.s10 
 
-.s10 .team-spotlight-box p{
-  margin-top:2px;
-  font-size:7.5px;
-  line-height:1.3;
-}
+.s10 
 
 @media(max-height:760px) and (min-width:701px){
   .s10{
@@ -443,9 +395,7 @@ button:active{transform:scale(.98)}
     font-size:clamp(34px,3.25vw,50px);
   }
 
-  .s10 .team-stage{
-    margin-top:12px;
-  }
+  .s10 
 }
 
 @media(max-width:700px){
@@ -463,36 +413,19 @@ button:active{transform:scale(.98)}
     font-size:clamp(32px,9vw,43px);
   }
 
-  .s10 .team-stage{
-    width:100%;
-    margin-top:16px;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-  }
+  .s10 
 
-  .s10 .team-center{
-    grid-column:1 / -1;
-    margin-bottom:2px;
-  }
+  .s10 
 
-  .s10 .orbit-member{
-    min-height:70px;
-  }
+  .s10 
 
-  .s10 .team-spotlight-box{
-    width:100%;
-    margin-top:8px;
-  }
+  .s10 
 }
 
 @media(max-width:390px){
-  .s10 .team-stage{
-    grid-template-columns:1fr;
-  }
+  .s10 
 
-  .s10 .team-center{
-    grid-column:1;
-  }
+  .s10 
 }
 
 
@@ -518,140 +451,59 @@ button:active{transform:scale(.98)}
   line-height:.96;
 }
 
-.s10 .team-stage{
-  width:min(100%,1180px);
-  max-width:1180px;
-  min-height:330px;
-  margin:26px auto 0;
-  grid-template-columns:minmax(0,1fr) 175px minmax(0,1fr);
-  grid-template-rows:repeat(3,1fr);
-  gap:14px 28px;
-}
+.s10 
 
-.s10 .team-center{
-  grid-column:2;
-  grid-row:1 / 4;
-  align-self:center;
-  justify-self:center;
-  gap:8px;
-}
+.s10 
 
-.s10 .team-center-ring{
-  width:118px;
-  height:118px;
-  font-size:34px;
-  box-shadow:0 0 0 13px rgba(124,58,237,.10);
-}
+.s10 
 
-.s10 .team-center strong{
-  font-size:15px;
-}
+.s10 
 
-.s10 .team-center span{
-  font-size:10px;
-}
+.s10 
 
-.s10 .orbit-member{
-  min-height:92px;
-  padding:14px 17px;
-  grid-template-columns:58px minmax(0,1fr);
-  gap:13px;
-  border-radius:21px;
-  transition:
-    transform .22s ease,
-    opacity .22s ease,
-    filter .22s ease,
-    background .22s ease,
-    border-color .22s ease,
-    box-shadow .22s ease;
-}
+.s10 
 
-.s10 .orbit-member > span{
-  width:58px;
-  height:58px;
-  border-radius:16px;
-  font-size:14px;
-}
+.s10 
 
-.s10 .orbit-member strong{
-  font-size:12px;
-  line-height:1.3;
-}
+.s10 
 
 /* selected member gets a much stronger spotlight */
-.s10 .team-stage.has-selection .orbit-member{
-  opacity:.46;
-  filter:brightness(.58) saturate(.55);
-  background:#c8ccd3;
-  transform:scale(.985);
-}
+.s10 .team-stage.has-selection 
 
-.s10 .team-stage.has-selection .orbit-member.active{
-  opacity:1;
-  filter:none;
-  transform:translateY(-5px) scale(1.035);
-  border:3px solid #7c3aed;
-  background:#ffffff;
-  box-shadow:
-    0 18px 34px rgba(20,33,61,.18),
-    0 0 0 7px rgba(124,58,237,.12);
-}
+
 
 /* each selected member keeps their own accent color */
-.s10 .team-stage.has-selection .om1.active{background:#fff0b8;border-color:#f2b927}
-.s10 .team-stage.has-selection .om2.active{background:#ccecff;border-color:#49a8e8}
-.s10 .team-stage.has-selection .om3.active{background:#ffd4e2;border-color:#ef7ca5}
-.s10 .team-stage.has-selection .om4.active{background:#d4f4df;border-color:#61bd82}
-.s10 .team-stage.has-selection .om5.active{background:#e4dcff;border-color:#9b7ede}
-.s10 .team-stage.has-selection .om6.active{background:#ffe2a9;border-color:#e7a93d}
 
-.s10 .team-spotlight-box{
-  width:min(100%,1180px);
-  max-width:1180px;
-  min-height:108px;
-  margin:18px auto 0;
-  padding:16px 21px;
-  grid-template-columns:68px minmax(0,1fr);
-  gap:16px;
-  border-radius:24px;
-  transition:.22s ease;
-}
+
+
+
+
+
+
+.s10 
 
 .s10 .team-spotlight-box.active{
   box-shadow:0 18px 38px rgba(20,33,61,.18);
 }
 
-.s10 .spot-avatar{
-  width:68px;
-  height:68px;
-  border-radius:19px;
-  font-size:21px;
-  transition:.22s ease;
-}
+.s10 
 
 .s10 .team-spotlight-box .mini-label{
   font-size:9px;
   padding:6px 10px;
 }
 
-.s10 .team-spotlight-box h3{
-  margin-top:7px;
-  font-size:18px;
-}
+.s10 
 
-.s10 .team-spotlight-box p{
-  margin-top:5px;
-  font-size:10.5px;
-  line-height:1.4;
-}
+.s10 
 
 /* spotlight avatar follows the selected member color */
-.s10 .team-spotlight-box[data-selected="om1"] .spot-avatar{background:#ffd166}
-.s10 .team-spotlight-box[data-selected="om2"] .spot-avatar{background:#8ed0ff}
-.s10 .team-spotlight-box[data-selected="om3"] .spot-avatar{background:#ffabc8}
-.s10 .team-spotlight-box[data-selected="om4"] .spot-avatar{background:#a7e8bd}
-.s10 .team-spotlight-box[data-selected="om5"] .spot-avatar{background:#d2c3ff}
-.s10 .team-spotlight-box[data-selected="om6"] .spot-avatar{background:#ffd891}
+.s10 .team-spotlight-box[data-selected="om1"] 
+.s10 .team-spotlight-box[data-selected="om2"] 
+.s10 .team-spotlight-box[data-selected="om3"] 
+.s10 .team-spotlight-box[data-selected="om4"] 
+.s10 .team-spotlight-box[data-selected="om5"] 
+.s10 .team-spotlight-box[data-selected="om6"] 
 
 @media(max-height:820px) and (min-width:701px){
   .s10{
@@ -662,19 +514,11 @@ button:active{transform:scale(.98)}
     font-size:clamp(42px,4vw,62px);
   }
 
-  .s10 .team-stage{
-    min-height:270px;
-    margin-top:18px;
-  }
+  .s10 
 
-  .s10 .orbit-member{
-    min-height:76px;
-  }
+  .s10 
 
-  .s10 .team-spotlight-box{
-    min-height:88px;
-    margin-top:12px;
-  }
+  .s10 
 }
 
 @media(max-width:700px){
@@ -692,79 +536,34 @@ button:active{transform:scale(.98)}
     font-size:clamp(34px,10vw,48px);
   }
 
-  .s10 .team-stage{
-    width:100%;
-    min-height:0;
-    margin-top:20px;
-    grid-template-columns:1fr 1fr;
-    grid-template-rows:auto;
-    gap:10px;
-  }
+  .s10 
 
-  .s10 .team-center{
-    grid-column:1 / -1;
-    grid-row:auto;
-    margin-bottom:6px;
-  }
+  .s10 
 
-  .s10 .team-center-ring{
-    width:88px;
-    height:88px;
-    font-size:27px;
-  }
+  .s10 
 
   .s10 .om1,
   .s10 .om2,
   .s10 .om3,
   .s10 .om4,
   .s10 .om5,
-  .s10 .om6{
-    grid-column:auto;
-    grid-row:auto;
-  }
+  .s10 
 
-  .s10 .orbit-member{
-    min-height:105px;
-    padding:13px;
-    display:flex;
-    flex-direction:column;
-    align-items:flex-start;
-    gap:9px;
-  }
+  .s10 
 
-  .s10 .orbit-member > span{
-    width:48px;
-    height:48px;
-  }
+  .s10 
 
-  .s10 .team-spotlight-box{
-    width:100%;
-    min-height:100px;
-    margin-top:12px;
-    grid-template-columns:58px minmax(0,1fr);
-    padding:14px;
-  }
+  .s10 
 
-  .s10 .spot-avatar{
-    width:58px;
-    height:58px;
-  }
+  .s10 
 }
 
 @media(max-width:390px){
-  .s10 .team-stage{
-    grid-template-columns:1fr;
-  }
+  .s10 
 
-  .s10 .team-center{
-    grid-column:1;
-  }
+  .s10 
 
-  .s10 .orbit-member{
-    min-height:86px;
-    display:grid;
-    grid-template-columns:48px minmax(0,1fr);
-  }
+  .s10 
 }
 
 
@@ -773,53 +572,24 @@ button:active{transform:scale(.98)}
 .s3 .driver-grid.has-focus .driver,
 .sMajor .major-cards.has-focus .major-card,
 .s6 .benefits.has-focus .benefit,
-.s8 .daily-grid.has-focus .daily{
-  opacity:.24;
-  filter:brightness(.42) saturate(.45);
-  transform:scale(.985);
-  transition:
-    opacity .2s ease,
-    filter .2s ease,
-    transform .2s ease,
-    box-shadow .2s ease;
-}
+
 
 .s2 .flows.has-focus .flow.focus-card,
 .s3 .driver-grid.has-focus .driver.focus-card,
 .sMajor .major-cards.has-focus .major-card.focus-card,
 .s6 .benefits.has-focus .benefit.focus-card,
-.s8 .daily-grid.has-focus .daily.focus-card{
-  opacity:1;
-  filter:none;
-  transform:translateY(-6px) scale(1.035);
-  z-index:5;
-  position:relative;
-  box-shadow:
-    0 20px 38px rgba(20,33,61,.22),
-    0 0 0 5px rgba(124,58,237,.16);
-}
+
 
 /* selected cards keep their original colors clearly visible */
 .s2 .flows.has-focus .flow.focus-card,
 .s3 .driver-grid.has-focus .driver.focus-card,
 .s6 .benefits.has-focus .benefit.focus-card,
-.s8 .daily-grid.has-focus .daily.focus-card{
-  border-color:#7c3aed;
-}
+
 
 /* the team page uses the same stronger dimming */
-.s10 .team-stage.has-selection .orbit-member{
-  opacity:.22 !important;
-  filter:brightness(.38) saturate(.45) !important;
-  transform:scale(.98);
-}
+.s10 .team-stage.has-selection 
 
-.s10 .team-stage.has-selection .orbit-member.active{
-  opacity:1 !important;
-  filter:none !important;
-  transform:translateY(-6px) scale(1.04);
-  z-index:5;
-}
+
 
 /* mobile still keeps the spotlight obvious without moving cards too far */
 @media(max-width:700px){
@@ -828,8 +598,59 @@ button:active{transform:scale(.98)}
   .sMajor .major-cards.has-focus .major-card.focus-card,
   .s6 .benefits.has-focus .benefit.focus-card,
   .s8 .daily-grid.has-focus .daily.focus-card,
-  .s10 .team-stage.has-selection .orbit-member.active{
-    transform:scale(1.02);
+  
+}
+
+
+/* thank you */
+.thank-you-slide{
+  background:linear-gradient(145deg,#fff8e8,#eaf5ff 55%,#eee9ff);
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:70px 6vw 100px;
+}
+
+.thank-you-wrap{
+  width:min(100%,1100px);
+  margin:auto;
+}
+
+.thank-you-slide .eyebrow{
+  margin-bottom:24px;
+  font-size:13px;
+  letter-spacing:.2em;
+}
+
+.thank-you-title{
+  width:100% !important;
+  padding:0 !important;
+  font-size:clamp(90px,14vw,220px) !important;
+  line-height:.82 !important;
+  letter-spacing:-.07em !important;
+  color:#15213d;
+}
+
+.thank-you-sub{
+  margin:34px auto 0;
+  max-width:720px;
+  font-size:clamp(16px,1.6vw,25px);
+  font-weight:700;
+  color:#596273;
+}
+
+@media(max-width:700px){
+  .thank-you-slide{
+    padding:80px 18px 120px;
+  }
+
+  .thank-you-title{
+    font-size:clamp(72px,24vw,120px) !important;
+  }
+
+  .thank-you-sub{
+    margin-top:24px;
+    font-size:15px;
   }
 }
 
@@ -840,7 +661,7 @@ button:active{transform:scale(.98)}
 <div aria-label="Slide navigation" class="dot-nav" id="dotNav"></div>
 <!-- pages --><div class="deck">
 <section class="slide s1 active">
-<div class="page">01 / 07</div>
+<div class="page">01 / 05</div>
 <div class="left">
 <div class="eyebrow">Group Two • The Contemporary World</div>
 <h1>Globalization and How It Affects<br><span>Our Everyday Lives</span></h1>
@@ -861,7 +682,7 @@ button:active{transform:scale(.98)}
 </div>
 </section>
 <section class="slide s2">
-<div class="page">02 / 07</div>
+<div class="page">02 / 05</div>
 <div class="eyebrow">What Is Globalization?</div>
 <h2>The World Becomes More Connected.</h2>
 <div class="definition">
@@ -898,7 +719,7 @@ button:active{transform:scale(.98)}
 
 </section>
 <section class="slide s3">
-<div class="page">03 / 07</div>
+<div class="page">03 / 05</div>
 <div class="eyebrow">What Makes It Happen?</div>
 <h2>Four Forces Make the World Feel Smaller.</h2>
 <div class="driver-grid interactive-group" role="button" tabindex="0" data-focus-group="">
@@ -935,7 +756,7 @@ button:active{transform:scale(.98)}
 <div class="source dark-source">The IMF identifies technological progress, communication, trade, and cross-border flows as major parts of globalization.</div>
 </section>
 <section class="slide sMajor">
-<div class="page">04 / 07</div>
+<div class="page">04 / 05</div>
 <div class="eyebrow">Major Parts of Globalization</div>
 <h2>Five Major Parts That Keep the World Connected.</h2>
 <div class="major-layout">
@@ -991,129 +812,12 @@ button:active{transform:scale(.98)}
 </div>
 <div class="major-note">Click a part to change the explanation.</div>
 </section>
-<section class="slide s6">
-<div class="page">05 / 07</div>
-<div class="eyebrow">Possible Benefits</div>
-<h2>Connection Can Create More Opportunities.</h2>
-<div class="benefits interactive-group" role="button" tabindex="0" data-focus-group="">
-<div class="benefit" role="button" tabindex="0">
-<div>
-<div class="symbol">↗</div>
-<h3>Bigger Markets</h3>
-</div>
-<p>Businesses can reach customers outside their own country, while consumers gain access to more products and services.</p>
-</div>
-<div class="benefit" role="button" tabindex="0">
-<div>
-<div class="symbol">✦</div>
-<h3>Knowledge</h3>
-</div>
-<p>Ideas, research, and technology can spread faster.</p>
-</div>
-<div class="benefit" role="button" tabindex="0">
-<div>
-<div class="symbol">◎</div>
-<h3>Jobs</h3>
-</div>
-<p>Global business can create new kinds of work and services.</p>
-</div>
-<div class="benefit" role="button" tabindex="0">
-<div>
-<div class="symbol">↔</div>
-<h3>More Choices</h3>
-</div>
-<p>People can access products, media, and services from many places.</p>
-</div>
-<div class="benefit" role="button" tabindex="0">
-<div>
-<div class="symbol">+</div>
-<h3>Cooperation</h3>
-</div>
-<p>countries can share Knowledge and work together on common problems.</p>
-</div>
-</div>
-
-</section>
-<section class="slide s8">
-<div class="page">06 / 07</div>
-<div class="eyebrow">Globalization Around Us</div>
-<h2>You Can See It in Everyday Filipino Life.</h2>
-<div class="daily-grid interactive-group" role="button" tabindex="0" data-focus-group="">
-<div class="daily" role="button" tabindex="0">
-<div class="symbol">▣</div>
-<h3>Products</h3>
-<p>Phones, clothes, food, appliances, and other products may come from international brands or supply chains.</p>
-</div>
-<div class="daily" role="button" tabindex="0">
-<div class="symbol">♫</div>
-<h3>Entertainment</h3>
-<p>Music, movies, games, anime, K-pop, and online trends move easily between countries.</p>
-</div>
-<div class="daily" role="button" tabindex="0">
-<div class="symbol">⌨</div>
-<h3>Global Work</h3>
-<p>BPO, online services, freelancing, and remote work can connect Filipino workers with international clients.</p>
-</div>
-<div class="daily" role="button" tabindex="0">
-<div class="symbol">✈</div>
-<h3>Migration</h3>
-<p>Filipinos may study, live, or work abroad while remaining connected to families at home.</p>
-</div>
-<div class="daily" role="button" tabindex="0">
-<div class="symbol">◎</div>
-<h3>Communication</h3>
-<p>Social media, messaging, and video calls make international communication part of daily life.</p>
-</div>
-<div class="daily" role="button" tabindex="0">
-<div class="symbol">✦</div>
-<h3>Learning</h3>
-<p>Students can access ideas, tutorials, research, and educational resources from around the world.</p>
-</div>
-</div>
-
-</section>
-<section class="slide s10">
-<div class="page">07 / 07</div>
-<div class="eyebrow">Group Two • Meet the Team</div>
-<h2>Six Members. One Shared Infographic.</h2>
-<div class="team-stage">
-<div class="team-center">
-<div class="team-center-ring">G2</div>
-<strong>Group Two</strong>
-<span>Click a member</span>
-</div>
-<button class="orbit-member om1" data-initials="CB" data-member="Christian Karl Bagtas">
-<span>CB</span>
-<strong>Christian Karl Bagtas</strong>
-</button>
-<button class="orbit-member om2" data-initials="JE" data-member="John Cornelio Esteves">
-<span>JE</span>
-<strong>John Cornelio Esteves</strong>
-</button>
-<button class="orbit-member om3" data-initials="JF" data-member="John Philip Fernando">
-<span>JF</span>
-<strong>John Philip Fernando</strong>
-</button>
-<button class="orbit-member om4" data-initials="LS" data-member="Lance Sunga">
-<span>LS</span>
-<strong>Lance Sunga</strong>
-</button>
-<button class="orbit-member om5" data-initials="NL" data-member="Nice Lobido">
-<span>NL</span>
-<strong>Nice Lobido</strong>
-</button>
-<button class="orbit-member om6" data-initials="SS" data-member="Showny Jane Sadiasa">
-<span>SS</span>
-<strong>Showny Jane Sadiasa</strong>
-</button>
-</div>
-<div class="team-spotlight-box" id="teamSpotlightBox">
-<div class="spot-avatar" id="spotAvatar">G2</div>
-<div>
-<span class="mini-label">Group Collaboration</span>
-<h3 id="spotName">Choose a Group Member</h3>
-<p id="spotText">Select any name above to give that member a spotlight.</p>
-</div>
+<section class="slide s10 thank-you-slide">
+<div class="page">05 / 05</div>
+<div class="thank-you-wrap">
+<div class="eyebrow">Group Two • The Contemporary World</div>
+<h2 class="thank-you-title">Thank You!!</h2>
+<p class="thank-you-sub">Globalization and How It Affects Our Everyday Lives</p>
 </div>
 </section>
 </div>
@@ -1122,7 +826,7 @@ button:active{transform:scale(.98)}
 <div class="keyboard-help">← → arrow keys change pages</div>
 <!-- navigation --><div class="controls">
 <button id="prev">←</button>
-<div class="counter" id="counter">1 / 12</div>
+<div class="counter" id="counter">1 / 5</div>
 <button id="next">→</button>
 <button id="fullscreen">Fullscreen</button>
 </div>
@@ -1168,9 +872,7 @@ document.getElementById("fullscreen")?.addEventListener("click",async()=>{
 const spotlightGroups=[
   [".s2 .flows",".flow"],
   [".s3 .driver-grid",".driver"],
-  [".sMajor .major-cards",".major-card"],
-  [".s6 .benefits",".benefit"],
-  [".s8 .daily-grid",".daily"]
+  [".sMajor .major-cards",".major-card"]
 ];
 
 spotlightGroups.forEach(([groupSelector,cardSelector])=>{
@@ -1228,76 +930,13 @@ majorCards.forEach(card=>card.addEventListener("click",()=>{
 }));
 
 // keyboard spotlight
-document.querySelectorAll(".flow,.driver,.major-card,.benefit,.daily").forEach(card=>{
+document.querySelectorAll(".flow,.driver,.major-card").forEach(card=>{
   card.addEventListener("keydown",e=>{
     if(e.key==="Enter"||e.key===" "){
       e.preventDefault();
       card.click();
     }
   });
-});
-
-// group spotlight
-const teamSlide=document.querySelector(".s10");
-const teamStage=document.querySelector(".team-stage");
-const spotlight=document.getElementById("teamSpotlightBox");
-const members=[...document.querySelectorAll(".orbit-member")];
-
-const defaultSpot={
-  initials:"G2",
-  name:"Group Two",
-  text:"Click a member to highlight them."
-};
-
-function clearTeamSpotlight(){
-  members.forEach(member=>member.classList.remove("active"));
-  teamStage?.classList.remove("has-selection");
-
-  if(spotlight){
-    spotlight.classList.remove("active");
-    spotlight.removeAttribute("data-selected");
-  }
-
-  const avatar=document.getElementById("spotAvatar");
-  const name=document.getElementById("spotName");
-  const text=document.getElementById("spotText");
-
-  if(avatar) avatar.textContent=defaultSpot.initials;
-  if(name) name.textContent=defaultSpot.name;
-  if(text) text.textContent=defaultSpot.text;
-}
-
-members.forEach(member=>{
-  member.addEventListener("click",event=>{
-    event.stopPropagation();
-
-    members.forEach(x=>x.classList.remove("active"));
-    member.classList.add("active");
-
-    teamStage?.classList.add("has-selection");
-    spotlight?.classList.add("active");
-
-    const memberClass=[...member.classList].find(x=>/^om\d$/.test(x))||"";
-    if(spotlight) spotlight.dataset.selected=memberClass;
-
-    document.getElementById("spotAvatar").textContent=member.dataset.initials;
-    document.getElementById("spotName").textContent=member.dataset.member;
-    document.getElementById("spotText").textContent=
-      `${member.dataset.member} is highlighted as one of the six members who worked together on Group Two's globalization infographic.`;
-  });
-});
-
-// clicking empty space on the team page clears the selected member
-teamSlide?.addEventListener("click",event=>{
-  if(event.target.closest(".orbit-member")) return;
-  if(event.target.closest(".team-spotlight-box")) return;
-  clearTeamSpotlight();
-});
-
-
-spotlight?.addEventListener("click",event=>{
-  event.stopPropagation();
-  clearTeamSpotlight();
 });
 
 // keyboard + swipe
