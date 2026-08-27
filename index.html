@@ -1,606 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Globalization and How It Affects Our Everyday Lives</title>
 <style>
-/* base + slides */
-:root{--navy:#14213d;--blue:#3b82f6;--sky:#dff3ff;--cream:#fff9ef;--yellow:#ffd166;--orange:#ff8c42;--pink:#ffb3c6;--green:#a7e8bd;--mint:#dff8e7;--purple:#9b7ede;--red:#ff6b6b;--ink:#18212f;--muted:#667085;--white:#ffffff}
-*{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;background:#101522;font-family:Arial, Helvetica, sans-serif;color:var(--ink);overflow:hidden}
-.deck{width:100vw;height:100vh;position:relative;overflow:hidden}
-.slide{position:absolute;inset:0;padding:4.6vw 5.5vw 5.3vw;opacity:0;transform:translateX(55px);pointer-events:none;transition:.42s ease;overflow:hidden}
-.slide.active{opacity:1;transform:translateX(0);pointer-events:auto}
-.page{position:absolute;right:3vw;top:2.3vw;font-size:12px;font-weight:700;letter-spacing:.14em;opacity:.5}
-.eyebrow{font-size:12px;text-transform:lowercase;letter-spacing:.18em;font-weight:800;margin-bottom:14px}
-h1,h2,h3,p{margin:0}
-h1{font-size:clamp(55px,7.7vw,122px);line-height:.88;letter-spacing:-.065em}
-h2{font-size:clamp(38px,5vw,77px);line-height:.95;letter-spacing:-.045em}
-h3{font-size:clamp(17px,1.65vw,27px);line-height:1.1}
-p{font-size:clamp(14px,1.25vw,20px);line-height:1.42}
+/* base */
+:root{
+  --navy:#14213d;
+  --blue:#3b82f6;
+  --cream:#fff9ef;
+  --yellow:#ffd166;
+  --pink:#ffb3c6;
+  --green:#b9efc8;
+  --purple:#ddd2ff;
+  --ink:#18212f;
+}
 
-.dark-source{color:rgba(255,255,255,.65)}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;font-family:Arial,Helvetica,sans-serif;background:#101522;color:var(--ink);overflow:hidden}
+button{font:inherit;-webkit-tap-highlight-color:transparent}
+
+.deck{position:relative;width:100vw;height:100vh;overflow:hidden}
+.slide{
+  position:absolute;
+  inset:0;
+  padding:4.5vw 5.5vw 110px;
+  opacity:0;
+  transform:translateX(45px);
+  pointer-events:none;
+  overflow-y:auto;
+  overflow-x:hidden;
+  transition:.38s ease;
+}
+.slide.active{opacity:1;transform:none;pointer-events:auto}
+
+.page{
+  position:absolute;
+  top:20px;
+  right:24px;
+  padding:5px 8px;
+  border-radius:999px;
+  background:rgba(255,255,255,.55);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.12em;
+  opacity:.65;
+}
+
+.eyebrow{
+  margin-bottom:10px;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+h1,h2,h3,p{margin:0}
+h1{font-size:clamp(54px,7vw,112px);line-height:.9;letter-spacing:-.055em}
+h2{font-size:clamp(38px,4.6vw,70px);line-height:.97;letter-spacing:-.04em;max-width:1120px}
+h3{font-size:clamp(16px,1.45vw,24px)}
+p{line-height:1.45}
+
+/* slide 1 */
 .s1{background:var(--cream)}
-.s1 .left{width:67%;position:relative;z-index:4}
-.s1 .accent{color:var(--blue)}
-.s1 .intro{width:49%;margin-top:28px;color:#4d5666}
-.globe{position:absolute;right:-4vw;top:8vh;width:38vw;height:38vw;max-height:70vh;max-width:70vh;border-radius:50%;background:var(--blue);border:3px solid var(--navy);overflow:hidden;z-index:1}
-.globe:before,.globe:after{content:"";position:absolute;border:2px solid rgba(255,255,255,.85);border-radius:50%}
-.globe:before{width:42%;height:100%;left:29%;top:0}
-.globe:after{width:100%;height:42%;left:0;top:29%}
+.s1 .left{position:relative;z-index:3;width:68%}
+.s1 .intro{width:55%;margin-top:24px;font-size:clamp(14px,1.2vw,19px);color:#505969}
+.s1 h1 span{color:var(--blue)}
+
+.globe{
+  position:absolute;
+  right:-4vw;
+  top:9vh;
+  width:min(38vw,70vh);
+  aspect-ratio:1;
+  border-radius:50%;
+  background:var(--blue);
+  border:3px solid var(--navy);
+  overflow:hidden;
+}
+.globe::before,.globe::after{
+  content:"";
+  position:absolute;
+  border:2px solid rgba(255,255,255,.85);
+  border-radius:50%;
+}
+.globe::before{width:42%;height:100%;left:29%}
+.globe::after{width:100%;height:42%;top:29%}
 .globe .line1,.globe .line2{position:absolute;background:rgba(255,255,255,.85)}
-.globe .line1{width:100%;height:2px;top:50%}
-.globe .line2{height:100%;width:2px;left:50%}
-.group-box{position:absolute;left:5.5vw;right:5.5vw;bottom:5.5vw;display:flex;flex-wrap:wrap;gap:7px;z-index:5;max-width:73vw}
-.member{background:white;border:1.5px solid #d7d8dd;padding:7px 10px;border-radius:999px;font-size:9px;font-weight:800;box-shadow:0 4px 12px rgba(20,33,61,.05)}
+.globe .line1{left:0;top:50%;width:100%;height:2px}
+.globe .line2{left:50%;top:0;width:2px;height:100%}
+
+.group-box{
+  position:absolute;
+  left:5.5vw;
+  right:5.5vw;
+  bottom:5.5vw;
+  z-index:4;
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  max-width:73vw;
+}
+.member{padding:7px 10px;border:1px solid #d7d8dd;border-radius:999px;background:#fff;font-size:9px;font-weight:800}
+
+/* slide 2 */
 .s2{background:#dff3ff}
-.definition{margin-top:3vh;width:73%;font-size:clamp(24px,3vw,48px);line-height:1.14;font-weight:800;letter-spacing:-.035em}
+.definition{
+  width:min(82%,980px);
+  margin-top:2.5vh;
+  font-size:clamp(22px,2.55vw,40px);
+  line-height:1.13;
+  font-weight:800;
+  letter-spacing:-.03em;
+}
 .definition strong{color:var(--blue)}
-.flows{margin-top:6vh;display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
-.flow{background:white;border:2px solid var(--navy);border-radius:24px;padding:20px 16px;min-height:27vh;box-shadow:7px 7px 0 var(--navy)}
+
+.flows{display:grid;grid-template-columns:repeat(5,1fr);gap:11px;margin-top:4vh}
+.flow{
+  min-height:220px;
+  padding:17px 14px;
+  border:2px solid var(--navy);
+  border-radius:22px;
+  box-shadow:6px 6px 0 var(--navy);
+  cursor:pointer;
+  transition:.2s ease;
+}
 .flow:nth-child(1){background:#fff}
 .flow:nth-child(2){background:#fff1a8}
 .flow:nth-child(3){background:#f8c8d7}
 .flow:nth-child(4){background:#c9f0d6}
 .flow:nth-child(5){background:#ddd2ff}
-.flow .icon{font-size:32px;margin-bottom:20px}
-.flow p{margin-top:10px;font-size:13px}
-.s3{background:#15213d;color:white}
-.driver-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px;margin-top:4vh}
-.driver{border-radius:25px;min-height:29vh;padding:25px;color:var(--ink);display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
-.driver:nth-child(1){background:#ffd166}
-.driver:nth-child(2){background:#91d7ff}
-.driver:nth-child(3){background:#b9efc8}
-.driver:nth-child(4){background:#ffb3c6}
-.driver-num{width:55px;height:55px;border-radius:50%;background:#15213d;color:white;display:grid;place-items:center;font-size:18px;font-weight:900}
-.driver p{margin-top:12px;font-size:14px}
+.flow .icon{margin-bottom:12px;font-size:30px}
+.flow p{margin-top:8px;font-size:12px}
 
+/* slide 3 */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.controls{position:fixed;left:50%;bottom:17px;transform:translateX(-50%);z-index:100;display:flex;gap:8px;align-items:center;background:rgba(12,16,28,.8);backdrop-filter:blur(12px);padding:7px;border-radius:999px}
-.controls button{border:0;height:38px;border-radius:999px;background:white;color:#111;padding:0 14px;font-weight:800;font-size:11px;cursor:pointer}
-.controls button:hover{background:#e9edf5}
-.counter{color:white;min-width:50px;text-align:center;font-size:11px;font-weight:700}
-@media (max-width:850px){
-  .slide{padding:7vw 6vw 10vw}
-  h1{font-size:12vw}
-  h2{font-size:8vw}
-  .flows{grid-template-columns:1fr 1fr}
-  .flow{min-height:auto}
-  .driver-grid{grid-template-columns:1fr}
-  
-  
-  
-}
-.progress-track{position:fixed;left:0;top:0;width:100%;height:4px;background:rgba(255,255,255,.12);z-index:120}
-.progress-fill{height:100%;width:11.111%;background:linear-gradient(90deg,#ffd166,#ff8c42,#9b7ede,#3b82f6);transition:width .35s ease}
-.dot-nav{position:fixed;right:19px;top:50%;transform:translateY(-50%);z-index:110;display:flex;flex-direction:column;gap:9px;padding:10px 8px;border-radius:999px;background:rgba(12,16,28,.46);backdrop-filter:blur(8px)}
-.dot-nav button{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:.2s ease}
-.dot-nav button:hover{transform:scale(1.45);background:#fff}
-.dot-nav button.active{height:22px;border-radius:999px;background:#ffd166}
-.flow,.driver,.benefit,
-.flow:hover,.driver:hover,.benefit:hover,
-.micro-hint{position:absolute;right:5.5vw;bottom:2vw;font-size:10px;font-weight:700;color:rgba(24,33,47,.48);letter-spacing:.04em}
-.micro-hint.dark{color:rgba(255,255,255,.55)}
-.first-slide-hint{position:absolute;right:5.5vw;bottom:5.7vw;z-index:7;font-size:9px;font-weight:700;color:#6d7380;display:flex;gap:7px;align-items:center}
-.key{border:1px solid #b8bbc3;border-bottom-width:2px;border-radius:5px;background:white;padding:3px 6px;color:#34373c}
-@media (max-width:850px){
-  .dot-nav{display:none}
-  .first-slide-hint{display:none}
-}
-.s10{background:linear-gradient(135deg,#f7f4ff,#eaf7ff);color:#18212f}
-@keyframes hubIn{
-  from{opacity:0;transform:translateY(8px)}
-  to{opacity:1;transform:translateY(0)}
-}
-.mini-label{display:inline-block;margin-bottom:6px;padding:5px 8px;border-radius:999px;background:#ffd166;font-size:8px;font-weight:900}
-@keyframes floaty{
-  0%,100%{transform:translateY(0) rotate(0deg)}
-  50%{transform:translateY(-5px) rotate(3deg)}
-}
-button{-webkit-tap-highlight-color:transparent}
-button:active{transform:scale(.98)}
-@keyframes popupFade{
-  from{opacity:0}
-  to{opacity:1}
-}
-@keyframes detailIn{
-  from{opacity:0;transform:translateY(5px)}
-  to{opacity:1;transform:translateY(0)}
-}
-.s10{background:linear-gradient(145deg,#fff8e9,#eee9ff 55%,#e0f3ff)}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media (max-width:850px){
-  
-}
-.controls{z-index:200}
-.slide{overflow-y:auto;overflow-x:hidden;padding-bottom:110px;scrollbar-width:thin;scrollbar-color:rgba(21,33,61,.38) transparent;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
-.slide::-webkit-scrollbar{width:8px}
-.slide::-webkit-scrollbar-track{background:transparent}
-.slide::-webkit-scrollbar-thumb{background:rgba(21,33,61,.28);border-radius:999px}
-.slide::-webkit-scrollbar-thumb:hover{background:rgba(21,33,61,.45)}
-.s3::-webkit-scrollbar-thumb{background:rgba(255,255,255,.28)}
-.controls{position:fixed;bottom:17px}
-.s10{padding-bottom:135px}
-@media (max-height:720px){
-  .slide{padding-top:34px;padding-bottom:120px}
-  
-}
-/* mobile */
-@media (max-width:700px){
-  html,body{width:100%;height:100%;min-height:100%;overflow:hidden}
-  .deck{width:100vw;height:var(--phone-height, 100dvh)}
-  .slide{inset:0;width:100%;height:var(--phone-height, 100dvh);padding:64px 18px 120px;overflow-y:auto;overflow-x:hidden}
-  .page{position:static;display:inline-block;margin-bottom:10px;font-size:10px}
-  .eyebrow{font-size:9px;letter-spacing:.12em;margin-bottom:10px}
-  h1{font-size:clamp(48px,15vw,72px);line-height:.92}
-  h2{font-size:clamp(34px,10vw,52px);line-height:.98}
-  h3{font-size:18px}
-  p{font-size:14px;line-height:1.5}
-  
-  .micro-hint,.first-slide-hint{display:none}
-  .progress-track{height:3px}
-  .dot-nav{display:none}
-  .controls{left:10px;right:10px;bottom:10px;transform:none;justify-content:center;gap:6px;padding:7px;border-radius:18px}
-  .controls button{min-height:44px;min-width:44px;padding:0 12px;font-size:10px}
-  .controls #fullscreen{flex:1;max-width:130px}
-  .counter{min-width:46px;font-size:10px}
-  .s1 .left{width:100%}
-  .s1 .intro{width:100%;margin-top:18px}
-  .globe{position:relative;right:auto;top:auto;width:68vw;height:68vw;max-width:310px;max-height:310px;margin:28px auto 0}
-  .group-box{position:static;margin-top:24px;max-width:none;display:grid;grid-template-columns:1fr 1fr;gap:7px}
-  .member{font-size:8px;text-align:center;padding:8px 7px;white-space:normal}
-  .definition{width:100%;font-size:25px;line-height:1.2;margin-top:18px}
-  .flows{grid-template-columns:1fr;gap:12px;margin-top:26px}
-  .flow{min-height:0;padding:18px;box-shadow:5px 5px 0 var(--navy)}
-  .flow .icon{margin-bottom:10px}
-  .flow p{font-size:13px}
-  .driver-grid{grid-template-columns:1fr;gap:12px;margin-top:24px}
-  .driver{min-height:0;padding:17px;grid-template-columns:48px 1fr}
-  .driver-num{width:46px;height:46px;font-size:15px}
-  .driver p{font-size:13px}
-  
-  .benefit,
-  
-  
-  
-  
-  
-  
-  
-  
-  .om1,.om2,.om3,.om4,.om5,
-  
-  button{touch-action:manipulation}
-  .flow,.driver,.benefit,.daily,
-  .flow:hover,.driver:hover,.benefit:hover,
-}
-@media (max-width:390px){
-  .slide{padding-left:14px;padding-right:14px}
-  h1{font-size:47px}
-  h2{font-size:34px}
-  .group-box{grid-template-columns:1fr}
-  
-  .controls{left:6px;right:6px;gap:4px;padding:6px}
-  .controls button{padding:0 9px}
-  .controls #fullscreen{max-width:104px}
-}
-.edge-nav{position:fixed;top:15%;bottom:15%;width:42px;z-index:90;border:0;background:transparent;cursor:pointer}
-.edge-nav.left{left:0}
-.edge-nav.right{right:0}
-.edge-nav::after{content:attr(data-arrow);position:absolute;top:50%;transform:translateY(-50%);width:28px;height:50px;display:grid;place-items:center;border-radius:999px;color:white;background:rgba(15,20,35,.24);opacity:0;transition:.2s ease;font-size:18px}
-.edge-nav.left::after{left:6px}
-.edge-nav.right::after{right:6px}
-.edge-nav:hover::after{opacity:1}
-.keyboard-help{position:fixed;left:18px;bottom:20px;z-index:85;color:rgba(255,255,255,.82);background:rgba(15,20,35,.55);backdrop-filter:blur(8px);border-radius:999px;padding:7px 10px;font-size:9px;font-weight:800;pointer-events:none}
-/* mobile */
-@media (max-width:700px){
-  .edge-nav,.keyboard-help{display:none}
-}
-
+/* slide 4 */
 .sMajor{background:linear-gradient(145deg,#fff8e8,#edf7ff 58%,#f2ecff)}
-.major-layout{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;margin-top:4vh;align-items:stretch}
-.major-cards{display:grid;grid-template-columns:1fr 1fr;gap:11px}
-.major-card{min-height:135px;border:1.5px solid #15213d;border-radius:21px;padding:15px;text-align:left;cursor:pointer;color:#18212f;position:relative;transition:.22s ease;box-shadow:0 6px 14px rgba(20,33,61,.05)}
+.major-layout{display:grid;grid-template-columns:1.15fr .85fr;gap:15px;margin-top:2.7vh}
+.major-cards{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.major-card{
+  min-height:112px;
+  padding:13px;
+  border:1.5px solid var(--navy);
+  border-radius:20px;
+  color:var(--ink);
+  text-align:left;
+  cursor:pointer;
+  position:relative;
+  transition:.2s ease;
+}
 .major-card:nth-child(1){background:#cdeaff}
 .major-card:nth-child(2){background:#ffd978}
 .major-card:nth-child(3){background:#c9f0d6}
 .major-card:nth-child(4){background:#f7c6d8}
-.major-card:nth-child(5){background:#ddd2ff;grid-column:1 / -1}
-.major-card:hover,.major-card.active{transform:translateY(-5px);box-shadow:0 14px 26px rgba(20,33,61,.13);outline:4px solid rgba(124,58,237,.12)}
-.major-number{position:absolute;right:13px;top:12px;font-size:9px;font-weight:900;opacity:.55}
-.major-icon{display:grid;place-items:center;width:40px;height:40px;border-radius:13px;background:#15213d;color:white;font-size:19px;margin-bottom:13px}
+.major-card:nth-child(5){grid-column:1/-1;background:#ddd2ff}
+.major-number{position:absolute;right:12px;top:10px;font-size:9px;font-weight:900;opacity:.5}
+.major-icon{width:36px;height:36px;margin-bottom:9px;border-radius:12px;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:18px}
 .major-card strong{display:block;font-size:13px}
-.major-card small{display:block;margin-top:5px;max-width:88%;font-size:8px;line-height:1.4;color:#58616e}
-.major-detail{border-radius:26px;background:#15213d;color:white;padding:25px;min-height:360px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 18px 36px rgba(20,33,61,.17)}
-.major-detail-top{display:flex;align-items:center;gap:13px}
-.major-detail-icon{width:62px;height:62px;border-radius:18px;background:#ffd166;color:#15213d;display:grid;place-items:center;font-size:28px}
-.major-detail h3{font-size:24px}
-.major-detail p{margin-top:22px;font-size:16px;line-height:1.5;color:#e7edf7}
-.major-keywords{display:flex;gap:7px;flex-wrap:wrap;margin-top:22px}
-.major-keywords span{border:1px solid rgba(255,255,255,.24);background:rgba(255,255,255,.08);border-radius:999px;padding:6px 9px;font-size:8px;font-weight:800}
-.major-note{margin-top:11px;font-size:9px;color:#6d7580}
-/* mobile */
-@media (max-width:700px){
-  .major-layout{grid-template-columns:1fr;margin-top:24px}
-  .major-cards{grid-template-columns:1fr}
-  .major-card:nth-child(5){grid-column:auto}
-  .major-card{min-height:120px}
-  .major-detail{min-height:300px;padding:20px}
-  .major-detail p{font-size:14px}
-}
-.slide h1,.slide h2,.slide h3,.slide p,.slide strong{max-width:100%;overflow-wrap:break-word;word-break:normal}
-.slide h2{width:min(100%, 1120px);font-size:clamp(34px,4.35vw,68px);line-height:1;letter-spacing:-.04em;padding-right:70px}
-.eyebrow{margin-bottom:10px}
-.page{right:24px;top:20px;z-index:20;background:rgba(255,255,255,.58);backdrop-filter:blur(6px);border-radius:999px;padding:5px 8px}
-.s3 .page{background:rgba(255,255,255,.12)}
-.s2 .definition{width:min(82%, 980px);margin-top:2.5vh;font-size:clamp(22px,2.65vw,41px);line-height:1.13}
-.s2 .flows{margin-top:4vh;gap:11px}
-.s2 .flow{min-height:0;padding:17px 14px}
-.s2 .flow .icon{margin-bottom:12px}
-.s2 .flow p{font-size:12px;line-height:1.35}
-.s3 .driver-grid{margin-top:3vh;gap:12px}
-.s3 .driver{min-height:23vh;padding:19px;gap:14px}
-.s3 .driver-num{width:48px;height:48px;font-size:16px}
-.s3 .driver p{margin-top:8px;font-size:12px;line-height:1.38}
-.sMajor .major-layout{margin-top:2.7vh;gap:15px}
-.sMajor .major-cards{gap:9px}
-.sMajor .major-card{min-height:112px;padding:13px}
-.sMajor .major-icon{width:36px;height:36px;margin-bottom:9px}
-.sMajor .major-detail{min-height:315px;padding:21px}
-.sMajor .major-detail p{margin-top:17px;font-size:14px}
+.major-card small{display:block;margin-top:4px;max-width:88%;font-size:8px;line-height:1.4;color:#58616e}
 
-
-
-
-
-
-
-
-.s10 
-.s10 
-.s10 
-.s10 
-.s10 
-.s10 
-.s10 
-.s10 
-.s10 
-.s10 
-.s10 
-.s10 
-.s10 
-.s10 
-.s10 
-.s10 
-@media (max-height:800px) and (min-width:701px){
-  .slide{padding-top:45px;padding-bottom:92px}
-  .slide h2{font-size:clamp(32px,4vw,58px)}
-  .s2 .flows{margin-top:3vh}
-  .s3 .driver{min-height:20vh}
-  
-  
-  .s10 
-}
-/* mobile */
-@media (max-width:700px){
-  .slide h2{padding-right:0;font-size:clamp(31px,10vw,46px)}
-  .page{top:12px;right:12px;font-size:9px}
-  .s2 .definition{width:100%;font-size:22px}
-  .s10 
-  .s10 
-  .s10 .om1,.s10 .om2,.s10 .om3,.s10 .om4,.s10 .om5,.s10 
-  .s10 
-  .s10 
-}
-@media (max-width:390px){
-  .s10 
-  .s10 
-}
-
-/* compact team page */
-.s10{
+.major-detail{
+  min-height:315px;
+  padding:21px;
+  border-radius:25px;
+  background:var(--navy);
+  color:#fff;
   display:flex;
   flex-direction:column;
   justify-content:center;
-  padding:42px 6vw 92px;
 }
+.major-detail-top{display:flex;align-items:center;gap:12px}
+.major-detail-icon{width:58px;height:58px;border-radius:17px;background:var(--yellow);color:var(--navy);display:grid;place-items:center;font-size:26px}
+.mini-label{display:inline-block;margin-bottom:5px;padding:5px 8px;border-radius:999px;background:var(--yellow);color:var(--navy);font-size:8px;font-weight:900}
+.major-detail p{margin-top:17px;font-size:14px;color:#e7edf7}
+.major-keywords{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+.major-keywords span{padding:6px 9px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(255,255,255,.08);font-size:8px;font-weight:800}
+.major-note{margin-top:10px;font-size:9px;color:#6d7580}
 
-.s10 .eyebrow{
-  width:min(100%,900px);
-  margin:0 auto 7px;
-  font-size:10px;
+/* spotlight */
+.has-focus .spot-card{
+  opacity:.24;
+  filter:brightness(.42) saturate(.45);
+  transform:scale(.985);
 }
-
-.s10 h2{
-  width:min(100%,900px);
-  margin:0 auto;
-  padding-right:0;
-  font-size:clamp(38px,3.6vw,58px);
-  line-height:.98;
+.has-focus .spot-card.focus-card{
+  opacity:1;
+  filter:none;
+  transform:translateY(-5px) scale(1.025);
+  position:relative;
+  z-index:4;
+  box-shadow:0 18px 34px rgba(20,33,61,.2),0 0 0 5px rgba(124,58,237,.14);
 }
-
-.s10 
-
-.s10 
-
-.s10 
-
-.s10 
-
-.s10 
-
-.s10 
-
-.s10 
-
-.s10 
-
-.s10 
-
-.s10 
-
-.s10 
-
-@media(max-height:760px) and (min-width:701px){
-  .s10{
-    justify-content:flex-start;
-    padding-top:28px;
-  }
-
-  .s10 h2{
-    font-size:clamp(34px,3.25vw,50px);
-  }
-
-  .s10 
-}
-
-@media(max-width:700px){
-  .s10{
-    display:block;
-    padding:58px 16px 118px;
-  }
-
-  .s10 .eyebrow,
-  .s10 h2{
-    width:100%;
-  }
-
-  .s10 h2{
-    font-size:clamp(32px,9vw,43px);
-  }
-
-  .s10 
-
-  .s10 
-
-  .s10 
-
-  .s10 
-}
-
-@media(max-width:390px){
-  .s10 
-
-  .s10 
-}
-
-
-/* larger team page */
-.s10{
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-start;
-  padding:58px 5vw 105px;
-}
-
-.s10 .eyebrow{
-  width:min(100%,1180px);
-  margin:0 auto 9px;
-  font-size:12px;
-}
-
-.s10 h2{
-  width:min(100%,1180px);
-  margin:0 auto;
-  padding-right:0;
-  font-size:clamp(48px,4.7vw,76px);
-  line-height:.96;
-}
-
-.s10 
-
-.s10 
-
-.s10 
-
-.s10 
-
-.s10 
-
-.s10 
-
-.s10 
-
-.s10 
-
-/* selected member gets a much stronger spotlight */
-.s10 .team-stage.has-selection 
-
-
-
-/* each selected member keeps their own accent color */
-
-
-
-
-
-
-
-.s10 
-
-.s10 .team-spotlight-box.active{
-  box-shadow:0 18px 38px rgba(20,33,61,.18);
-}
-
-.s10 
-
-.s10 .team-spotlight-box .mini-label{
-  font-size:9px;
-  padding:6px 10px;
-}
-
-.s10 
-
-.s10 
-
-/* spotlight avatar follows the selected member color */
-.s10 .team-spotlight-box[data-selected="om1"] 
-.s10 .team-spotlight-box[data-selected="om2"] 
-.s10 .team-spotlight-box[data-selected="om3"] 
-.s10 .team-spotlight-box[data-selected="om4"] 
-.s10 .team-spotlight-box[data-selected="om5"] 
-.s10 .team-spotlight-box[data-selected="om6"] 
-
-@media(max-height:820px) and (min-width:701px){
-  .s10{
-    padding-top:38px;
-  }
-
-  .s10 h2{
-    font-size:clamp(42px,4vw,62px);
-  }
-
-  .s10 
-
-  .s10 
-
-  .s10 
-}
-
-@media(max-width:700px){
-  .s10{
-    display:block;
-    padding:64px 17px 120px;
-  }
-
-  .s10 .eyebrow,
-  .s10 h2{
-    width:100%;
-  }
-
-  .s10 h2{
-    font-size:clamp(34px,10vw,48px);
-  }
-
-  .s10 
-
-  .s10 
-
-  .s10 
-
-  .s10 .om1,
-  .s10 .om2,
-  .s10 .om3,
-  .s10 .om4,
-  .s10 .om5,
-  .s10 
-
-  .s10 
-
-  .s10 
-
-  .s10 
-
-  .s10 
-}
-
-@media(max-width:390px){
-  .s10 
-
-  .s10 
-
-  .s10 
-}
-
-
-/* strong card spotlight */
-.s2 .flows.has-focus .flow,
-.s3 .driver-grid.has-focus .driver,
-.sMajor .major-cards.has-focus .major-card,
-.s6 .benefits.has-focus .benefit,
-
-
-.s2 .flows.has-focus .flow.focus-card,
-.s3 .driver-grid.has-focus .driver.focus-card,
-.sMajor .major-cards.has-focus .major-card.focus-card,
-.s6 .benefits.has-focus .benefit.focus-card,
-
-
-/* selected cards keep their original colors clearly visible */
-.s2 .flows.has-focus .flow.focus-card,
-.s3 .driver-grid.has-focus .driver.focus-card,
-.s6 .benefits.has-focus .benefit.focus-card,
-
-
-/* the team page uses the same stronger dimming */
-.s10 .team-stage.has-selection 
-
-
-
-/* mobile still keeps the spotlight obvious without moving cards too far */
-@media(max-width:700px){
-  .s2 .flows.has-focus .flow.focus-card,
-  .s3 .driver-grid.has-focus .driver.focus-card,
-  .sMajor .major-cards.has-focus .major-card.focus-card,
-  .s6 .benefits.has-focus .benefit.focus-card,
-  .s8 .daily-grid.has-focus .daily.focus-card,
-  
-}
-
+.spot-card{transition:opacity .2s ease,filter .2s ease,transform .2s ease,box-shadow .2s ease}
 
 /* thank you */
 .thank-you-slide{
@@ -608,376 +201,328 @@ button:active{transform:scale(.98)}
   display:grid;
   place-items:center;
   text-align:center;
-  padding:70px 6vw 100px;
 }
-
-.thank-you-wrap{
-  width:min(100%,1100px);
-  margin:auto;
-}
-
-.thank-you-slide .eyebrow{
-  margin-bottom:24px;
-  font-size:13px;
-  letter-spacing:.2em;
-}
-
+.thank-you-wrap{width:min(100%,1100px)}
 .thank-you-title{
-  width:100% !important;
-  padding:0 !important;
-  font-size:clamp(90px,14vw,220px) !important;
-  line-height:.82 !important;
-  letter-spacing:-.07em !important;
-  color:#15213d;
+  max-width:none;
+  font-size:clamp(90px,14vw,220px);
+  line-height:.82;
+  letter-spacing:-.07em;
+  color:var(--navy);
 }
+.thank-you-sub{margin:32px auto 0;max-width:720px;font-size:clamp(16px,1.6vw,25px);font-weight:700;color:#596273}
 
-.thank-you-sub{
-  margin:34px auto 0;
-  max-width:720px;
-  font-size:clamp(16px,1.6vw,25px);
-  font-weight:700;
-  color:#596273;
-}
+/* navigation */
+.progress-track{position:fixed;left:0;top:0;width:100%;height:4px;z-index:120;background:rgba(255,255,255,.15)}
+.progress-fill{height:100%;width:25%;background:linear-gradient(90deg,#ffd166,#ff8c42,#9b7ede,#3b82f6);transition:.3s ease}
 
+.dot-nav{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:110;display:flex;flex-direction:column;gap:8px;padding:9px 7px;border-radius:999px;background:rgba(12,16,28,.48)}
+.dot-nav button{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.42);cursor:pointer}
+.dot-nav button.active{height:21px;border-radius:999px;background:var(--yellow)}
+
+.controls{position:fixed;left:50%;bottom:17px;transform:translateX(-50%);z-index:200;display:flex;align-items:center;gap:7px;padding:7px;border-radius:999px;background:rgba(12,16,28,.82);backdrop-filter:blur(10px)}
+.controls button{height:38px;padding:0 14px;border:0;border-radius:999px;background:#fff;color:#111;font-size:11px;font-weight:800;cursor:pointer}
+.counter{min-width:48px;color:#fff;text-align:center;font-size:11px;font-weight:800}
+
+.edge-nav{position:fixed;top:15%;bottom:15%;width:42px;z-index:90;border:0;background:transparent;cursor:pointer}
+.edge-nav.left{left:0}.edge-nav.right{right:0}
+.edge-nav::after{content:attr(data-arrow);position:absolute;top:50%;transform:translateY(-50%);width:28px;height:50px;display:grid;place-items:center;border-radius:999px;background:rgba(15,20,35,.24);color:#fff;opacity:0;transition:.2s ease}
+.edge-nav.left::after{left:6px}.edge-nav.right::after{right:6px}
+.edge-nav:hover::after{opacity:1}
+
+/* mobile */
 @media(max-width:700px){
-  .thank-you-slide{
-    padding:80px 18px 120px;
-  }
-
-  .thank-you-title{
-    font-size:clamp(72px,24vw,120px) !important;
-  }
-
-  .thank-you-sub{
-    margin-top:24px;
-    font-size:15px;
-  }
+  .slide{padding:62px 17px 118px}
+  .page{position:static;display:inline-block;margin-bottom:10px}
+  h1{font-size:clamp(47px,14vw,72px)}
+  h2{font-size:clamp(33px,10vw,48px)}
+  .s1 .left,.s1 .intro{width:100%}
+  .s1 .intro{margin-top:18px}
+  .globe{position:relative;right:auto;top:auto;width:min(68vw,300px);margin:28px auto 0}
+  .group-box{position:static;max-width:none;margin-top:24px;display:grid;grid-template-columns:1fr 1fr}
+  .definition{width:100%;font-size:22px;margin-top:18px}
+  .flows-grid,.major-layout,.major-cards{grid-template-columns:1fr}
+  .flows-grid,.major-layout{margin-top:24px}
+  .flow,.major-card{min-height:0}
+  .major-card:nth-child(5){grid-column:auto}
+  .major-detail{min-height:280px}
+  .dot-nav,.edge-nav{display:none}
+  .controls{left:10px;right:10px;bottom:10px;transform:none;justify-content:center;border-radius:18px}
+  .controls button{min-height:44px;min-width:44px;padding:0 11px}
+  .controls #fullscreen{flex:1;max-width:125px}
+  .thank-you-title{font-size:clamp(72px,23vw,120px)}
+  .thank-you-sub{margin-top:22px;font-size:15px}
 }
 
+@media(max-width:390px){
+  .slide{padding-left:14px;padding-right:14px}
+  .group-box{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
 <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-<div aria-label="Slide navigation" class="dot-nav" id="dotNav"></div>
-<!-- pages --><div class="deck">
-<section class="slide s1 active">
-<div class="page">01 / 05</div>
-<div class="left">
-<div class="eyebrow">Group Two • The Contemporary World</div>
-<h1>Globalization and How It Affects<br><span>Our Everyday Lives</span></h1>
-<p class="intro">An infographic about how countries, people, businesses, cultures, and ideas become more connected across borders.</p>
-</div>
-<div class="globe">
-<div class="line1"></div>
-<div class="line2"></div>
-</div>
-<div class="first-slide-hint"><span class="key">←</span><span class="key">→</span> Use arrow keys to navigate</div>
-<div class="group-box">
-<span class="member">Christian Karl Bagtas</span>
-<span class="member">John Cornelio Esteves</span>
-<span class="member">John Philip Fernando</span>
-<span class="member">Lance Sunga</span>
-<span class="member">Nice Lobrido</span>
-<span class="member">Showny Jane Sadiasa</span>
-</div>
-</section>
-<section class="slide s2">
-<div class="page">02 / 05</div>
-<div class="eyebrow">What Is Globalization?</div>
-<h2>The World Becomes More Connected.</h2>
-<div class="definition">
-      Globalization is the growing connection of countries through the movement of <strong>goods, services, people, money, technology, and ideas.</strong>
-</div>
-<div class="flows interactive-group" role="button" tabindex="0" data-focus-group="">
-<div class="flow" role="button" tabindex="0">
-<div class="icon">▣</div>
-<h3>Goods</h3>
-<p>Products can be made in one country and bought in another.</p>
-</div>
-<div class="flow" role="button" tabindex="0">
-<div class="icon">↔</div>
-<h3>Services</h3>
-<p>Work and services can be offered to customers across borders.</p>
-</div>
-<div class="flow" role="button" tabindex="0">
-<div class="icon">◎</div>
-<h3>People</h3>
-<p>People travel, migrate, study, and work in different countries.</p>
-</div>
-<div class="flow" role="button" tabindex="0">
-<div class="icon">₱</div>
-<h3>Money</h3>
-<p>Businesses invest and financial activities move between countries.</p>
-</div>
-<div class="flow" role="button" tabindex="0">
-<div class="icon">✦</div>
-<h3>Ideas</h3>
-<p>Information, culture, Knowledge, and technology spread quickly.</p>
-</div>
-</div>
-<div class="micro-hint">Click a card to spotlight it</div>
+<div class="dot-nav" id="dotNav" aria-label="Slide navigation"></div>
 
-</section>
-<section class="slide s3">
-<div class="page">03 / 05</div>
-<div class="eyebrow">What Makes It Happen?</div>
-<h2>Four Forces Make the World Feel Smaller.</h2>
-<div class="driver-grid interactive-group" role="button" tabindex="0" data-focus-group="">
-<div class="driver" role="button" tabindex="0">
-<div class="driver-num" role="button" tabindex="0">01</div>
-<div>
-<h3>Internet + Communication</h3>
-<p>Messages, news, work, videos, and information can reach another country almost instantly.</p>
+<div class="deck">
+  <!-- slide 1 -->
+  <section class="slide s1 active">
+    <div class="page">01 / 04</div>
+    <div class="left">
+      <div class="eyebrow">Group Two • The Contemporary World</div>
+      <h1>Globalization and How It Affects<br><span>Our Everyday Lives</span></h1>
+      <p class="intro">An infographic about how countries, people, businesses, cultures, and ideas become more connected across borders.</p>
+    </div>
+
+    <div class="globe">
+      <div class="line1"></div>
+      <div class="line2"></div>
+    </div>
+
+    <div class="group-box">
+      <span class="member">Christian Karl Bagtas</span>
+      <span class="member">John Cornelio Esteves</span>
+      <span class="member">John Philip Fernando</span>
+      <span class="member">Lance Sunga</span>
+      <span class="member">Nice Lobrido</span>
+      <span class="member">Showny Jane Sadiasa</span>
+    </div>
+  </section>
+
+  <!-- slide 2 -->
+  <section class="slide s2">
+    <div class="page">02 / 04</div>
+    <div class="eyebrow">What Is Globalization?</div>
+    <h2>The World Becomes More Connected.</h2>
+
+    <div class="definition">
+      Globalization is the growing connection of countries through the movement of
+      <strong>goods, services, people, money, technology, and ideas.</strong>
+    </div>
+
+    <div class="flows spotlight-group">
+      <div class="flow spot-card" role="button" tabindex="0">
+        <div class="icon">▣</div><h3>Goods</h3>
+        <p>Products can be made in one country and bought in another.</p>
+      </div>
+      <div class="flow spot-card" role="button" tabindex="0">
+        <div class="icon">↔</div><h3>Services</h3>
+        <p>Work and services can be offered to customers across borders.</p>
+      </div>
+      <div class="flow spot-card" role="button" tabindex="0">
+        <div class="icon">◎</div><h3>People</h3>
+        <p>People travel, migrate, study, and work in different countries.</p>
+      </div>
+      <div class="flow spot-card" role="button" tabindex="0">
+        <div class="icon">₱</div><h3>Money</h3>
+        <p>Businesses invest and financial activities move between countries.</p>
+      </div>
+      <div class="flow spot-card" role="button" tabindex="0">
+        <div class="icon">✦</div><h3>Ideas</h3>
+        <p>Information, culture, knowledge, and technology spread quickly.</p>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- slide 3 -->
+  <section class="slide sMajor">
+    <div class="page">03 / 04</div>
+    <div class="eyebrow">Major Parts of Globalization</div>
+    <h2>Five Major Parts That Keep the World Connected.</h2>
+
+    <div class="major-layout">
+      <div class="major-cards spotlight-group">
+        <button class="major-card spot-card" data-major="technology">
+          <span class="major-number">01</span><span class="major-icon">⌘</span>
+          <strong>Technology</strong><small>Communication, information, and teamwork across countries.</small>
+        </button>
+        <button class="major-card spot-card" data-major="economy">
+          <span class="major-number">02</span><span class="major-icon">₱</span>
+          <strong>Economy</strong><small>Trade, products, services, and business opportunities.</small>
+        </button>
+        <button class="major-card spot-card" data-major="connections">
+          <span class="major-number">03</span><span class="major-icon">🤝</span>
+          <strong>Connections</strong><small>Trade, travel, communication, migration, and cooperation.</small>
+        </button>
+        <button class="major-card spot-card" data-major="culture">
+          <span class="major-number">04</span><span class="major-icon">♫</span>
+          <strong>Culture</strong><small>Ideas, food, music, clothing, language, and traditions.</small>
+        </button>
+        <button class="major-card spot-card" data-major="impact">
+          <span class="major-number">05</span><span class="major-icon">↗</span>
+          <strong>Impact</strong><small>Benefits and challenges created by globalization.</small>
+        </button>
+      </div>
+
+      <div class="major-detail">
+        <div class="major-detail-top">
+          <span class="major-detail-icon" id="majorDetailIcon">⌘</span>
+          <div><span class="mini-label" id="majorDetailNumber">01</span><h3 id="majorDetailTitle">Technology</h3></div>
+        </div>
+        <p id="majorDetailText">Technology allows people from different countries to communicate, share information, and work together quickly.</p>
+        <div class="major-keywords" id="majorKeywords">
+          <span>Communication</span><span>Information</span><span>Collaboration</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="major-note">Click a part to change the explanation.</div>
+  </section>
+
+  <!-- slide 4 -->
+  <section class="slide thank-you-slide">
+    <div class="page">04 / 04</div>
+    <div class="thank-you-wrap">
+      <div class="eyebrow">Group Two • The Contemporary World</div>
+      <h2 class="thank-you-title">Thank You!!</h2>
+      <p class="thank-you-sub">Globalization and How It Affects Our Everyday Lives</p>
+    </div>
+  </section>
 </div>
+
+<button class="edge-nav left" id="edgePrev" data-arrow="‹" aria-label="Previous slide"></button>
+<button class="edge-nav right" id="edgeNext" data-arrow="›" aria-label="Next slide"></button>
+
+<!-- navigation -->
+<div class="controls">
+  <button id="prev">←</button>
+  <div class="counter" id="counter">1 / 4</div>
+  <button id="next">→</button>
+  <button id="fullscreen">Fullscreen</button>
 </div>
-<div class="driver" role="button" tabindex="0">
-<div class="driver-num" role="button" tabindex="0">02</div>
-<div>
-<h3>Faster Transportation</h3>
-<p>Planes, ships, roads, and logistics make it easier to move people and products around the world.</p>
-</div>
-</div>
-<div class="driver" role="button" tabindex="0">
-<div class="driver-num" role="button" tabindex="0">03</div>
-<div>
-<h3>International Trade</h3>
-<p>Countries buy and sell products and services from each other instead of relying only on local markets.</p>
-</div>
-</div>
-<div class="driver" role="button" tabindex="0">
-<div class="driver-num" role="button" tabindex="0">04</div>
-<div>
-<h3>Technology + Business</h3>
-<p>Digital systems and international companies connect workers, customers, suppliers, and markets.</p>
-</div>
-</div>
-</div>
-<div class="micro-hint dark">Click a card to spotlight it</div>
-<div class="source dark-source">The IMF identifies technological progress, communication, trade, and cross-border flows as major parts of globalization.</div>
-</section>
-<section class="slide sMajor">
-<div class="page">04 / 05</div>
-<div class="eyebrow">Major Parts of Globalization</div>
-<h2>Five Major Parts That Keep the World Connected.</h2>
-<div class="major-layout">
-<div class="major-cards">
-<button class="major-card active" data-major="technology">
-<span class="major-number">01</span>
-<span class="major-icon">⌘</span>
-<strong>Technology</strong>
-<small>Communication, information, and teamwork across countries.</small>
-</button>
-<button class="major-card" data-major="economy">
-<span class="major-number">02</span>
-<span class="major-icon">₱</span>
-<strong>Economy</strong>
-<small>Trade, products, services, and business opportunities.</small>
-</button>
-<button class="major-card" data-major="connections">
-<span class="major-number">03</span>
-<span class="major-icon">🤝</span>
-<strong>Connections</strong>
-<small>Trade, travel, communication, migration, and cooperation.</small>
-</button>
-<button class="major-card" data-major="culture">
-<span class="major-number">04</span>
-<span class="major-icon">♫</span>
-<strong>Culture</strong>
-<small>Ideas, food, music, clothing, language, and traditions.</small>
-</button>
-<button class="major-card" data-major="impact">
-<span class="major-number">05</span>
-<span class="major-icon">↗</span>
-<strong>Impact</strong>
-<small>Benefits and challenges created by globalization.</small>
-</button>
-</div>
-<div class="major-detail" id="majorDetail">
-<div class="major-detail-top">
-<span class="major-detail-icon" id="majorDetailIcon">⌘</span>
-<div>
-<span class="mini-label" id="majorDetailNumber">01</span>
-<h3 id="majorDetailTitle">Technology</h3>
-</div>
-</div>
-<p id="majorDetailText">
-          Technology allows people from different countries to communicate, share information, and work together quickly.
-        </p>
-<div class="major-keywords" id="majorKeywords">
-<span>Communication</span>
-<span>Information</span>
-<span>Collaboration</span>
-</div>
-</div>
-</div>
-<div class="major-note">Click a part to change the explanation.</div>
-</section>
-<section class="slide s10 thank-you-slide">
-<div class="page">05 / 05</div>
-<div class="thank-you-wrap">
-<div class="eyebrow">Group Two • The Contemporary World</div>
-<h2 class="thank-you-title">Thank You!!</h2>
-<p class="thank-you-sub">Globalization and How It Affects Our Everyday Lives</p>
-</div>
-</section>
-</div>
-<button aria-label="Previous slide" class="edge-nav left" data-arrow="‹" id="edgePrev"></button>
-<button aria-label="Next slide" class="edge-nav right" data-arrow="›" id="edgeNext"></button>
-<div class="keyboard-help">← → arrow keys change pages</div>
-<!-- navigation --><div class="controls">
-<button id="prev">←</button>
-<div class="counter" id="counter">1 / 5</div>
-<button id="next">→</button>
-<button id="fullscreen">Fullscreen</button>
-</div>
+
 <script>
 // navigation
-const slides=[...document.querySelectorAll(".slide")];
-const counter=document.getElementById("counter");
-const progress=document.getElementById("progressFill");
-const dotNav=document.getElementById("dotNav");
+const slides=[...document.querySelectorAll('.slide')];
+const counter=document.getElementById('counter');
+const progress=document.getElementById('progressFill');
+const dotNav=document.getElementById('dotNav');
 let current=0;
+
 const dots=slides.map((_,i)=>{
-  const dot=document.createElement("button");
-  dot.type="button";
-  dot.setAttribute("aria-label",`Go to page ${i+1}`);
-  dot.addEventListener("click",()=>show(i));
-  dotNav?.appendChild(dot);
+  const dot=document.createElement('button');
+  dot.type='button';
+  dot.setAttribute('aria-label',`Go to slide ${i+1}`);
+  dot.addEventListener('click',()=>show(i));
+  dotNav.appendChild(dot);
   return dot;
 });
+
+function clearAllSpotlights(){
+  document.querySelectorAll('.spotlight-group').forEach(group=>{
+    group.classList.remove('has-focus');
+    group.querySelectorAll('.focus-card').forEach(card=>card.classList.remove('focus-card'));
+  });
+}
+
 function show(index){
   current=(index+slides.length)%slides.length;
-  slides.forEach((slide,i)=>{
-    slide.classList.toggle("active",i===current);
-    slide.classList.toggle("before",i<current);
-  });
+  slides.forEach((slide,i)=>slide.classList.toggle('active',i===current));
   slides[current].scrollTop=0;
-  if(counter) counter.textContent=`${current+1} / ${slides.length}`;
-  if(progress) progress.style.width=`${((current+1)/slides.length)*100}%`;
-  dots.forEach((dot,i)=>dot.classList.toggle("active",i===current));
+  counter.textContent=`${current+1} / ${slides.length}`;
+  progress.style.width=`${((current+1)/slides.length)*100}%`;
+  dots.forEach((dot,i)=>dot.classList.toggle('active',i===current));
+  clearAllSpotlights();
 }
+
 const next=()=>show(current+1);
 const prev=()=>show(current-1);
-document.getElementById("next")?.addEventListener("click",next);
-document.getElementById("prev")?.addEventListener("click",prev);
-document.getElementById("edgeNext")?.addEventListener("click",next);
-document.getElementById("edgePrev")?.addEventListener("click",prev);
-document.getElementById("fullscreen")?.addEventListener("click",async()=>{
+
+document.getElementById('next').addEventListener('click',next);
+document.getElementById('prev').addEventListener('click',prev);
+document.getElementById('edgeNext').addEventListener('click',next);
+document.getElementById('edgePrev').addEventListener('click',prev);
+
+document.getElementById('fullscreen').addEventListener('click',async()=>{
   try{
     if(document.fullscreenElement) await document.exitFullscreen();
     else await document.documentElement.requestFullscreen();
   }catch{}
 });
-// card spotlight
-const spotlightGroups=[
-  [".s2 .flows",".flow"],
-  [".s3 .driver-grid",".driver"],
-  [".sMajor .major-cards",".major-card"]
-];
 
-spotlightGroups.forEach(([groupSelector,cardSelector])=>{
-  const group=document.querySelector(groupSelector);
-  const slide=group?.closest(".slide");
-  if(!group||!slide) return;
+// spotlight
+for(const group of document.querySelectorAll('.spotlight-group')){
+  const slide=group.closest('.slide');
+  const cards=[...group.querySelectorAll('.spot-card')];
 
-  const cards=[...group.querySelectorAll(cardSelector)];
-
-  function clearSpotlight(){
-    cards.forEach(card=>card.classList.remove("focus-card"));
-    group.classList.remove("has-focus");
-  }
+  const clear=()=>{
+    group.classList.remove('has-focus');
+    cards.forEach(card=>card.classList.remove('focus-card'));
+  };
 
   cards.forEach(card=>{
-    card.addEventListener("click",event=>{
-      event.stopPropagation();
+    card.addEventListener('click',e=>{
+      e.stopPropagation();
+      const selected=card.classList.contains('focus-card');
+      clear();
+      if(!selected){
+        group.classList.add('has-focus');
+        card.classList.add('focus-card');
+      }
+    });
 
-      const alreadySelected=card.classList.contains("focus-card");
-      clearSpotlight();
-
-      if(!alreadySelected){
-        group.classList.add("has-focus");
-        card.classList.add("focus-card");
+    card.addEventListener('keydown',e=>{
+      if(e.key==='Enter'||e.key===' '){
+        e.preventDefault();
+        card.click();
       }
     });
   });
 
-  // clicking empty space on the page returns all cards to normal
-  slide.addEventListener("click",event=>{
-    if(event.target.closest(cardSelector)) return;
-    clearSpotlight();
+  slide.addEventListener('click',e=>{
+    if(e.target.closest('.spot-card')) return;
+    clear();
   });
-});
+}
 
 // major parts
 const majorParts={
-  technology:["01","⌘","Technology","Technology allows people from different countries to communicate, share information, and work together quickly.",["Communication","Information","Collaboration"]],
-  economy:["02","₱","Economy","Countries buy and sell products and services from one another, creating more business opportunities and international trade.",["Business","Trade","Products + Services"]],
-  connections:["03","🤝","Connections","People, businesses, and countries interact through trade, travel, communication, migration, and cooperation.",["Travel","Migration","Cooperation"]],
-  culture:["04","♫","Culture","Ideas, food, music, clothing, languages, and traditions can spread from one country to another.",["Food","Music","Traditions"]],
-  impact:["05","↗","Impact","Globalization can create jobs, provide access to new products and technology, and encourage economic growth. However, it can also create challenges such as inequality, competition, and the loss of some local traditions.",["Jobs","Growth","Challenges"]]
+  technology:['01','⌘','Technology','Technology allows people from different countries to communicate, share information, and work together quickly.',['Communication','Information','Collaboration']],
+  economy:['02','₱','Economy','Countries buy and sell products and services from one another, creating more business opportunities and international trade.',['Business','Trade','Products + Services']],
+  connections:['03','🤝','Connections','People, businesses, and countries interact through trade, travel, communication, migration, and cooperation.',['Travel','Migration','Cooperation']],
+  culture:['04','♫','Culture','Ideas, food, music, clothing, languages, and traditions can spread from one country to another.',['Food','Music','Traditions']],
+  impact:['05','↗','Impact','Globalization can create jobs, provide access to new products and technology, and encourage economic growth. However, it can also create challenges such as inequality, competition, and the loss of some local traditions.',['Jobs','Growth','Challenges']]
 };
-const majorCards=[...document.querySelectorAll(".major-card")];
-majorCards.forEach(card=>card.addEventListener("click",()=>{
-  const part=majorParts[card.dataset.major];
-  if(!part) return;
-  majorCards.forEach(item=>item.classList.remove("active"));
-  card.classList.add("active");
-  document.getElementById("majorDetailNumber").textContent=part[0];
-  document.getElementById("majorDetailIcon").textContent=part[1];
-  document.getElementById("majorDetailTitle").textContent=part[2];
-  document.getElementById("majorDetailText").textContent=part[3];
-  document.getElementById("majorKeywords").innerHTML=part[4].map(x=>`<span>${x}</span>`).join("");
-}));
 
-// keyboard spotlight
-document.querySelectorAll(".flow,.driver,.major-card").forEach(card=>{
-  card.addEventListener("keydown",e=>{
-    if(e.key==="Enter"||e.key===" "){
-      e.preventDefault();
-      card.click();
-    }
+for(const card of document.querySelectorAll('.major-card')){
+  card.addEventListener('click',()=>{
+    const part=majorParts[card.dataset.major];
+    if(!part) return;
+    document.getElementById('majorDetailNumber').textContent=part[0];
+    document.getElementById('majorDetailIcon').textContent=part[1];
+    document.getElementById('majorDetailTitle').textContent=part[2];
+    document.getElementById('majorDetailText').textContent=part[3];
+    document.getElementById('majorKeywords').innerHTML=part[4].map(x=>`<span>${x}</span>`).join('');
   });
+}
+
+// keyboard
+window.addEventListener('keydown',e=>{
+  if(['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName)) return;
+  if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();next()}
+  else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();prev()}
+  else if(e.key==='Home'){e.preventDefault();show(0)}
+  else if(e.key==='End'){e.preventDefault();show(slides.length-1)}
 });
 
-// keyboard + swipe
-document.addEventListener("keydown",e=>{
-  if(["INPUT","TEXTAREA","SELECT"].includes(document.activeElement?.tagName)) return;
-  if(e.key==="ArrowRight"||e.key==="PageDown"||e.code==="Space"){
-    e.preventDefault();
-    next();
-  }else if(e.key==="ArrowLeft"||e.key==="PageUp"){
-    e.preventDefault();
-    prev();
-  }else if(e.key==="Home"){
-    e.preventDefault();
-    show(0);
-  }else if(e.key==="End"){
-    e.preventDefault();
-    show(slides.length-1);
-  }
-},true);
+// swipe
 let startX=0,startY=0;
-document.addEventListener("touchstart",e=>{
+window.addEventListener('touchstart',e=>{
   if(e.touches.length!==1) return;
   startX=e.touches[0].clientX;
   startY=e.touches[0].clientY;
 },{passive:true});
-document.addEventListener("touchend",e=>{
+
+window.addEventListener('touchend',e=>{
   const touch=e.changedTouches[0];
   if(!touch) return;
   const dx=touch.clientX-startX;
   const dy=touch.clientY-startY;
-  if(Math.abs(dx)>65&&Math.abs(dx)>Math.abs(dy)*1.35){
-    dx<0?next():prev();
-  }
+  if(Math.abs(dx)>65&&Math.abs(dx)>Math.abs(dy)*1.35) dx<0?next():prev();
 },{passive:true});
-// phone height
-function fitHeight(){
-  document.documentElement.style.setProperty("--phone-height",`${window.innerHeight}px`);
-}
-fitHeight();
-window.addEventListener("resize",fitHeight);
-window.addEventListener("orientationchange",fitHeight);
+
 show(0);
 </script>
 </body>
